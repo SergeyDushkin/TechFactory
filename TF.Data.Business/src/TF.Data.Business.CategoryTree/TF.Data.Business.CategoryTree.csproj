@@ -7,7 +7,7 @@
     <ProjectGuid>{91229201-67D4-494B-B47E-9DC079A4EFCE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TF.Data.Businesss</RootNamespace>
+    <RootNamespace>TF.Data.Business</RootNamespace>
     <AssemblyName>TF.Data.Business.CategoryTree</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryTree.cs" />
+    <Compile Include="ICategoryTreeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

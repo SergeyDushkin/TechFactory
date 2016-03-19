@@ -6,7 +6,7 @@ using TF.Data.Business;
 
 namespace TF.DAL
 {
-    public partial class CategoryTreeService : ICategoryTreeService
+    public partial class CategoryTreeService : ICategoryService
     {
         private readonly string _connectionString;
 
@@ -20,32 +20,32 @@ namespace TF.DAL
             _connectionString = connectionString;
         }
 
-        public IEnumerable<CategoryTree> GetAll()
+        public IEnumerable<Category> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<CategoryTree>> GetAllAsync()
+        public Task<IEnumerable<Category>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public CategoryTree GetById(Guid id)
+        public Category GetById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<CategoryTree> GetByIdAsync(Guid id)
+        public Task<Category> GetByIdAsync(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CategoryTree> GetByParentId(Guid id)
+        public IEnumerable<Category> GetByParentId(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<CategoryTree>> GetByParentIdAsync(Guid id)
+        public Task<IEnumerable<Category>> GetByParentIdAsync(Guid id)
         {
             throw new NotImplementedException();
         }

@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WMS", "WMS", "{FB2BF3E4-4BC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF.Data.Business.CategoryTree", "src\TF.Data.Business.CategoryTree\TF.Data.Business.CategoryTree.csproj", "{91229201-67D4-494B-B47E-9DC079A4EFCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF.Data.Business.WMS.Product", "src\TF.Data.Business.WMS.Product\TF.Data.Business.WMS.Product.csproj", "{AF9C252A-6F59-427D-AA9B-FFEDD5ABA750}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +19,15 @@ Global
 		{91229201-67D4-494B-B47E-9DC079A4EFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91229201-67D4-494B-B47E-9DC079A4EFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91229201-67D4-494B-B47E-9DC079A4EFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF9C252A-6F59-427D-AA9B-FFEDD5ABA750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9C252A-6F59-427D-AA9B-FFEDD5ABA750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9C252A-6F59-427D-AA9B-FFEDD5ABA750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9C252A-6F59-427D-AA9B-FFEDD5ABA750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AF9C252A-6F59-427D-AA9B-FFEDD5ABA750} = {FB2BF3E4-4BC7-41E2-AFAE-DECE62220032}
 	EndGlobalSection
 EndGlobal

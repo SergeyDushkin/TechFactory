@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF.Data.Business.CategoryTree", "..\TF.Data.Business\src\TF.Data.Business.CategoryTree\TF.Data.Business.CategoryTree.csproj", "{91229201-67D4-494B-B47E-9DC079A4EFCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{FE43FC6F-607E-4518-8EB8-AEDB2BA41A58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{183DE25B-B9AF-4CCE-9185-9BF5FDB8A966}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{E69E3B3C-073B-484E-8833-D5A8689785DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF.DAL.CategoryTreeService", "..\TF.DAL\src\TF.DAL.CategoryTreeService\TF.DAL.CategoryTreeService.csproj", "{7824EB6C-FF92-4D7E-A340-7AA671B3AA0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91229201-67D4-494B-B47E-9DC079A4EFCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91229201-67D4-494B-B47E-9DC079A4EFCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91229201-67D4-494B-B47E-9DC079A4EFCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91229201-67D4-494B-B47E-9DC079A4EFCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7824EB6C-FF92-4D7E-A340-7AA671B3AA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7824EB6C-FF92-4D7E-A340-7AA671B3AA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7824EB6C-FF92-4D7E-A340-7AA671B3AA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7824EB6C-FF92-4D7E-A340-7AA671B3AA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{91229201-67D4-494B-B47E-9DC079A4EFCE} = {183DE25B-B9AF-4CCE-9185-9BF5FDB8A966}
+		{183DE25B-B9AF-4CCE-9185-9BF5FDB8A966} = {FE43FC6F-607E-4518-8EB8-AEDB2BA41A58}
+		{7824EB6C-FF92-4D7E-A340-7AA671B3AA0A} = {E69E3B3C-073B-484E-8833-D5A8689785DD}
+	EndGlobalSection
+EndGlobal

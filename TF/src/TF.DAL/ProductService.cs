@@ -51,6 +51,9 @@ namespace TF.DAL
 
         public Product Create(Product product)
         {
+            if (product.Id == Guid.Empty)
+                product.Id = Guid.NewGuid();
+
             using (var connection = context.CreateConnection())
             {
                 connection.Execute(SelectProduct.Insert(product));

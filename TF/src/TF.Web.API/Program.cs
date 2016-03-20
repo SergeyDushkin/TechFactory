@@ -19,7 +19,6 @@ namespace TF.Web.API
                     s.WhenStarted(svc =>
                     {
                         svc.Start(uri);
-                        System.Diagnostics.Process.Start(uri + "odata/");
                     });
                     s.WhenStopped(svc => svc.Stop());
                 });

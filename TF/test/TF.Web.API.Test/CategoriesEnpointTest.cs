@@ -11,16 +11,6 @@ namespace TF.Web.API.Test
     public class CategoriesEnpointTest
     {
         [TestMethod]
-        public void GetCategoriesTest()
-        {
-            var container = new Container(new Uri("http://localhost:5588/odata/"));
-
-            var data = container.Categories;
-
-            Assert.IsNotNull(data);
-        }
-
-        [TestMethod]
         public void CategoryCrudTest()
         {
             var container = new Container(new Uri("http://localhost:5588/odata/"));
@@ -39,8 +29,7 @@ namespace TF.Web.API.Test
                 var entityDescriptor = (EntityDescriptor)changeResponse.Descriptor;
                 var entity = (Category)entityDescriptor.Entity;
 
-                var entity2 = container.Categories
-                    .Single(r => r.Id == entity.Id);
+                var entity2 = container.Categories.Where(r => r.Id == entity.Id).Single();
 
                 container.DeleteObject(entity);
                 var deleteResponses = container.SaveChanges();
@@ -48,7 +37,6 @@ namespace TF.Web.API.Test
                 Assert.IsNotNull(entity2);
                 Assert.IsNotNull(deleteResponses);
             }
-
 
             Assert.IsNotNull(responses);
         }

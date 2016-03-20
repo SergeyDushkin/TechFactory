@@ -52,9 +52,9 @@ namespace TF.Web.API.Controllers
             return Ok(query);
         }
 
-        public async Task<IHttpActionResult> GetGetCategory([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetCategory([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call CategoriesController GetCategoryTree");
+            logger.Trace("Call CategoriesController GetCategory");
 
             var query = await service.GetByIdAsync(key);
 

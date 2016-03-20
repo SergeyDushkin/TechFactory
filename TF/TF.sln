@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF.Data", "src\TF.Data\TF.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF.DAL", "src\TF.DAL\TF.DAL.csproj", "{2F295F07-78CE-4A7B-8098-8E7A29572C8B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9A969EF2-2ABF-415D-9E86-4D27CFE75304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TF.DAL.Test", "test\TF.DAL.Test\TF.DAL.Test.csproj", "{CFD79A2E-6880-40C1-BC02-FBD3DE527893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,15 @@ Global
 		{2F295F07-78CE-4A7B-8098-8E7A29572C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F295F07-78CE-4A7B-8098-8E7A29572C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F295F07-78CE-4A7B-8098-8E7A29572C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD79A2E-6880-40C1-BC02-FBD3DE527893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD79A2E-6880-40C1-BC02-FBD3DE527893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD79A2E-6880-40C1-BC02-FBD3DE527893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD79A2E-6880-40C1-BC02-FBD3DE527893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CFD79A2E-6880-40C1-BC02-FBD3DE527893} = {9A969EF2-2ABF-415D-9E86-4D27CFE75304}
 	EndGlobalSection
 EndGlobal

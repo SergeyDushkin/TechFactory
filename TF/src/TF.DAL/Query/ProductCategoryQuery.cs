@@ -21,6 +21,16 @@ namespace TF.DAL.Query
             return new CommandDefinition("SELECT [GUID_RECORD] Id, [CATEGORY_GUID] CategoryId, [ITEM_GUID] ProductId FROM [BUSINESS.WMS.PRODUCT_N_SERVICE_CATEGORY] where CATEGORY_GUID = @id", new { id });
         }
 
+        public static CommandDefinition ProductsByCategoryId(Guid id)
+        {
+            return new CommandDefinition("SELECT [GUID_RECORD] Id, [TYPE], [KEY], [NAME] FROM [BUSINESS.WMS.PRODUCT_N_SERVICE] where GUID_RECORD IN (SELECT [ITEM_GUID] FROM [BUSINESS.WMS.PRODUCT_N_SERVICE_CATEGORY] where CATEGORY_GUID = @id)", new { id });
+        }
+
+        public static CommandDefinition CategoriesByProductId(Guid id)
+        {
+            return new CommandDefinition("SELECT [GUID_RECORD] Id, [KEY], [NAME], [PARENT_GUID] ParentId FROM [BUSINESS.CATEGORY_TREE] where GUID_RECORD IN (SELECT [CATEGORY_GUID] FROM [BUSINESS.WMS.PRODUCT_N_SERVICE_CATEGORY] where ITEM_GUID = @id)", new { id });
+        }
+
         public static CommandDefinition Update(ProductCategory record)
         {
             return new CommandDefinition(

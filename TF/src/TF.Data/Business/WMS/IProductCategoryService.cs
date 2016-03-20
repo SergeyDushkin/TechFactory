@@ -8,6 +8,8 @@ namespace TF.Data.Business.WMS
         ProductCategory GetById(Guid id);
         IEnumerable<ProductCategory> GetByCategoryId(Guid id);
         IEnumerable<ProductCategory> GetByProductId(Guid id);
+        IEnumerable<Product> GetProductsByCategoryId(Guid id);
+        IEnumerable<Category> GetCategoriesByProductId(Guid id);
         ProductCategory Create(ProductCategory product);
         ProductCategory Update(ProductCategory product);
         void Delete(Guid id);

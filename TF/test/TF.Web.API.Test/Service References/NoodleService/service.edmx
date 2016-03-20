@@ -1,0 +1,50 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="3.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="TF.Data.Business.WMS" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="Product">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Type" Type="Edm.String" />
+        <Property Name="Key" Type="Edm.String" />
+        <Property Name="Name" Type="Edm.String" />
+        <NavigationProperty Name="Parent" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner" ToRole="Parent" FromRole="ParentPartner" />
+        <NavigationProperty Name="ChildProducts" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartner" ToRole="ChildProducts" FromRole="ChildProductsPartner" />
+      </EntityType>
+      <Association Name="TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner">
+        <End Type="TF.Data.Business.WMS.Product" Role="Parent" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.WMS.Product" Role="ParentPartner" Multiplicity="0..1" />
+      </Association>
+      <Association Name="TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartner">
+        <End Type="TF.Data.Business.WMS.Product" Role="ChildProducts" Multiplicity="*" />
+        <End Type="TF.Data.Business.WMS.Product" Role="ChildProductsPartner" Multiplicity="0..1" />
+      </Association>
+    </Schema>
+    <Schema Namespace="TF.Data.Business" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="Category">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Key" Type="Edm.String" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="ParentId" Type="Edm.Guid" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="Default" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="Container" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Products" EntityType="TF.Data.Business.WMS.Product" />
+        <EntitySet Name="Categories" EntityType="TF.Data.Business.Category" />
+        <AssociationSet Name="TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner">
+          <End Role="ParentPartner" EntitySet="Products" />
+          <End Role="Parent" EntitySet="Products" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartner">
+          <End Role="ChildProductsPartner" EntitySet="Products" />
+          <End Role="ChildProducts" EntitySet="Products" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

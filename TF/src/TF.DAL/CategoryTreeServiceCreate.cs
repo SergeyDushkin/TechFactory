@@ -7,12 +7,12 @@ namespace TF.DAL
 {
     public partial class CategoryTreeService : ICategoryService
     {
-        public void Create(Category category)
+        public Category Create(Category category)
         {
-            CreateAsync(category).Wait();
+            return CreateAsync(category).Result;
         }
 
-        public async Task CreateAsync(Category category)
+        public async Task<Category> CreateAsync(Category category)
         {
             if (category == null)
                 throw new ArgumentNullException("category");
@@ -79,6 +79,8 @@ namespace TF.DAL
 
                     await command.ExecuteNonQueryAsync();
                 }
+
+                return category;
             }
         }
     }

@@ -27,13 +27,13 @@ namespace TF.Web.API.Controllers
             this.productCategoryService = productCategoryService;
             this.logger = logger;
 
-            this.logger.Trace("Call CategoryTreesController");
+            this.logger.Trace("Call CategoriesController");
         }
 
         [EnableQuery]
         public async Task<IHttpActionResult> GetCategories(ODataQueryOptions<Category> queryOptions)
         {
-            logger.Trace("Call CategoryTreesController GetCategories");
+            logger.Trace("Call CategoriesController GetCategories");
 
             try
             {
@@ -54,7 +54,7 @@ namespace TF.Web.API.Controllers
 
         public async Task<IHttpActionResult> GetGetCategory([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call CategoryTreesController GetCategoryTree");
+            logger.Trace("Call CategoriesController GetCategoryTree");
 
             var query = await service.GetByIdAsync(key);
 
@@ -63,7 +63,7 @@ namespace TF.Web.API.Controllers
 
         public async Task<IHttpActionResult> GetProducts([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call CategoryTreesController GetProducts");
+            logger.Trace("Call CategoriesController GetProducts");
 
             var query = productCategoryService.GetProductsByCategoryId(key);
 
@@ -72,7 +72,7 @@ namespace TF.Web.API.Controllers
 
         public async Task<IHttpActionResult> GetChilds([FromODataUri] System.Guid key, ODataQueryOptions<Category> queryOptions)
         {
-            logger.Trace("Call CategoryTreesController GetChilds");
+            logger.Trace("Call CategoriesController GetChilds");
 
             try
             {
@@ -91,9 +91,36 @@ namespace TF.Web.API.Controllers
             return Ok(query);
         }
 
+        [HttpPost]
+        public async Task<IHttpActionResult> Post([FromBody] Category entity)
+        {
+            logger.Trace("Call CategoriesController Post");
+
+            var record = await service.CreateAsync(entity);
+            return Created<Category>(record);
+        }
+
+        [HttpPut]
+        public async Task<IHttpActionResult> Put([FromBody] Category entity)
+        {
+            logger.Trace("Call CategoriesController Put");
+
+            var record = await service.UpdateAsync(entity);
+            return Updated<Category>(record);
+        }
+
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
+        {
+            logger.Trace("Call CategoriesController Delete");
+
+            await service.DeleteAsync(key);
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
-            logger.Trace("End CategoryTreesController");
+            logger.Trace("End CategoriesController");
 
             base.Dispose(disposing);
         }

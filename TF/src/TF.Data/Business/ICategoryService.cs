@@ -6,11 +6,11 @@ namespace TF.Data.Business
 {
     public interface ICategoryService
     {
-        void Create(Category category);
-        Task CreateAsync(Category category);
+        Category Create(Category category);
+        Task<Category> CreateAsync(Category category);
 
-        void Update(Category category);
-        Task UpdateAsync(Category category);
+        Category Update(Category category);
+        Task<Category> UpdateAsync(Category category);
 
         void Delete(Guid id);
         Task DeleteAsync(Guid id);

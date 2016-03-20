@@ -9,12 +9,12 @@ namespace TF.DAL
 {
     public partial class CategoryTreeService : ICategoryService
     {
-        public void Update(Category category)
+        public Category Update(Category category)
         {
-            UpdateAsync(category).Wait();
+            return UpdateAsync(category).Result;
         }
 
-        public async Task UpdateAsync(Category category)
+        public async Task<Category> UpdateAsync(Category category)
         {
             if (category == null)
                 throw new ArgumentNullException("category");
@@ -72,6 +72,8 @@ namespace TF.DAL
                     }
                 }
             }
+
+            return record;
         }
     }
 }

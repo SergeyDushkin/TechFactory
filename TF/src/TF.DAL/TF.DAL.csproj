@@ -51,6 +51,7 @@
     <Compile Include="CategoryTreeServiceDelete.cs" />
     <Compile Include="CategoryTreeServiceUpdate.cs" />
     <Compile Include="NoodleDbContext.cs" />
+    <Compile Include="PriceService.cs" />
     <Compile Include="ProdutService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\SelectProduct.cs" />

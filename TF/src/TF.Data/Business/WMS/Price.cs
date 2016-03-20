@@ -4,7 +4,7 @@ namespace TF.Data.Business.WMS
     /// <summary>
     /// Price for product
     /// </summary>
-    public class Price
+    public class ProductPrice
     {
         /// <summary>
         /// Price identity
@@ -19,6 +19,6 @@ namespace TF.Data.Business.WMS
         /// <summary>
         /// Product price
         /// </summary>
-        public double ProductPrice { get; set; }
+        public double Price { get; set; }
     }
 }

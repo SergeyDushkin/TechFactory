@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 namespace TF.Data.Business.WMS
 {
-    public interface IPriceService
+    public interface IProductPriceService
     {
-        void Create(Price price);
-        void Update(Price price);
+        void Create(ProductPrice price);
+        void Update(ProductPrice price);
 
         void Delete(Guid id);
         void DeleteByProduct(Guid id);
 
-        IEnumerable<Price> GetAll();
-
-        Price GetByProductId(Guid id);
-        Price GetById(Guid id);
+        ProductPrice GetByProductId(Guid id);
+        ProductPrice GetById(Guid id);
     }
 }

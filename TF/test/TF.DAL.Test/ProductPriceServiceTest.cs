@@ -5,38 +5,36 @@ using TF.Data.Business.WMS;
 namespace TF.DAL.Test
 {
     [TestClass]
-    public class ProdutServiceTest
+    public class ProductPriceServiceTest
     {
         [TestMethod]
-        public void ProdutServiceCRUDTest()
+        public void ProductPriceServiceCRUDTest()
         {
             var context = new NoodleDbContext("NoodleDb");
 
-            IProductService service = new ProductService(context);
+            IProductPriceService service = new ProductPriceService(context);
 
             var id = Guid.NewGuid();
+            var productId = Guid.NewGuid();
 
-            var record = new Product
+            var record = new ProductPrice
             {
                 Id = id,
-                Key = "Key_" + id.ToString(),
-                Name = "Name_" + id.ToString(),
-                Type = "REGULAR"
+                ProductId = productId,
+                Price = 10
             };
 
             service.Create(record);
 
-            record.Key = "U_" + record.Key;
-            record.Name = "U_" + record.Name;
+            record.Price = 20;
 
             service.Update(record);
 
             var record2 = service.GetById(id);
 
             Assert.AreEqual(record.Id, record2.Id);
-            Assert.AreEqual(record.Key, record2.Key);
-            Assert.AreEqual(record.Name, record2.Name);
-            Assert.AreEqual(record.Type, record2.Type);
+            Assert.AreEqual(record.ProductId, record2.ProductId);
+            Assert.AreEqual(record.Price, record2.Price);
 
             service.Delete(record.Id);
 

@@ -10,21 +10,27 @@ namespace TF.DAL
     public class NoodleDbContext
     {
         private string nameOrConnectionString;
+        private string providerName;
+        private string connectionString;
 
         public NoodleDbContext(string nameOrConnectionString)
         {
             this.nameOrConnectionString = nameOrConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ConnectionString;
+            providerName = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ProviderName;
         }
 
         public IDbConnection CreateConnection()
         {
-            var providerName = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ProviderName;
-            var connectionString = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ConnectionString;
-
             var connection = DbProviderFactories.GetFactory(providerName).CreateConnection();
             connection.ConnectionString = connectionString;
 
             return connection;
+        }
+
+        public string ConnectionString
+        {
+            get { return connectionString; }
         }
 
         public void Init()

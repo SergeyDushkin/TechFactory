@@ -1,53 +1,71 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Threading.Tasks;
+using System.Linq;
+using Dapper;
 using TF.Data.Business;
+using TF.DAL.Query;
 
 namespace TF.DAL
 {
     public partial class CategoryTreeService : ICategoryService
     {
+        private readonly NoodleDbContext context;
         private readonly string _connectionString;
 
-        public CategoryTreeService()
+        public CategoryTreeService(NoodleDbContext context)
         {
-            _connectionString = ConfigurationManager.ConnectionStrings["CategoryTreeDb"].ConnectionString;
-        }
-
-        public CategoryTreeService(string connectionString)
-        {
-            _connectionString = connectionString;
+            this.context = context;
+            _connectionString = context.ConnectionString;
         }
 
         public IEnumerable<Category> GetAll()
         {
-            throw new NotImplementedException();
+            using (var connection = context.CreateConnection())
+            {
+                return connection.Query<Category>(CategoryQuery.All());
+            }
         }
 
-        public Task<IEnumerable<Category>> GetAllAsync()
+        public async Task<IEnumerable<Category>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            using (var connection = context.CreateConnection())
+            {
+                return await connection.QueryAsync<Category>(CategoryQuery.All());
+            }
         }
 
         public Category GetById(Guid id)
         {
-            throw new NotImplementedException();
+            using (var connection = context.CreateConnection())
+            {
+                return connection.Query<Category>(CategoryQuery.ById(id)).SingleOrDefault();
+            }
         }
 
-        public Task<Category> GetByIdAsync(Guid id)
+        public async Task<Category> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            using (var connection = context.CreateConnection())
+            {
+                var query = await connection.QueryAsync<Category>(CategoryQuery.ById(id));
+                return query.SingleOrDefault();
+            }
         }
 
         public IEnumerable<Category> GetByParentId(Guid id)
         {
-            throw new NotImplementedException();
+            using (var connection = context.CreateConnection())
+            {
+                return connection.Query<Category>(CategoryQuery.ByParentId(id));
+            }
         }
 
-        public Task<IEnumerable<Category>> GetByParentIdAsync(Guid id)
+        public async Task<IEnumerable<Category>> GetByParentIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            using (var connection = context.CreateConnection())
+            {
+                return await connection.QueryAsync<Category>(CategoryQuery.ByParentId(id));
+            }
         }
     }
 }

@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DbContextTest.cs" />
+    <Compile Include="ProductCategoryServiceTest.cs" />
     <Compile Include="ProductPriceServiceTest.cs" />
     <Compile Include="ProdutServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

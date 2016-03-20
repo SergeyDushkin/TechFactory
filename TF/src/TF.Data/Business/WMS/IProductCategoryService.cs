@@ -5,9 +5,11 @@ namespace TF.Data.Business.WMS
 {
     public interface IProductCategoryService
     {
-        ProductCategory Get(Guid productId);
-        ProductCategory Save(ProductCategory product);
-        IEnumerable<ProductCategory> Get();
+        ProductCategory GetById(Guid id);
+        IEnumerable<ProductCategory> GetByCategoryId(Guid id);
+        IEnumerable<ProductCategory> GetByProductId(Guid id);
+        ProductCategory Create(ProductCategory product);
+        ProductCategory Update(ProductCategory product);
         void Delete(Guid id);
     }
 }

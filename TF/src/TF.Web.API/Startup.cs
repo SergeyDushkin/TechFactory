@@ -50,6 +50,7 @@ namespace TF.Web.API
 
             builder.EntitySet<Product>("Products");
             builder.EntitySet<Category>("Categories");
+            builder.EntitySet<ProductPrice>("ProductPrices");
 
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
         }

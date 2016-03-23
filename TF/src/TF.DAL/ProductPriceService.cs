@@ -14,7 +14,7 @@ namespace TF.DAL
             this.context = context;
         }
 
-        public void Create(ProductPrice price)
+        public ProductPrice Create(ProductPrice price)
         {
             if (price == null)
                 throw new ArgumentNullException("price");
@@ -70,9 +70,11 @@ namespace TF.DAL
                     });
                 }
             }
+
+            return price;
         }
 
-        public void Update(ProductPrice price)
+        public ProductPrice Update(ProductPrice price)
         {
             if (price == null)
                 throw new ArgumentNullException("price");
@@ -92,6 +94,8 @@ namespace TF.DAL
                     PRICE = price.Price
                 });
             }
+
+            return price;
         }
 
         public void Delete(Guid id)

@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Исходное имя файла:
-// Дата создания: 20.03.2016 21:06:36
+// Дата создания: 24.03.2016 0:20:04
 namespace TF.Web.API.Test.NoodleService
 {
     
@@ -104,6 +104,23 @@ namespace TF.Web.API.Test.NoodleService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.Category> _Categories;
         /// <summary>
+        /// В схеме отсутствуют комментарии для ProductPrices.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<ProductPrice> ProductPrices
+        {
+            get
+            {
+                if ((this._ProductPrices == null))
+                {
+                    this._ProductPrices = base.CreateQuery<ProductPrice>("ProductPrices");
+                }
+                return this._ProductPrices;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<ProductPrice> _ProductPrices;
+        /// <summary>
         /// В схеме отсутствуют комментарии для Products.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -118,6 +135,14 @@ namespace TF.Web.API.Test.NoodleService
         public void AddToCategories(TF.Data.Business.Category category)
         {
             base.AddObject("Categories", category);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для ProductPrices.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToProductPrices(ProductPrice productPrice)
+        {
+            base.AddObject("ProductPrices", productPrice);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private abstract class GeneratedEdmModel
@@ -137,32 +162,46 @@ namespace TF.Web.API.Test.NoodleService
                 "Role=\"Parent\" FromRole=\"ParentPartner\" /><NavigationProperty Name=\"ChildProducts" +
                 "\" Relationship=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Product_ChildProducts_" +
                 "TF_Data_Business_WMS_Product_ChildProductsPartner\" ToRole=\"ChildProducts\" FromRo" +
-                "le=\"ChildProductsPartner\" /></EntityType><Association Name=\"TF_Data_Business_WMS" +
-                "_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner\"><End Type=\"TF.Data.B" +
-                "usiness.WMS.Product\" Role=\"Parent\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Busi" +
-                "ness.WMS.Product\" Role=\"ParentPartner\" Multiplicity=\"0..1\" /></Association><Asso" +
-                "ciation Name=\"TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Pr" +
-                "oduct_ChildProductsPartner\"><End Type=\"TF.Data.Business.WMS.Product\" Role=\"Child" +
-                "Products\" Multiplicity=\"*\" /><End Type=\"TF.Data.Business.WMS.Product\" Role=\"Chil" +
-                "dProductsPartner\" Multiplicity=\"0..1\" /></Association></Schema><Schema Namespace" +
-                "=\"TF.Data.Business\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/edm\"><Entity" +
-                "Type Name=\"Category\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Typ" +
-                "e=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Key\" Type=\"Edm.String\" /><Proper" +
-                "ty Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"ParentId\" Type=\"Edm.Guid\" /><" +
-                "/EntityType></Schema><Schema Namespace=\"Default\" xmlns=\"http://schemas.microsoft" +
-                ".com/ado/2009/11/edm\"><EntityContainer Name=\"Container\" m:IsDefaultEntityContain" +
-                "er=\"true\"><EntitySet Name=\"Products\" EntityType=\"TF.Data.Business.WMS.Product\" /" +
-                "><EntitySet Name=\"Categories\" EntityType=\"TF.Data.Business.Category\" /><Associat" +
-                "ionSet Name=\"TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_Pa" +
-                "rentPartnerSet\" Association=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Product_P" +
-                "arent_TF_Data_Business_WMS_Product_ParentPartner\"><End Role=\"ParentPartner\" Enti" +
-                "tySet=\"Products\" /><End Role=\"Parent\" EntitySet=\"Products\" /></AssociationSet><A" +
-                "ssociationSet Name=\"TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_" +
-                "WMS_Product_ChildProductsPartnerSet\" Association=\"TF.Data.Business.WMS.TF_Data_B" +
-                "usiness_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPart" +
-                "ner\"><End Role=\"ChildProductsPartner\" EntitySet=\"Products\" /><End Role=\"ChildPro" +
-                "ducts\" EntitySet=\"Products\" /></AssociationSet></EntityContainer></Schema></edmx" +
-                ":DataServices></edmx:Edmx>";
+                "le=\"ChildProductsPartner\" /><NavigationProperty Name=\"Price\" Relationship=\"TF.Da" +
+                "ta.Business.WMS.TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_ProductP" +
+                "rice_PricePartner\" ToRole=\"Price\" FromRole=\"PricePartner\" /></EntityType><Entity" +
+                "Type Name=\"ProductPrice\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\"" +
+                " Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"ProductId\" Type=\"Edm.Guid\" N" +
+                "ullable=\"false\" /><Property Name=\"Price\" Type=\"Edm.Double\" Nullable=\"false\" /></" +
+                "EntityType><Association Name=\"TF_Data_Business_WMS_Product_Parent_TF_Data_Busine" +
+                "ss_WMS_Product_ParentPartner\"><End Type=\"TF.Data.Business.WMS.Product\" Role=\"Par" +
+                "ent\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.Product\" Role=\"Parent" +
+                "Partner\" Multiplicity=\"0..1\" /></Association><Association Name=\"TF_Data_Business" +
+                "_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartner\"><E" +
+                "nd Type=\"TF.Data.Business.WMS.Product\" Role=\"ChildProducts\" Multiplicity=\"*\" /><" +
+                "End Type=\"TF.Data.Business.WMS.Product\" Role=\"ChildProductsPartner\" Multiplicity" +
+                "=\"0..1\" /></Association><Association Name=\"TF_Data_Business_WMS_Product_Price_TF" +
+                "_Data_Business_WMS_ProductPrice_PricePartner\"><End Type=\"TF.Data.Business.WMS.Pr" +
+                "oductPrice\" Role=\"Price\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.P" +
+                "roduct\" Role=\"PricePartner\" Multiplicity=\"0..1\" /></Association></Schema><Schema" +
+                " Namespace=\"TF.Data.Business\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/ed" +
+                "m\"><EntityType Name=\"Category\"><Key><PropertyRef Name=\"Id\" /></Key><Property Nam" +
+                "e=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Key\" Type=\"Edm.String\"" +
+                " /><Property Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"ParentId\" Type=\"Edm" +
+                ".Guid\" /></EntityType></Schema><Schema Namespace=\"Default\" xmlns=\"http://schemas" +
+                ".microsoft.com/ado/2009/11/edm\"><EntityContainer Name=\"Container\" m:IsDefaultEnt" +
+                "ityContainer=\"true\"><EntitySet Name=\"Products\" EntityType=\"TF.Data.Business.WMS." +
+                "Product\" /><EntitySet Name=\"Categories\" EntityType=\"TF.Data.Business.Category\" /" +
+                "><EntitySet Name=\"ProductPrices\" EntityType=\"TF.Data.Business.WMS.ProductPrice\" " +
+                "/><AssociationSet Name=\"TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS" +
+                "_Product_ParentPartnerSet\" Association=\"TF.Data.Business.WMS.TF_Data_Business_WM" +
+                "S_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner\"><End Role=\"ParentPa" +
+                "rtner\" EntitySet=\"Products\" /><End Role=\"Parent\" EntitySet=\"Products\" /></Associ" +
+                "ationSet><AssociationSet Name=\"TF_Data_Business_WMS_Product_ChildProducts_TF_Dat" +
+                "a_Business_WMS_Product_ChildProductsPartnerSet\" Association=\"TF.Data.Business.WM" +
+                "S.TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildP" +
+                "roductsPartner\"><End Role=\"ChildProductsPartner\" EntitySet=\"Products\" /><End Rol" +
+                "e=\"ChildProducts\" EntitySet=\"Products\" /></AssociationSet><AssociationSet Name=\"" +
+                "TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_ProductPrice_PricePartne" +
+                "rSet\" Association=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Price_TF_Da" +
+                "ta_Business_WMS_ProductPrice_PricePartner\"><End Role=\"PricePartner\" EntitySet=\"P" +
+                "roducts\" /><End Role=\"Price\" EntitySet=\"ProductPrices\" /></AssociationSet></Enti" +
+                "tyContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -339,6 +378,126 @@ namespace TF.Web.API.Test.NoodleService
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceCollection<Product> _ChildProducts = new global::System.Data.Services.Client.DataServiceCollection<Product>(null, global::System.Data.Services.Client.TrackingMode.None);
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Price.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public ProductPrice Price
+        {
+            get
+            {
+                return this._Price;
+            }
+            set
+            {
+                this._Price = value;
+                this.OnPropertyChanged("Price");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private ProductPrice _Price;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.WMS.ProductPrice.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("ProductPrices")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class ProductPrice : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект ProductPrice.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        /// <param name="productId">Начальное значение ProductId.</param>
+        /// <param name="price">Начальное значение Price.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static ProductPrice CreateProductPrice(global::System.Guid ID, global::System.Guid productId, double price)
+        {
+            ProductPrice productPrice = new ProductPrice();
+            productPrice.Id = ID;
+            productPrice.ProductId = productId;
+            productPrice.Price = price;
+            return productPrice;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства ProductId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid ProductId
+        {
+            get
+            {
+                return this._ProductId;
+            }
+            set
+            {
+                this.OnProductIdChanging(value);
+                this._ProductId = value;
+                this.OnProductIdChanged();
+                this.OnPropertyChanged("ProductId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _ProductId;
+        partial void OnProductIdChanging(global::System.Guid value);
+        partial void OnProductIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Price.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public double Price
+        {
+            get
+            {
+                return this._Price;
+            }
+            set
+            {
+                this.OnPriceChanging(value);
+                this._Price = value;
+                this.OnPriceChanged();
+                this.OnPropertyChanged("Price");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private double _Price;
+        partial void OnPriceChanging(double value);
+        partial void OnPriceChanged();
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -352,7 +511,7 @@ namespace TF.Web.API.Test.NoodleService
     }
 }
 // Исходное имя файла:
-// Дата создания: 20.03.2016 21:06:36
+// Дата создания: 24.03.2016 0:20:04
 namespace TF.Data.Business
 {
     

@@ -18,5 +18,7 @@ namespace TF.Data.Business.WMS
         public virtual Product Parent { get; set; }
 
         public ICollection<Product> ChildProducts { get; set; }
+
+        public ProductPrice Price { get; set; }
     }
 }

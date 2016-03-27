@@ -1,7 +1,6 @@
 ﻿using Microsoft.Data.OData;
 using NLog;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
@@ -13,18 +12,18 @@ namespace TF.Web.API.Controllers
     {
         private static ODataValidationSettings _validationSettings = new ODataValidationSettings();
 
-        private readonly IProductService service;
+        private readonly IProductService productService;
         private readonly IProductPriceService productPriceService;
         private readonly IProductCategoryService productCategoryService;
         private readonly ILogger logger;
 
         public ProductsController(
-            IProductService service,
+            IProductService productService,
             IProductPriceService productPriceService,
             IProductCategoryService productCategoryService,
             ILogger logger)
         {
-            this.service = service;
+            this.productService = productService;
             this.productPriceService = productPriceService;
             this.productCategoryService = productCategoryService;
             this.logger = logger;
@@ -34,7 +33,7 @@ namespace TF.Web.API.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public async Task<IHttpActionResult> Get(ODataQueryOptions<Product> queryOptions)
+        public IHttpActionResult Get(ODataQueryOptions<Product> queryOptions)
         {
             logger.Trace("Call ProductsController GetProducts");
 
@@ -47,7 +46,7 @@ namespace TF.Web.API.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = service.Get();
+            var data = productService.Get();
 
             var query = (IQueryable<Product>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -56,55 +55,46 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
+        public IHttpActionResult Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call ProductsController GetProduct");
 
-            var query = service.GetById(key);
+            var query = productService.GetById(key);
 
             return Ok(query);
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> Post([FromBody] Product entity)
+        public IHttpActionResult Post([FromBody] Product entity)
         {
             logger.Trace("Call ProductsController Post");
 
-            var record = service.Create(entity);
+            var record = productService.Create(entity);
             return Created<Product>(record);
         }
 
-        /*
-        [AcceptVerbs("PATCH")]
-        [HttpPatch]
-        public async Task<IHttpActionResult> Patch([FromODataUri] System.Guid key, Delta<Product> product)
-        {
-            logger.Trace("Call ProductsController Patch");
-
-            return Ok();
-        }
-        */
-
         [HttpPut]
-        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Product entity)
+        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Product entity)
         {
             logger.Trace("Call ProductsController Put");
 
-            var record = service.Update(entity);
+            var record = productService.Update(entity);
             return Updated<Product>(record);
         }
 
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
+        public IHttpActionResult Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call ProductsController Delete");
 
-            service.Delete(key);
+            productService.Delete(key);
+            productPriceService.DeleteByProduct(key);
+
             return Ok();
         }
-        /*
+
         [HttpPost]
-        public async Task<IHttpActionResult> AddPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
+        public IHttpActionResult AddPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
         {
             logger.Trace("Call ProductsController AddPrice");
 
@@ -115,15 +105,18 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetPrices([FromODataUri] System.Guid key)
+        public IHttpActionResult GetPrice([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call ProductsController GetPrices");
+            logger.Trace("Call ProductsController GetPrice");
 
             var query = productPriceService.GetByProductId(key);
 
-            return Ok(query);
+            if (query != null)
+                return Ok(query);
+
+            return NotFound();
         }
-        */
+
         protected override void Dispose(bool disposing)
         {
             logger.Trace("End ProductsController");

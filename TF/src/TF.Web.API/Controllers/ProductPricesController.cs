@@ -1,5 +1,4 @@
 ﻿using NLog;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
@@ -25,7 +24,7 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
+        public IHttpActionResult Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call ProductPricesController Get");
 
@@ -35,25 +34,25 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> Post([FromBody] ProductPrice entity)
+        public IHttpActionResult Post([FromBody] ProductPrice entity)
         {
             logger.Trace("Call ProductPricesController Post");
 
             var record = productPriceService.Create(entity);
-            return Created<ProductPrice>(record);
+            return Created(record);
         }
 
         [HttpPut]
-        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
+        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
         {
             logger.Trace("Call ProductPricesController Put");
 
             var record = productPriceService.Update(entity);
-            return Updated<ProductPrice>(record);
+            return Updated(record);
         }
 
         [HttpDelete]
-        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
+        public IHttpActionResult Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call ProductPricesController Delete");
 

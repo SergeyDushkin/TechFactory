@@ -61,7 +61,7 @@ namespace TF.Web.API.Controllers
             return Ok(query);
         }
 
-        public async Task<IHttpActionResult> GetProducts([FromODataUri] System.Guid key)
+        public IHttpActionResult GetProducts([FromODataUri] System.Guid key)
         {
             logger.Trace("Call CategoriesController GetProducts");
 

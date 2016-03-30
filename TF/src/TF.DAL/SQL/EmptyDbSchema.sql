@@ -1,3 +1,38 @@
+/* DROP ALL TABLES */
+DECLARE
+	@table_name nvarchar(200),
+	@SQLText nvarchar(max);
+
+DECLARE table_cursor CURSOR
+	FOR SELECT NAME FROM sysobjects WHERE xtype = 'U' ORDER BY NAME
+
+OPEN table_cursor
+
+FETCH NEXT FROM table_cursor 
+INTO @table_name
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	SET @SQLText = 'DROP TABLE [' + @table_name + ']';
+	EXEC(@SQLText);
+
+	FETCH NEXT FROM table_cursor 
+	INTO @table_name
+END 
+CLOSE table_cursor;
+DEALLOCATE table_cursor;
+
+/* table to store business unit data (company) */
+CREATE TABLE [dbo].[BUSINESS.BUSINESSUNIT](
+	[GUID_RECORD] [uniqueidentifier] NOT NULL,
+	[KEY] [nvarchar](50) NOT NULL,
+	[NAME] [nvarchar](200),
+	[PARENT_GUID] [uniqueidentifier],					-- IS NULL for the company itself, all other records is an external companies 
+	[INTEGRATION] [nvarchar](20) NOT NULL,				-- for future purpose, to have data integration between companies, valid values NONE/APIv1/EMAIL/FILE 
+	[BATCH_GUID] [uniqueidentifier],
+	[HIDDEN] [bit] NOT NULL,
+	[DELETED] [bit] NOT NULL
+) ON [PRIMARY]
+
 /* table to store trees data (parent-child) */
 CREATE TABLE [dbo].[BUSINESS.CATEGORY_TREE](
 	[GUID_RECORD] [uniqueidentifier] NOT NULL,

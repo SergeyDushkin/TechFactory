@@ -45,7 +45,7 @@
     <Compile Include="Business\ICategoryService.cs" />
     <Compile Include="Business\WMS\IPriceService.cs" />
     <Compile Include="Business\WMS\IProductCategoryService.cs" />
-    <Compile Include="Business\WMS\IProductService.cs" />
+    <Compile Include="Business\WMS\IProductRepository.cs" />
     <Compile Include="Business\WMS\Price.cs" />
     <Compile Include="Business\WMS\Product.cs" />
     <Compile Include="Business\WMS\ProductCategory.cs" />

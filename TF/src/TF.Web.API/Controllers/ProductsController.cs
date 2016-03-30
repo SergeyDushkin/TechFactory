@@ -12,18 +12,18 @@ namespace TF.Web.API.Controllers
     {
         private static ODataValidationSettings _validationSettings = new ODataValidationSettings();
 
-        private readonly IProductService productService;
+        private readonly IProductRepository productRepository;
         private readonly IProductPriceService productPriceService;
         private readonly IProductCategoryService productCategoryService;
         private readonly ILogger logger;
 
         public ProductsController(
-            IProductService productService,
+            IProductRepository productRepository,
             IProductPriceService productPriceService,
             IProductCategoryService productCategoryService,
             ILogger logger)
         {
-            this.productService = productService;
+            this.productRepository = productRepository;
             this.productPriceService = productPriceService;
             this.productCategoryService = productCategoryService;
             this.logger = logger;
@@ -46,7 +46,7 @@ namespace TF.Web.API.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = productService.Get();
+            var data = productRepository.Get();
 
             var query = (IQueryable<Product>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -59,7 +59,7 @@ namespace TF.Web.API.Controllers
         {
             logger.Trace("Call ProductsController GetProduct");
 
-            var query = productService.GetById(key);
+            var query = productRepository.GetById(key);
 
             return Ok(query);
         }
@@ -69,7 +69,7 @@ namespace TF.Web.API.Controllers
         {
             logger.Trace("Call ProductsController Post");
 
-            var record = productService.Create(entity);
+            var record = productRepository.Create(entity);
             return Created<Product>(record);
         }
 
@@ -78,7 +78,7 @@ namespace TF.Web.API.Controllers
         {
             logger.Trace("Call ProductsController Put");
 
-            var record = productService.Update(entity);
+            var record = productRepository.Update(entity);
             return Updated<Product>(record);
         }
 
@@ -87,7 +87,7 @@ namespace TF.Web.API.Controllers
         {
             logger.Trace("Call ProductsController Delete");
 
-            productService.Delete(key);
+            productRepository.Delete(key);
             productPriceService.DeleteByProduct(key);
 
             return Ok();

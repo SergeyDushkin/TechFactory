@@ -7,11 +7,11 @@ using TF.DAL.Query;
 
 namespace TF.DAL
 {
-    public class ProductService : IProductService
+    public class ProductRepository : IProductRepository
     {
         private readonly NoodleDbContext context;
 
-        public ProductService(NoodleDbContext context)
+        public ProductRepository(NoodleDbContext context)
         {
             this.context = context;
         }

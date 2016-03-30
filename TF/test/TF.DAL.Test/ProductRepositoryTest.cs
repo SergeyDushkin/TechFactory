@@ -5,14 +5,14 @@ using TF.Data.Business.WMS;
 namespace TF.DAL.Test
 {
     [TestClass]
-    public class ProdutServiceTest
+    public class ProductRepositoryTest
     {
         [TestMethod]
         public void ProdutServiceCRUDTest()
         {
             var context = new NoodleDbContext("NoodleDb");
 
-            IProductService service = new ProductService(context);
+            IProductRepository service = new ProductRepository(context);
 
             var id = Guid.NewGuid();
 

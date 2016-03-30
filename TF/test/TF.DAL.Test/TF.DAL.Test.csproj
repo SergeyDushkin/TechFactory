@@ -57,7 +57,7 @@
     <Compile Include="ProductCategoryServiceTest.cs" />
     <Compile Include="ProductPriceServiceTest.cs" />
     <Compile Include="CategoryTest.cs" />
-    <Compile Include="ProdutServiceTest.cs" />
+    <Compile Include="ProductRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

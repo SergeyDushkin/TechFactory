@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("TF.Data.Business.WMS.Product")]
+[assembly: AssemblyTitle("TF.Web.Proxy")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TF.Data.Business.WMS.Product")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("IT Organization")]
+[assembly: AssemblyProduct("TF.Web.Proxy")]
+[assembly: AssemblyCopyright("Copyright © IT Organization 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("af9c252a-6f59-427d-aa9b-ffedd5aba750")]
+[assembly: Guid("0459b61b-ea25-4bbe-88e7-30d2d8320b5a")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

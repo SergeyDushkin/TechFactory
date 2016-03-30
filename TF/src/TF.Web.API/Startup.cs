@@ -36,7 +36,7 @@ namespace TF.Web.API
             var dbContext = new NoodleDbContext("NoodleDb");
 
             container.RegisterType<ICategoryService, CategoryTreeService>(new InjectionConstructor(dbContext));
-            container.RegisterType<IProductService, ProductService>(new InjectionConstructor(dbContext));
+            container.RegisterType<IProductRepository, ProductRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IProductCategoryService, ProductCategoryService>(new InjectionConstructor(dbContext));
             container.RegisterType<IProductPriceService, ProductPriceService>(new InjectionConstructor(dbContext));
             container.RegisterType<ILogger, Logger>(new InjectionFactory(x => LogManager.GetCurrentClassLogger()));

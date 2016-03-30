@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TF.Data.Business.WMS
 {
-    public interface IProductService
+    public interface IProductRepository
     {
         Product GetById(Guid id);
         Product Create(Product product);

@@ -20,5 +20,8 @@ namespace TF.Data.Business
         
         Task<IEnumerable<Unit>> GetByParentIdAsync(Guid id);
         Task<Unit> GetByIdAsync(Guid id);
+
+        IEnumerable<Unit> GetAll();
+        Task<IEnumerable<Unit>> GetAllAsync();
     }
 }

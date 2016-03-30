@@ -95,5 +95,18 @@ namespace TF.DAL
                 return query.SingleOrDefault();
             }
         }
+
+        public IEnumerable<Unit> GetAll()
+        {
+            return GetAllAsync().Result;
+        }
+
+        public async Task<IEnumerable<Unit>> GetAllAsync()
+        {
+            using (var connection = context.CreateConnection())
+            {
+                return await connection.QueryAsync<Unit>(UnitQuery.All());
+            }
+        }
     }
 }

@@ -35,10 +35,12 @@ namespace TF.Web.API
             var container = new UnityContainer();
             var dbContext = new NoodleDbContext("NoodleDb");
 
+            container.RegisterType<IUnitRepository, UnitRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<ICategoryService, CategoryTreeService>(new InjectionConstructor(dbContext));
             container.RegisterType<IProductRepository, ProductRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IProductCategoryService, ProductCategoryService>(new InjectionConstructor(dbContext));
             container.RegisterType<IProductPriceService, ProductPriceService>(new InjectionConstructor(dbContext));
+
             container.RegisterType<ILogger, Logger>(new InjectionFactory(x => LogManager.GetCurrentClassLogger()));
 
             config.DependencyResolver = new UnityResolver(container);
@@ -48,6 +50,7 @@ namespace TF.Web.API
         {
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
 
+            builder.EntitySet<Unit>("Units");
             builder.EntitySet<Product>("Products");
             builder.EntitySet<Category>("Categories");
             builder.EntitySet<ProductPrice>("ProductPrices");

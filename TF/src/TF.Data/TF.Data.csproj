@@ -44,6 +44,7 @@
     <Compile Include="Business\Category.cs" />
     <Compile Include="Business\IUnitRepository.cs" />
     <Compile Include="Business\ICategoryService.cs" />
+    <Compile Include="Business\Location.cs" />
     <Compile Include="Business\Unit.cs" />
     <Compile Include="Business\WMS\IPriceService.cs" />
     <Compile Include="Business\WMS\IProductCategoryService.cs" />

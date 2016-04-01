@@ -54,6 +54,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DbContextTest.cs" />
+    <Compile Include="UserServiceTest.cs" />
+    <Compile Include="PersonServiceTest.cs" />
     <Compile Include="ProductCategoryServiceTest.cs" />
     <Compile Include="ProductPriceServiceTest.cs" />
     <Compile Include="CategoryTest.cs" />

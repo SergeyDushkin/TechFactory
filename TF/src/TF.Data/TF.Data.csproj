@@ -42,9 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Category.cs" />
+    <Compile Include="Business\ContactDetail.cs" />
+    <Compile Include="Business\IContactDetailService.cs" />
+    <Compile Include="Business\IContactService.cs" />
+    <Compile Include="Business\ICategoryService.cs" />
+    <Compile Include="Business\Contact.cs" />
+    <Compile Include="Business\Person.cs" />
+    <Compile Include="System\Security\IUserRoleRepository.cs" />
+    <Compile Include="System\Security\IRoleRepository.cs" />
+    <Compile Include="System\Security\Role.cs" />
+    <Compile Include="System\Security\UserRole.cs" />
+    <Compile Include="System\Security\UserIdentity.cs" />
+    <Compile Include="System\Security\User.cs" />
+    <Compile Include="System\Security\IUserRepository.cs" />
     <Compile Include="Business\Uom.cs" />
     <Compile Include="Business\IUnitRepository.cs" />
-    <Compile Include="Business\ICategoryService.cs" />
+    <Compile Include="Business\IPersonRepository.cs" />
     <Compile Include="Business\Location.cs" />
     <Compile Include="Business\Currency.cs" />
     <Compile Include="Business\Unit.cs" />

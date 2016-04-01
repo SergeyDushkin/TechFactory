@@ -51,9 +51,13 @@
     <Compile Include="CategoryTreeServiceDelete.cs" />
     <Compile Include="CategoryTreeServiceUpdate.cs" />
     <Compile Include="NoodleDbContext.cs" />
+    <Compile Include="Query\UserQuery.cs" />
+    <Compile Include="UserRepository.cs" />
     <Compile Include="ProductPriceService.cs" />
     <Compile Include="ProductCategoryService.cs" />
+    <Compile Include="Query\PersonQuery.cs" />
     <Compile Include="Query\UnitQuery.cs" />
+    <Compile Include="PersonRepository.cs" />
     <Compile Include="UnitRepository.cs" />
     <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

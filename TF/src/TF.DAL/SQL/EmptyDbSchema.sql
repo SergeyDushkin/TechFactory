@@ -21,6 +21,17 @@ END
 CLOSE table_cursor;
 DEALLOCATE table_cursor;
 
+/* table to store list of entities */
+CREATE TABLE [dbo].[SYSTEM.ENTITY](
+	[GUID_RECORD] [uniqueidentifier] NOT NULL,
+	[KEY] [nvarchar](50) NOT NULL,
+	[NAME] [nvarchar](200),
+	[PARENT_GUID] [uniqueidentifier],					-- to build relashinship between entites, in future it will be hepfull for example to have integration with different data providers
+	[BATCH_GUID] [uniqueidentifier],
+	[HIDDEN] [bit] NOT NULL,
+	[DELETED] [bit] NOT NULL
+) ON [PRIMARY]
+
 /* table to store business unit data (company) */
 CREATE TABLE [dbo].[BUSINESS.BUSINESSUNIT](
 	[GUID_RECORD] [uniqueidentifier] NOT NULL,
@@ -28,6 +39,26 @@ CREATE TABLE [dbo].[BUSINESS.BUSINESSUNIT](
 	[NAME] [nvarchar](200),
 	[PARENT_GUID] [uniqueidentifier],					-- IS NULL for the company itself, all other records is an external companies 
 	[INTEGRATION] [nvarchar](20) NOT NULL,				-- for future purpose, to have data integration between companies, valid values NONE/APIv1/EMAIL/FILE 
+	[BATCH_GUID] [uniqueidentifier],
+	[HIDDEN] [bit] NOT NULL,
+	[DELETED] [bit] NOT NULL
+) ON [PRIMARY]
+
+/*  list of Currencies */
+CREATE TABLE [dbo].[BUSINESS.CURRENCY](
+	[GUID_RECORD] [uniqueidentifier] NOT NULL,
+	[KEY] [nvarchar](50) NOT NULL,
+	[NAME] [nvarchar](200),
+	[BATCH_GUID] [uniqueidentifier],
+	[HIDDEN] [bit] NOT NULL,
+	[DELETED] [bit] NOT NULL
+) ON [PRIMARY]
+
+/*  list of Unit Of Measures */
+CREATE TABLE [dbo].[BUSINESS.UOM](
+	[GUID_RECORD] [uniqueidentifier] NOT NULL,
+	[KEY] [nvarchar](50) NOT NULL,
+	[NAME] [nvarchar](200),
 	[BATCH_GUID] [uniqueidentifier],
 	[HIDDEN] [bit] NOT NULL,
 	[DELETED] [bit] NOT NULL

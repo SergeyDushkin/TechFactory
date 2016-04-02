@@ -47,7 +47,17 @@
     <Compile Include="Business\IContactService.cs" />
     <Compile Include="Business\ICategoryService.cs" />
     <Compile Include="Business\Contact.cs" />
+    <Compile Include="Business\IUomRepository.cs" />
+    <Compile Include="Business\ICurrencyRepository.cs" />
     <Compile Include="Business\Person.cs" />
+    <Compile Include="Systems\IEntityRepository.cs" />
+    <Compile Include="Systems\Security\IUserRoleRepository.cs" />
+    <Compile Include="Systems\Security\IRoleRepository.cs" />
+    <Compile Include="Systems\Security\Role.cs" />
+    <Compile Include="Systems\Security\UserRole.cs" />
+    <Compile Include="Systems\Security\UserIdentity.cs" />
+    <Compile Include="Systems\Security\User.cs" />
+    <Compile Include="Systems\Security\IUserRepository.cs" />
     <Compile Include="System\Security\IUserIdentityRepository.cs" />
     <Compile Include="System\Security\IUserRoleRepository.cs" />
     <Compile Include="System\Security\IRoleRepository.cs" />
@@ -71,6 +81,7 @@
     <Compile Include="Business\WMS\Product.cs" />
     <Compile Include="Business\WMS\ProductCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Systems\Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

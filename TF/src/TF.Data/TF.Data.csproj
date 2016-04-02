@@ -59,14 +59,7 @@
     <Compile Include="Systems\Security\UserIdentity.cs" />
     <Compile Include="Systems\Security\User.cs" />
     <Compile Include="Systems\Security\IUserRepository.cs" />
-    <Compile Include="System\Security\IUserIdentityRepository.cs" />
-    <Compile Include="System\Security\IUserRoleRepository.cs" />
-    <Compile Include="System\Security\IRoleRepository.cs" />
-    <Compile Include="System\Security\Role.cs" />
-    <Compile Include="System\Security\UserRole.cs" />
-    <Compile Include="System\Security\UserIdentity.cs" />
-    <Compile Include="System\Security\User.cs" />
-    <Compile Include="System\Security\IUserRepository.cs" />
+    <Compile Include="Systems\Security\IUserIdentityRepository.cs" />
     <Compile Include="Business\Uom.cs" />
     <Compile Include="Business\IUnitRepository.cs" />
     <Compile Include="Business\IPersonRepository.cs" />

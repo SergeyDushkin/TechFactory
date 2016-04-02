@@ -47,6 +47,7 @@
     <Compile Include="Business\IContactService.cs" />
     <Compile Include="Business\ICategoryService.cs" />
     <Compile Include="Business\Contact.cs" />
+    <Compile Include="Business\ILocationRepository.cs" />
     <Compile Include="Business\IUomRepository.cs" />
     <Compile Include="Business\ICurrencyRepository.cs" />
     <Compile Include="Business\Person.cs" />

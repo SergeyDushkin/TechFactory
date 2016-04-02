@@ -120,3 +120,57 @@ CREATE TABLE [dbo].[BUSINESS.WMS.PRODUCT_N_SERVICE_CATEGORY](
 	[HIDDEN] [bit] NOT NULL,
 	[DELETED] [bit] NOT NULL
 ) ON [PRIMARY]
+
+/* table to store orders header */
+CREATE TABLE [BUSINESS.WMS.ORDER](
+	[GUID_RECORD] [uniqueidentifier] NOT NULL,
+	[TYPE] nvarchar(20) NOT NULL,							-- valid values: SO
+	[DUEDATE] smalldatetime NOT NULL,						-- Date/Time when order should be processed
+	[NUMBER] nvarchar(20) NOT NULL,
+	[DATE] smalldatetime NOT NULL,
+	[CUSTOMER_GUID] [uniqueidentifier] NOT NULL,
+	[SOURCE_GUID] [uniqueidentifier] NOT NULL,				-- source location
+	[DESTINATION_GUID] [uniqueidentifier] NOT NULL,			-- destination location
+ 	[CURRENCY_GUID] [uniqueidentifier] NOT NULL,
+	[LINES] smallint NOT NULL,
+	[AMOUNT] FLOAT NOT NULL,
+	[BASE_AMOUNT] FLOAT NOT NULL,
+	[BATCH_GUID] [uniqueidentifier],
+	[HIDDEN] [bit] NOT NULL,
+	[DELETED] [bit] NOT NULL
+) ON [PRIMARY]
+
+/* table to store order lines */
+CREATE TABLE [BUSINESS.WMS.ORDER_LINE](
+	[GUID_RECORD] [uniqueidentifier] NOT NULL,
+	[ORDER_GUID] [uniqueidentifier] NOT NULL,
+	[PRIORITY] [smallint] NOT NULL,			
+	[ITEM_GUID] [uniqueidentifier] NOT NULL,
+	[UOM_GUID] [uniqueidentifier] NOT NULL,
+	[QTY] FLOAT NOT NULL,
+	[BASE_QTY] FLOAT NOT NULL,
+	[PRICE] FLOAT NOT NULL,
+	[BASE_PRICE] FLOAT NOT NULL,
+	[AMOUNT] FLOAT NOT NULL,
+	[BASE_AMOUNT] FLOAT NOT NULL,
+	[BATCH_GUID] [uniqueidentifier],
+	[HIDDEN] [bit] NOT NULL,
+	[DELETED] [bit] NOT NULL
+) ON [PRIMARY]
+
+/* table to store details for order line */
+CREATE TABLE [BUSINESS.WMS.ORDER_LINE_DETAIL](
+	[GUID_RECORD] [uniqueidentifier] NOT NULL,
+	[ORDER_GUID] [uniqueidentifier] NOT NULL,
+	[ORDER_LINE_GUID] [uniqueidentifier] NOT NULL,
+	[PRIORITY] [smallint] NOT NULL,		
+	[ITEM_GUID] [uniqueidentifier] NOT NULL,
+	[LOCATION_GUID] [uniqueidentifier] NOT NULL,			-- where to hold an item
+	[UOM_GUID] [uniqueidentifier] NOT NULL,
+	[QTY] FLOAT NOT NULL,
+	[BASE_QTY] FLOAT NOT NULL,
+	[NUMBER] nvarchar(50) NOT NULL,							-- could be Serial Number of the item
+	[BATCH_GUID] [uniqueidentifier],
+	[HIDDEN] [bit] NOT NULL,
+	[DELETED] [bit] NOT NULL
+) ON [PRIMARY]

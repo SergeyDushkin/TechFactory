@@ -52,7 +52,9 @@
     <Compile Include="CategoryTreeServiceUpdate.cs" />
     <Compile Include="LocationRepository.cs" />
     <Compile Include="Query\LocationQuery.cs" />
+    <Compile Include="Query\OrderQuery.cs" />
     <Compile Include="Query\UomQuery.cs" />
+    <Compile Include="OrderRepository.cs" />
     <Compile Include="UomRepository.cs" />
     <Compile Include="NoodleDbContext.cs" />
     <Compile Include="Query\EntityQuery.cs" />

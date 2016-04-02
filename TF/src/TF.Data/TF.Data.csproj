@@ -51,6 +51,7 @@
     <Compile Include="Business\IUomRepository.cs" />
     <Compile Include="Business\ICurrencyRepository.cs" />
     <Compile Include="Business\Person.cs" />
+    <Compile Include="Business\WMS\IOrderRepository.cs" />
     <Compile Include="Systems\IEntityRepository.cs" />
     <Compile Include="Systems\Security\IUserRoleRepository.cs" />
     <Compile Include="Systems\Security\IRoleRepository.cs" />

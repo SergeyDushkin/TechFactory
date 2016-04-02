@@ -51,7 +51,9 @@
     <Compile Include="CategoryTreeServiceDelete.cs" />
     <Compile Include="CategoryTreeServiceUpdate.cs" />
     <Compile Include="NoodleDbContext.cs" />
+    <Compile Include="Query\EntityQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
+    <Compile Include="EntityRepository.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="ProductPriceService.cs" />
     <Compile Include="ProductCategoryService.cs" />

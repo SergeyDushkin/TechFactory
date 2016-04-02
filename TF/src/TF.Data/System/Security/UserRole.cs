@@ -2,14 +2,15 @@
 
 namespace TF.Data.Systems.Security
 {
-    public class USER_ROLE
+    public class UserRole
     {
-        public Guid ID { get; set; }
-        public Guid USER_GUID { get; set; }
-        public Guid ROLE_GUID { get; set; }
-        public Guid? BATCH_GUID { get; set; }
-        public Boolean HIDDEN { get; set; }
-        public Boolean DELETED { get; set; }
+        public Guid Id { get; set; }
+        public Guid UserGuid { get; set; }
+        public Guid RoleGuid { get; set; }
+
+        public Guid? BatchGuid  { get; set; }
+        public Boolean Hidden { get; set; }
+        public Boolean Deleted { get; set; }
     }
 }
 

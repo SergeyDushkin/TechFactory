@@ -48,6 +48,7 @@
     <Compile Include="Business\ICategoryService.cs" />
     <Compile Include="Business\Contact.cs" />
     <Compile Include="Business\Person.cs" />
+    <Compile Include="System\Security\IUserIdentityRepository.cs" />
     <Compile Include="System\Security\IUserRoleRepository.cs" />
     <Compile Include="System\Security\IRoleRepository.cs" />
     <Compile Include="System\Security\Role.cs" />

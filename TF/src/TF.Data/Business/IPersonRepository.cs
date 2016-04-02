@@ -6,12 +6,12 @@ namespace TF.Data.Business
 {
     public interface IPersonRepository
     {
-        PERSON Create(PERSON category);
-        PERSON Update(PERSON category);
+        Person Create(Person Person);
+        Person Update(Person Person);
         void Delete(Guid id);
 
-        IEnumerable<PERSON> GetAll();
-        PERSON GetById(Guid id);
+        IEnumerable<Person> GetAll();
+        Person GetById(Guid id);
 
     }
 }

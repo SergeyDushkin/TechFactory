@@ -6,11 +6,11 @@ namespace TF.Data.Business
 {
     public interface IContactService
     {
-        CONTACT Create(CONTACT contact);
-        CONTACT Update(CONTACT contact);
+        Contact Create(Contact contact);
+        Contact Update(Contact contact);
         void Delete(Guid id);
 
-        IEnumerable<CONTACT> GetAll();
-        CONTACT GetById(Guid id);
+        IEnumerable<Contact> GetAll();
+        Contact GetById(Guid id);
     }
 }

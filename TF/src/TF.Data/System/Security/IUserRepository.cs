@@ -6,11 +6,11 @@ namespace TF.Data.Systems.Security
 {
     public interface IUserRepository
     {
-        USER Create(USER User);
-        USER Update(USER User);
+        User Create(User User);
+        User Update(User User);
         void Delete(Guid id);
 
-        IEnumerable<USER> GetAll();
-        USER GetById(Guid id);
+        IEnumerable<User> GetAll();
+        User GetById(Guid id);
     }
 }

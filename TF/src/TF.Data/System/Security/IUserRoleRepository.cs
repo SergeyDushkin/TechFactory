@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 
 namespace TF.Data.Systems.Security
 {
-    public interface IUserRoleService
+    public interface IUserRoleRepository
     {
-        USER_ROLE Create(USER_ROLE User_role);
-        USER_ROLE Update(USER_ROLE User_role);
+        UserRole Create(UserRole UserRole);
+        UserRole Update(UserRole UserRole);
         void Delete(Guid id);
 
-        IEnumerable<USER_ROLE> GetAll();
-        USER_ROLE GetById(Guid id);
+        IEnumerable<UserRole> GetAll();
+        UserRole GetById(Guid id);
     }
 }

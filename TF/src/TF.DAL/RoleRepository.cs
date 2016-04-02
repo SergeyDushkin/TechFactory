@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using TF.DAL.Query;
-using TF.Data.Business;
+using TF.Data.Systems.Security;
 
 namespace TF.DAL
 {
-    public class PersonRepository : IPersonRepository
+    public class RoleRepository : IRoleRepository
     {
         private readonly NoodleDbContext context;
 
-        public PersonRepository(NoodleDbContext context)
+        public RoleRepository(NoodleDbContext context)
         {
             this.context = context;
         }
@@ -21,44 +21,44 @@ namespace TF.DAL
         {
             using (var connection = context.CreateConnection())
             {
-                connection.Execute(PersonQuery.Delete(id));
+                connection.Execute(RoleQuery.Delete(id));
             }
         }
 
-        public IEnumerable<Person> GetAll()
+        public IEnumerable<Role> GetAll()
         {
             using (var connection = context.CreateConnection())
             {
-                return connection.Query<Person>(PersonQuery.All());
+                return connection.Query<Role>(RoleQuery.All());
             }
         }
 
-        public Person GetById(Guid id)
+        public Role GetById(Guid id)
         {
             using (var connection = context.CreateConnection())
             {
-                return connection.Query<Person>(PersonQuery.ById(id)).SingleOrDefault();
+                return connection.Query<Role>(RoleQuery.ById(id)).SingleOrDefault();
             }
         }
 
-        public Person Update(Person person)
+        public Role Update(Role role)
         {
             using (var connection = context.CreateConnection())
             {
-                connection.Execute(PersonQuery.Update(person));
-                return person;
+                connection.Execute(RoleQuery.Update(role));
+                return role;
             }
         }
 
-        public Person Create(Person person)
+        public Role Create(Role role)
         {
-            if (person.Id == Guid.Empty)
-                person.Id = Guid.NewGuid();
+            if (role.Id == Guid.Empty)
+                role.Id = Guid.NewGuid();
 
             using (var connection = context.CreateConnection())
             {
-                connection.Execute(PersonQuery.Insert(person));
-                return person;
+                connection.Execute(RoleQuery.Insert(role));
+                return role;
             }
         }
     }

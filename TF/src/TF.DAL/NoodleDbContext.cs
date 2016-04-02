@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 
 namespace TF.DAL
 {
@@ -73,7 +74,25 @@ namespace TF.DAL
         private void CreateSchema(string connectionString)
         {
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-            var resourceName = assembly.GetName().Name + "." + "SQL.EmptyDbSchema.sql";
+
+            var resources = assembly
+                .GetManifestResourceNames()
+                .Where(r => r.EndsWith(".sql")).ToList();
+
+            foreach (var resourceName in resources.Where(r => r.IndexOf("EmptyDbSchema.sql") > -1))
+            {
+                ExecuteResourceSql(resourceName);
+            }
+
+            foreach (var resourceName in resources.Where(r => r.IndexOf("Trunk.Tables") > -1))
+            {
+                ExecuteResourceSql(resourceName);
+            }
+        }
+
+        private void ExecuteResourceSql(string resourceName)
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {

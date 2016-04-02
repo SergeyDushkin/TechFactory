@@ -2,17 +2,17 @@
 
 namespace TF.Data.Business
 {
-    public class PERSON
+    public class Person
     {
-        public Guid ID { get; set; }
-        public string FIRSTNAME { get; set; }
-        public string LASTNAME { get; set; }
-        public string MIDNAME { get; set; }
-        public DateTime? BIRTHDATE { get; set; }
-        public Guid? USER_GUID { get; set; }
+        public Guid Id { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Midname { get; set; }
+        public DateTime? Birthdate { get; set; }
+        public Guid? UserGuid { get; set; }
 
-        public Guid? BATCH_GUID { get; set; }
-        public Boolean HIDDEN { get; set; }
-        public Boolean DELETED { get; set; }
+        public Guid? BatchGuid { get; set; }
+        public Boolean Hidden { get; set; }
+        public Boolean Deleted { get; set; }
     }
 }

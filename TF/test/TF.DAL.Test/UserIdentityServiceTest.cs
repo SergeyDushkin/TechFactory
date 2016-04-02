@@ -5,39 +5,36 @@ using TF.Data.Systems.Security;
 namespace TF.DAL.Test
 {
     [TestClass]
-    public class UserServiceTest
+    public class UserIdentityServiceTest
     {
         [TestMethod]
-        public void UserCRUDTest()
+        public void UserIdentityCRUDTest()
         {
             var context = new NoodleDbContext("NoodleDb");
 
-            IUserRepository service = new UserRepository(context);
+            IUserIdentityRepository service = new UserIdentityRepository(context);
 
             var ID_ = Guid.NewGuid();
-            var KEY_ = Guid.NewGuid().ToString();
+            var PROVIDER_ = "tst";
+            var KEY_ = Guid.NewGuid().ToString(); 
 
-            var record = new User
+            var record = new UserIdentity
             {
                 Id = ID_,
-                Key = KEY_,
-                LastLogin = Convert.ToDateTime("2016-04-01 15:41:00")
+                Provider = PROVIDER_,
+                Key = KEY_
              };
 
             service.Create(record);
 
             record.Key = Guid.NewGuid().ToString();
-            record.LastLogin = Convert.ToDateTime("2016-04-02 15:41:00");
-            record.LoginAttemptCount = 1;
 
-           service.Update(record);
+            service.Update(record);
 
             var record2 = service.GetById(ID_);
 
             Assert.AreEqual(record.Id, record2.Id);
             Assert.AreEqual(record.Key, record2.Key);
-            Assert.AreEqual(record.LastLogin, record2.LastLogin);
-            Assert.AreEqual(record.LoginAttemptCount, record2.LoginAttemptCount);
 
             service.Delete(record.Id);
 

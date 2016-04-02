@@ -10,7 +10,7 @@ namespace TF.DAL.Test
         [TestMethod]
         public void PersonCRUDTest()
         {
-            var context = new NoodleDbContext("PersonDb");
+            var context = new NoodleDbContext("NoodleDb");
 
             IPersonRepository service = new PersonRepository(context);
 
@@ -19,28 +19,28 @@ namespace TF.DAL.Test
             var LASTNAME_ = Guid.NewGuid().ToString();
           
 
-            var record = new PERSON
+            var record = new Person
             {
-                ID = ID_,
-                FIRSTNAME = FIRSTNAME_,
-                LASTNAME = LASTNAME_
+                Id = ID_,
+                Firstname = FIRSTNAME_,
+                Lastname = LASTNAME_
             };
 
             service.Create(record);
 
-            record.LASTNAME = Guid.NewGuid().ToString();
-            record.BIRTHDATE = Convert.ToDateTime("2016-04-01 15:41:00");
+            record.Lastname = Guid.NewGuid().ToString();
+            record.Birthdate = Convert.ToDateTime("2016-04-01 15:41:00");
 
             service.Update(record);
 
             var record2 = service.GetById(ID_);
 
-            Assert.AreEqual(record.ID, record2.ID);
-            Assert.AreEqual(record.LASTNAME, record2.LASTNAME);
-            Assert.AreEqual(record.FIRSTNAME, record2.FIRSTNAME);
-            Assert.AreEqual(record.BIRTHDATE, record2.BIRTHDATE);
+            Assert.AreEqual(record.Id, record2.Id);
+            Assert.AreEqual(record.Lastname, record2.Lastname);
+            Assert.AreEqual(record.Firstname, record2.Firstname);
+            Assert.AreEqual(record.Birthdate, record2.Birthdate);
 
-            service.Delete(record.ID);
+            service.Delete(record.Id);
 
             var record3 = service.GetById(ID_);
 

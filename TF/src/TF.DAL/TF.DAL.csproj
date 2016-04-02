@@ -57,9 +57,15 @@
     <Compile Include="OrderRepository.cs" />
     <Compile Include="UomRepository.cs" />
     <Compile Include="NoodleDbContext.cs" />
+    <Compile Include="Query\UserIdentityQuery.cs" />
+    <Compile Include="Query\RoleQuery.cs" />
+    <Compile Include="Query\UserRoleQuery.cs" />
     <Compile Include="Query\EntityQuery.cs" />
     <Compile Include="Query\CurrencyQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
+    <Compile Include="UserIdentityRepository.cs" />
+    <Compile Include="RoleRepository.cs" />
+    <Compile Include="UserRoleRepository.cs" />
     <Compile Include="EntityRepository.cs" />
     <Compile Include="CurrencyRepository.cs" />
     <Compile Include="UserRepository.cs" />

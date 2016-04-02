@@ -2,16 +2,16 @@
 
 namespace TF.Data.Systems.Security
 {
-    public class USER
+    public class User
     {
-        public Guid ID { get; set; }
-        public string KEY { get; set; }
-        public DateTime LAST_LOGIN { get; set; }
-        public Int16 LOGIN_ATTEMPT_COUNT { get; set; }
+        public Guid Id { get; set; }
+        public string Key { get; set; }
+        public DateTime LastLogin { get; set; }
+        public Int16 LoginAttemptCount { get; set; }
 
-        public Guid? BATCH_GUID { get; set; }
-        public Boolean HIDDEN { get; set; }
-        public Boolean DELETED { get; set; }
+        public Guid? BatchGuid { get; set; }
+        public Boolean Hidden { get; set; }
+        public Boolean Deleted { get; set; }
 
     }    
 }

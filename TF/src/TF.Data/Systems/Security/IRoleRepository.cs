@@ -6,11 +6,11 @@ namespace TF.Data.Systems.Security
 {
     public interface IRoleRepository
     {
-        ROLE Create(ROLE role);
-        ROLE Update(ROLE role);
+        Role Create(Role role);
+        Role Update(Role role);
         void Delete(Guid id);
 
-        IEnumerable<ROLE> GetAll();
-        ROLE GetById(Guid id);
+        IEnumerable<Role> GetAll();
+        Role GetById(Guid id);
     }
 }

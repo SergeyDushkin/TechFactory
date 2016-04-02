@@ -3,13 +3,14 @@
 namespace TF.Data.Systems.Security
 {
 
-    public class USER_IDENTITY
+    public class UserIdentity
     {
-        public Guid USER_GUID { get; set; }
-        public string PROVIDER { get; set; }
-        public string KEY { get; set; }
-        public Guid? BATCH_GUID { get; set; }
-        public Boolean HIDDEN { get; set; }
-        public Boolean DELETED { get; set; }
+        public Guid Id { get; set; }
+        public string Provider { get; set; }
+        public string Key { get; set; }
+
+        public Guid? BatchGuid { get; set; }
+        public Boolean Hidden { get; set; }
+        public Boolean Deleted { get; set; }
     }
 }

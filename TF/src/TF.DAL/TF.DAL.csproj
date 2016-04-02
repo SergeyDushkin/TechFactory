@@ -50,6 +50,8 @@
     <Compile Include="CategoryTreeServiceCreate.cs" />
     <Compile Include="CategoryTreeServiceDelete.cs" />
     <Compile Include="CategoryTreeServiceUpdate.cs" />
+    <Compile Include="Query\UomQuery.cs" />
+    <Compile Include="UomRepository.cs" />
     <Compile Include="NoodleDbContext.cs" />
     <Compile Include="Query\EntityQuery.cs" />
     <Compile Include="Query\CurrencyQuery.cs" />

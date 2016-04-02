@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="UomRepositoryTest.cs" />
     <Compile Include="DbContextTest.cs" />
     <Compile Include="CurrencyRepositoryTest.cs" />
     <Compile Include="EntityRepositoryTest.cs" />

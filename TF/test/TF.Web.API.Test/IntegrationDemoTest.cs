@@ -28,6 +28,7 @@ namespace TF.Web.API.Test
             CreateCurrencies();
             CreateProducts();
             CreateProductCategories();
+            CreateRetailPrices();
             CreateOrders();
         }
 
@@ -110,7 +111,6 @@ namespace TF.Web.API.Test
             container.AddToUoms(new Uom { Key = "KG", Name = "KILOGRAM" });
             container.AddToUoms(new Uom { Key = "L", Name = "LITER" });
             container.AddToUoms(new Uom { Key = "ML", Name = "Milliliter" });
-            container.AddToUoms(new Uom { Key = "ML", Name = "Milliliter" });
 
             container.SaveChanges();
         }
@@ -185,6 +185,7 @@ namespace TF.Web.API.Test
 
         void CreateProductCategories()
         {
+            var productId = Guid.Empty;
             var category_noodle = container.Categories.Where(r => r.Key == "NOODLE").SingleOrDefault();
             var category_sauce = container.Categories.Where(r => r.Key == "SAUCE").SingleOrDefault();
             var category_protein = container.Categories.Where(r => r.Key == "PROTEIN").SingleOrDefault();
@@ -197,21 +198,24 @@ namespace TF.Web.API.Test
             Assert.IsNotNull(category_vagetables);
             Assert.IsNotNull(category_garnish);
 
+            productId = container.Products.Where(r => r.Key == "Egg Noodle").SingleOrDefault().Id;
             container.AddToProductCategories(new ProductCategory
             {
-                ProductId = container.Products.Where(r => r.Key == "Egg Noodle").SingleOrDefault().Id,
+                ProductId = productId,
                 CategoryId = category_noodle.Id
             });
 
+            productId = container.Products.Where(r => r.Key == "Rice Noodle").SingleOrDefault().Id;
             container.AddToProductCategories(new ProductCategory
             {
-                ProductId = container.Products.Where(r => r.Key == "Rice Noodle").SingleOrDefault().Id,
+                ProductId = productId,
                 CategoryId = category_noodle.Id
             });
 
+            productId = container.Products.Where(r => r.Key == "Udon Noodle").SingleOrDefault().Id;
             container.AddToProductCategories(new ProductCategory
             {
-                ProductId = container.Products.Where(r => r.Key == "Udon Noodle").SingleOrDefault().Id,
+                ProductId = productId,
                 CategoryId = category_noodle.Id
             });
 
@@ -413,7 +417,37 @@ namespace TF.Web.API.Test
 
         void CreateRetailPrices()
         {
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "Coca-Cola CAN 0.33").SingleOrDefault().Id,
+                Price = 1
+            });
 
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "WOK REG").SingleOrDefault().Id,
+                Price = 6
+            });
+
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "WOK HALF").SingleOrDefault().Id,
+                Price = 4
+            });
+
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "POT CHI REG").SingleOrDefault().Id,
+                Price = 3
+            });
+
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "POT CHI HALF").SingleOrDefault().Id,
+                Price = 2
+            });
+
+            container.SaveChanges();
         }
 
         void CreateOrders()

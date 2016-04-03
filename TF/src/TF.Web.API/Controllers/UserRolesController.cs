@@ -16,7 +16,7 @@ namespace TF.Web.API.Controllers
         private readonly ILogger logger;
 
         public UserRolesController(
-            IUserRepository UserRepository,
+            IUserRoleRepository UserRoleRepository,
             ILogger logger)
         {
             this.UserRoleRepository = UserRoleRepository;

@@ -56,6 +56,7 @@
     <Compile Include="ContactDetailServiceTest.cs" />
     <Compile Include="LocationRepositoryTest.cs" />
     <Compile Include="OrderRepositoryTest.cs" />
+    <Compile Include="AddressRepositoryTest.cs" />
     <Compile Include="UomRepositoryTest.cs" />
     <Compile Include="DbContextTest.cs" />
     <Compile Include="CurrencyRepositoryTest.cs" />

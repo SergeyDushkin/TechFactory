@@ -55,9 +55,11 @@
     <Compile Include="Query\ContactDetailQuery.cs" />
     <Compile Include="Query\LocationQuery.cs" />
     <Compile Include="Query\OrderQuery.cs" />
+    <Compile Include="Query\AddressQuery.cs" />
     <Compile Include="Query\UomQuery.cs" />
     <Compile Include="OrderRepository.cs" />
     <Compile Include="Query\ContactQuery.cs" />
+    <Compile Include="AddressRepository.cs" />
     <Compile Include="UomRepository.cs" />
     <Compile Include="NoodleDbContext.cs" />
     <Compile Include="Query\UserIdentityQuery.cs" />

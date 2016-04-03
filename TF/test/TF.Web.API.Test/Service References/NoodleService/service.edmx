@@ -32,10 +32,10 @@
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Guid" Nullable="false" />
-        <Property Name="UnitId" Type="Edm.Guid" Nullable="false" />
         <Property Name="Type" Type="Edm.String" />
         <Property Name="Key" Type="Edm.String" />
         <Property Name="Name" Type="Edm.String" />
+        <Property Name="UnitId" Type="Edm.Guid" />
         <NavigationProperty Name="Unit" Relationship="TF.Data.Business.TF_Data_Business_Location_Unit_TF_Data_Business_Unit_UnitPartner" ToRole="Unit" FromRole="UnitPartner" />
       </EntityType>
       <EntityType Name="Person">
@@ -60,17 +60,24 @@
         <Property Name="Key" Type="Edm.String" />
         <Property Name="Name" Type="Edm.String" />
       </EntityType>
+      <EntityType Name="Address">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Type" Type="Edm.String" />
+        <Property Name="Country" Type="Edm.String" />
+        <Property Name="Postalcode" Type="Edm.String" />
+        <Property Name="City" Type="Edm.String" />
+        <Property Name="Line1" Type="Edm.String" />
+        <Property Name="Line2" Type="Edm.String" />
+        <Property Name="Latitude" Type="Edm.Single" Nullable="false" />
+        <Property Name="Longitude" Type="Edm.Single" Nullable="false" />
+        <Property Name="Elevation" Type="Edm.Single" Nullable="false" />
+      </EntityType>
       <Association Name="TF_Data_Business_Location_Unit_TF_Data_Business_Unit_UnitPartner">
         <End Type="TF.Data.Business.Unit" Role="Unit" Multiplicity="0..1" />
         <End Type="TF.Data.Business.Location" Role="UnitPartner" Multiplicity="0..1" />
-        <ReferentialConstraint>
-          <Principal Role="Unit">
-            <PropertyRef Name="Id" />
-          </Principal>
-          <Dependent Role="UnitPartner">
-            <PropertyRef Name="UnitId" />
-          </Dependent>
-        </ReferentialConstraint>
       </Association>
       <Association Name="TF_Data_Business_WMS_Order_Customer_TF_Data_Business_Unit_CustomerPartner">
         <End Type="TF.Data.Business.Unit" Role="Customer" Multiplicity="0..1" />
@@ -241,6 +248,7 @@
         <EntitySet Name="Persons" EntityType="TF.Data.Business.Person" />
         <EntitySet Name="Roles" EntityType="TF.Data.Systems.Security.Role" />
         <EntitySet Name="Uoms" EntityType="TF.Data.Business.Uom" />
+        <EntitySet Name="Addresses" EntityType="TF.Data.Business.Address" />
         <AssociationSet Name="TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner">
           <End Role="ParentPartner" EntitySet="Products" />
           <End Role="Parent" EntitySet="Products" />

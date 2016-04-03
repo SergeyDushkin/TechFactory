@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="LocationEndpointTest.cs" />
     <Compile Include="CurrencyEndpointTest.cs" />
+    <Compile Include="AddressEndpointTest.cs" />
     <Compile Include="UomEndpointTest.cs" />
   </ItemGroup>
   <ItemGroup>

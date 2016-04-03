@@ -76,6 +76,18 @@ namespace TF.DAL
 
         public ProductCategory Create(ProductCategory productCategory)
         {
+            if (productCategory == null)
+                throw new ArgumentNullException("productCategory");
+
+            if (productCategory.Id == Guid.Empty)
+                productCategory.Id = Guid.NewGuid();
+
+            if (productCategory.ProductId == Guid.Empty)
+                throw new ArgumentNullException("ProductId");
+
+            if (productCategory.CategoryId == Guid.Empty)
+                throw new ArgumentNullException("CategoryId");
+
             using (var connection = context.CreateConnection())
             {
                 connection.Execute(ProductCategoryQuery.Insert(productCategory));

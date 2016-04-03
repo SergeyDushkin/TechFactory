@@ -89,6 +89,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
+    <Compile Include="LocationEndpointTest.cs" />
     <Compile Include="UomEndpointTest.cs" />
   </ItemGroup>
   <ItemGroup>

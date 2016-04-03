@@ -7,37 +7,54 @@ using System.Linq;
 namespace TF.Web.API.Test
 {
     [TestClass]
-    public class UomEndpointTest
+    public class LocationEndpointTest
     {
         [TestMethod]
-        public void UomCrudTest()
+        public void LocationCrudTest()
         {
             var context = new Container(new Uri("http://localhost:5588/odata/"));
 
-            context.AddToUoms(new Uom
+            var unit = new Unit()
             {
-                Key = "TestUom",
-                Name = "TestUom"
-            });
+                Key = "TestUnit",
+                Name = "TestUnit"
+            };
+
+            context.AddToUnits(unit);
+
+            context.SaveChanges();
+
+            var savedUnit = context.Units.Where(u => u.Key == unit.Key).Single();
+
+
+            var location = new Location
+            {
+                Key = "TestLocation",
+                Name = "TestLocation",
+                Type = "WAREHOUSE",
+                Unit = savedUnit
+            };
+
+            context.AddToLocations(location);
 
             var response = context.SaveChanges();
 
             foreach (ChangeOperationResponse change in response)
             {
                 var descriptor = change.Descriptor as EntityDescriptor;
-                var entity = descriptor.Entity as Uom;
+                var entity = descriptor.Entity as Location;
 
                 entity.Name = "upd";
-
                 context.UpdateObject(entity);
                 context.SaveChanges(SaveChangesOptions.ReplaceOnUpdate);
 
-                var savedEntity = context.Uoms.Where(r => r.Id == entity.Id).Single();
+                var savedEntity = context.Locations.Where(r => r.Id == entity.Id).Single();
 
-                //context.DeleteObject(entity);
+                context.DeleteObject(entity);
                 var deleteResponses = context.SaveChanges();
 
                 Assert.IsNotNull(savedEntity);
+                Assert.AreEqual(savedEntity.Unit.Key,unit.Key);
                 Assert.IsNotNull(deleteResponses);
             }
 

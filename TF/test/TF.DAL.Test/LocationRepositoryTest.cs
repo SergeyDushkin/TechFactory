@@ -34,18 +34,18 @@ namespace TF.DAL.Test
 
             repository.Update(record);
 
-            var record2 = repository.GetById(id);
+            var updatedRecord = repository.GetById(id);
 
-            Assert.AreEqual(record.Id, record2.Id);
-            Assert.AreEqual(record.Key, record2.Key);
-            Assert.AreEqual(record.Name, record2.Name);
-            Assert.AreEqual(record.Type, record2.Type);
+            Assert.AreEqual(record.Id, updatedRecord.Id);
+            Assert.AreEqual(record.Key, updatedRecord.Key);
+            Assert.AreEqual(record.Name, updatedRecord.Name);
+            Assert.AreEqual(record.Type, updatedRecord.Type);
 
             repository.Delete(record.Id);
 
-            var record3 = repository.GetById(id);
+            var deletedRecord = repository.GetById(id);
 
-            Assert.IsNull(record3);
+            Assert.IsNull(deletedRecord);
         }
     }
 }

@@ -11,25 +11,28 @@ namespace TF.Web.API.Controllers
     public class LocationsController : ODataController
     {
         private static ODataValidationSettings _validationSettings = new ODataValidationSettings();
-        
+
+        private readonly ILocationRepository locationRepository;
         private readonly IUnitRepository unitRepository;
         private readonly ILogger logger;
 
         public LocationsController(
             IUnitRepository unitRepository,
+            ILocationRepository locationRepository,
             ILogger logger)
         {
             this.unitRepository = unitRepository;
+            this.locationRepository = locationRepository;
             this.logger = logger;
 
-            this.logger.Trace("Call UnitController");
+            this.logger.Trace("Call LocationController");
         }
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Unit> queryOptions)
+        public IHttpActionResult Get(ODataQueryOptions<Location> queryOptions)
         {
-            logger.Trace("Call UnitController Get All");
+            logger.Trace("Call LocationController Get All");
 
             try
             {
@@ -40,9 +43,9 @@ namespace TF.Web.API.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = unitRepository.GetAll();
+            var data = locationRepository.GetAll();
 
-            var query = (IQueryable<Unit>)queryOptions
+            var query = (IQueryable<Location>)queryOptions
                 .ApplyTo(data.AsQueryable());
 
             return Ok(query);
@@ -51,43 +54,57 @@ namespace TF.Web.API.Controllers
         [HttpGet]
         public IHttpActionResult Get([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call UnitController Get by Id");
+            logger.Trace("Call LocationController Get by Id");
 
-            var query = unitRepository.GetById(key);
+            var query = locationRepository.GetById(key);
 
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Unit entity)
+        public IHttpActionResult Post([FromBody] Location entity)
         {
-            logger.Trace("Call UnitController Post");
+            logger.Trace("Call LocationController Post");
 
-            var record = unitRepository.Create(entity);
+            var record = locationRepository.Create(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Unit entity)
+        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Location entity)
         {
-            logger.Trace("Call UnitController Put");
+            logger.Trace("Call LocationController Put");
 
-            var record = unitRepository.Update(entity);
+            var record = locationRepository.Update(entity);
             return Updated(record);
         }
 
         [HttpDelete]
         public IHttpActionResult Delete([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call UnitController Delete");
+            logger.Trace("Call LocationController Delete");
 
-            unitRepository.Delete(key);
+            locationRepository.Delete(key);
             return Ok();
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetUnit([FromODataUri] System.Guid key)
+        {
+            logger.Trace("Call LocationController GetUnit");
+
+            var location = locationRepository.GetById(key);
+            if ((location == null) || (location.Unit != null))
+            {
+                return NotFound();
+            }
+
+            return Ok(location.Unit);
         }
 
         protected override void Dispose(bool disposing)
         {
-            logger.Trace("End UnitController");
+            logger.Trace("End LocationController");
 
             base.Dispose(disposing);
         }

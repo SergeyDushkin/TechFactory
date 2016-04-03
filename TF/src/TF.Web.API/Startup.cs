@@ -9,6 +9,8 @@ using System.Web.Http.OData.Extensions;
 using TF.DAL;
 using TF.Data.Business;
 using TF.Data.Business.WMS;
+using TF.Data.Systems;
+using TF.Data.Systems.Security;
 
 namespace TF.Web.API
 {
@@ -54,6 +56,13 @@ namespace TF.Web.API
             builder.EntitySet<Product>("Products");
             builder.EntitySet<Category>("Categories");
             builder.EntitySet<ProductPrice>("ProductPrices");
+            builder.EntitySet<Currency>("Currencies");
+            builder.EntitySet<Entity>("Entities");
+            builder.EntitySet<Location>("Locations");
+            builder.EntitySet<Order>("Orders");
+            builder.EntitySet<Person>("Persons");
+            builder.EntitySet<Role>("Roles");
+            builder.EntitySet<Uom>("Uoms");
 
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
         }

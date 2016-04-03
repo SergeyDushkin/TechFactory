@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TF.Web.API.Test.NoodleService;
 using System.Data.Services.Client;
 using System.Linq;
+using TF.Data.Business.WMS;
 
 namespace TF.Web.API.Test
 {

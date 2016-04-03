@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // Исходное имя файла:
-// Дата создания: 27.03.2016 12:14:52
+// Дата создания: 03.04.2016 11:46:48
 namespace TF.Web.API.Test.NoodleService
 {
     
@@ -39,12 +39,22 @@ namespace TF.Web.API.Test.NoodleService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         protected global::System.Type ResolveTypeFromName(string typeName)
         {
-            global::System.Type resolvedType = this.DefaultResolveType(typeName, "TF.Data.Business.WMS", "TF.Web.API.Test.NoodleService");
+            global::System.Type resolvedType = this.DefaultResolveType(typeName, "TF.Data.Systems.Security", "TF.Web.API.Test.NoodleService.TF.Data.Systems.Security");
             if ((resolvedType != null))
             {
                 return resolvedType;
             }
-            resolvedType = this.DefaultResolveType(typeName, "TF.Data.Business", "TF.Web.API.Test.NoodleService.TF.Data.Business");
+            resolvedType = this.DefaultResolveType(typeName, "TF.Data.Business.WMS", "TF.Web.API.Test.NoodleService.TF.Data.Business.WMS");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "TF.Data.Business", "TF.Web.API.Test.NoodleService");
+            if ((resolvedType != null))
+            {
+                return resolvedType;
+            }
+            resolvedType = this.DefaultResolveType(typeName, "TF.Data.Systems", "TF.Web.API.Test.NoodleService.TF.Data.Systems");
             if ((resolvedType != null))
             {
                 return resolvedType;
@@ -59,72 +69,224 @@ namespace TF.Web.API.Test.NoodleService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
-            if (clientType.Namespace.Equals("TF.Web.API.Test.NoodleService.TF.Data.Business", global::System.StringComparison.Ordinal))
+            if (clientType.Namespace.Equals("TF.Web.API.Test.NoodleService.TF.Data.Systems.Security", global::System.StringComparison.Ordinal))
             {
-                return string.Concat("TF.Data.Business.", clientType.Name);
+                return string.Concat("TF.Data.Systems.Security.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("TF.Web.API.Test.NoodleService.TF.Data.Business.WMS", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("TF.Data.Business.WMS.", clientType.Name);
+            }
+            if (clientType.Namespace.Equals("TF.Web.API.Test.NoodleService.TF.Data.Systems", global::System.StringComparison.Ordinal))
+            {
+                return string.Concat("TF.Data.Systems.", clientType.Name);
             }
             if (clientType.Namespace.Equals("TF.Web.API.Test.NoodleService", global::System.StringComparison.Ordinal))
             {
-                return string.Concat("TF.Data.Business.WMS.", clientType.Name);
+                return string.Concat("TF.Data.Business.", clientType.Name);
             }
             return null;
         }
         /// <summary>
+        /// В схеме отсутствуют комментарии для Units.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Unit> Units
+        {
+            get
+            {
+                if ((this._Units == null))
+                {
+                    this._Units = base.CreateQuery<Unit>("Units");
+                }
+                return this._Units;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Unit> _Units;
+        /// <summary>
         /// В схеме отсутствуют комментарии для Products.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<Product> Products
+        public global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.WMS.Product> Products
         {
             get
             {
                 if ((this._Products == null))
                 {
-                    this._Products = base.CreateQuery<Product>("Products");
+                    this._Products = base.CreateQuery<TF.Data.Business.WMS.Product>("Products");
                 }
                 return this._Products;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<Product> _Products;
+        private global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.WMS.Product> _Products;
         /// <summary>
         /// В схеме отсутствуют комментарии для Categories.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.Category> Categories
+        public global::System.Data.Services.Client.DataServiceQuery<Category> Categories
         {
             get
             {
                 if ((this._Categories == null))
                 {
-                    this._Categories = base.CreateQuery<TF.Data.Business.Category>("Categories");
+                    this._Categories = base.CreateQuery<Category>("Categories");
                 }
                 return this._Categories;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.Category> _Categories;
+        private global::System.Data.Services.Client.DataServiceQuery<Category> _Categories;
         /// <summary>
         /// В схеме отсутствуют комментарии для ProductPrices.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Data.Services.Client.DataServiceQuery<ProductPrice> ProductPrices
+        public global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.WMS.ProductPrice> ProductPrices
         {
             get
             {
                 if ((this._ProductPrices == null))
                 {
-                    this._ProductPrices = base.CreateQuery<ProductPrice>("ProductPrices");
+                    this._ProductPrices = base.CreateQuery<TF.Data.Business.WMS.ProductPrice>("ProductPrices");
                 }
                 return this._ProductPrices;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Data.Services.Client.DataServiceQuery<ProductPrice> _ProductPrices;
+        private global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.WMS.ProductPrice> _ProductPrices;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Currencies.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Currency> Currencies
+        {
+            get
+            {
+                if ((this._Currencies == null))
+                {
+                    this._Currencies = base.CreateQuery<Currency>("Currencies");
+                }
+                return this._Currencies;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Currency> _Currencies;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Entities.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public new global::System.Data.Services.Client.DataServiceQuery<TF.Data.Systems.Entity> Entities
+        {
+            get
+            {
+                if ((this._Entities == null))
+                {
+                    this._Entities = base.CreateQuery<TF.Data.Systems.Entity>("Entities");
+                }
+                return this._Entities;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<TF.Data.Systems.Entity> _Entities;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Locations.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Location> Locations
+        {
+            get
+            {
+                if ((this._Locations == null))
+                {
+                    this._Locations = base.CreateQuery<Location>("Locations");
+                }
+                return this._Locations;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Location> _Locations;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Orders.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.WMS.Order> Orders
+        {
+            get
+            {
+                if ((this._Orders == null))
+                {
+                    this._Orders = base.CreateQuery<TF.Data.Business.WMS.Order>("Orders");
+                }
+                return this._Orders;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<TF.Data.Business.WMS.Order> _Orders;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Persons.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Person> Persons
+        {
+            get
+            {
+                if ((this._Persons == null))
+                {
+                    this._Persons = base.CreateQuery<Person>("Persons");
+                }
+                return this._Persons;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Person> _Persons;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Roles.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<TF.Data.Systems.Security.Role> Roles
+        {
+            get
+            {
+                if ((this._Roles == null))
+                {
+                    this._Roles = base.CreateQuery<TF.Data.Systems.Security.Role>("Roles");
+                }
+                return this._Roles;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<TF.Data.Systems.Security.Role> _Roles;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Uoms.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<Uom> Uoms
+        {
+            get
+            {
+                if ((this._Uoms == null))
+                {
+                    this._Uoms = base.CreateQuery<Uom>("Uoms");
+                }
+                return this._Uoms;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<Uom> _Uoms;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Units.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToUnits(Unit unit)
+        {
+            base.AddObject("Units", unit);
+        }
         /// <summary>
         /// В схеме отсутствуют комментарии для Products.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToProducts(Product product)
+        public void AddToProducts(TF.Data.Business.WMS.Product product)
         {
             base.AddObject("Products", product);
         }
@@ -132,7 +294,7 @@ namespace TF.Web.API.Test.NoodleService
         /// В схеме отсутствуют комментарии для Categories.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToCategories(TF.Data.Business.Category category)
+        public void AddToCategories(Category category)
         {
             base.AddObject("Categories", category);
         }
@@ -140,9 +302,65 @@ namespace TF.Web.API.Test.NoodleService
         /// В схеме отсутствуют комментарии для ProductPrices.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public void AddToProductPrices(ProductPrice productPrice)
+        public void AddToProductPrices(TF.Data.Business.WMS.ProductPrice productPrice)
         {
             base.AddObject("ProductPrices", productPrice);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Currencies.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToCurrencies(Currency currency)
+        {
+            base.AddObject("Currencies", currency);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Entities.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToEntities(TF.Data.Systems.Entity entity)
+        {
+            base.AddObject("Entities", entity);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Locations.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToLocations(Location location)
+        {
+            base.AddObject("Locations", location);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Orders.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToOrders(TF.Data.Business.WMS.Order order)
+        {
+            base.AddObject("Orders", order);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Persons.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToPersons(Person person)
+        {
+            base.AddObject("Persons", person);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Roles.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToRoles(TF.Data.Systems.Security.Role role)
+        {
+            base.AddObject("Roles", role);
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Uoms.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToUoms(Uom uom)
+        {
+            base.AddObject("Uoms", uom);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private abstract class GeneratedEdmModel
@@ -153,59 +371,195 @@ namespace TF.Web.API.Test.NoodleService
             private const string ModelPart0 = "<edmx:Edmx Version=\"1.0\" xmlns:edmx=\"http://schemas.microsoft.com/ado/2007/06/edm" +
                 "x\"><edmx:DataServices m:DataServiceVersion=\"3.0\" m:MaxDataServiceVersion=\"3.0\" x" +
                 "mlns:m=\"http://schemas.microsoft.com/ado/2007/08/dataservices/metadata\"><Schema " +
-                "Namespace=\"TF.Data.Business.WMS\" xmlns=\"http://schemas.microsoft.com/ado/2009/11" +
-                "/edm\"><EntityType Name=\"Product\"><Key><PropertyRef Name=\"Id\" /></Key><Property N" +
-                "ame=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Type\" Type=\"Edm.Stri" +
-                "ng\" /><Property Name=\"Key\" Type=\"Edm.String\" /><Property Name=\"Name\" Type=\"Edm.S" +
-                "tring\" /><NavigationProperty Name=\"Parent\" Relationship=\"TF.Data.Business.WMS.TF" +
-                "_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner\" To" +
-                "Role=\"Parent\" FromRole=\"ParentPartner\" /><NavigationProperty Name=\"ChildProducts" +
-                "\" Relationship=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Product_ChildProducts_" +
-                "TF_Data_Business_WMS_Product_ChildProductsPartner\" ToRole=\"ChildProducts\" FromRo" +
-                "le=\"ChildProductsPartner\" /><NavigationProperty Name=\"Price\" Relationship=\"TF.Da" +
-                "ta.Business.WMS.TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_ProductP" +
-                "rice_PricePartner\" ToRole=\"Price\" FromRole=\"PricePartner\" /></EntityType><Entity" +
-                "Type Name=\"ProductPrice\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\"" +
-                " Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"ProductId\" Type=\"Edm.Guid\" N" +
-                "ullable=\"false\" /><Property Name=\"Price\" Type=\"Edm.Double\" Nullable=\"false\" /></" +
-                "EntityType><Association Name=\"TF_Data_Business_WMS_Product_Parent_TF_Data_Busine" +
-                "ss_WMS_Product_ParentPartner\"><End Type=\"TF.Data.Business.WMS.Product\" Role=\"Par" +
-                "ent\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.Product\" Role=\"Parent" +
-                "Partner\" Multiplicity=\"0..1\" /></Association><Association Name=\"TF_Data_Business" +
-                "_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartner\"><E" +
-                "nd Type=\"TF.Data.Business.WMS.Product\" Role=\"ChildProducts\" Multiplicity=\"*\" /><" +
-                "End Type=\"TF.Data.Business.WMS.Product\" Role=\"ChildProductsPartner\" Multiplicity" +
-                "=\"0..1\" /></Association><Association Name=\"TF_Data_Business_WMS_Product_Price_TF" +
-                "_Data_Business_WMS_ProductPrice_PricePartner\"><End Type=\"TF.Data.Business.WMS.Pr" +
-                "oductPrice\" Role=\"Price\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.P" +
-                "roduct\" Role=\"PricePartner\" Multiplicity=\"0..1\" /></Association></Schema><Schema" +
-                " Namespace=\"TF.Data.Business\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/ed" +
-                "m\"><EntityType Name=\"Category\"><Key><PropertyRef Name=\"Id\" /></Key><Property Nam" +
-                "e=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Key\" Type=\"Edm.String\"" +
-                " /><Property Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"ParentId\" Type=\"Edm" +
-                ".Guid\" /></EntityType></Schema><Schema Namespace=\"Default\" xmlns=\"http://schemas" +
-                ".microsoft.com/ado/2009/11/edm\"><EntityContainer Name=\"Container\" m:IsDefaultEnt" +
-                "ityContainer=\"true\"><EntitySet Name=\"Products\" EntityType=\"TF.Data.Business.WMS." +
-                "Product\" /><EntitySet Name=\"Categories\" EntityType=\"TF.Data.Business.Category\" /" +
-                "><EntitySet Name=\"ProductPrices\" EntityType=\"TF.Data.Business.WMS.ProductPrice\" " +
-                "/><AssociationSet Name=\"TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS" +
-                "_Product_ParentPartnerSet\" Association=\"TF.Data.Business.WMS.TF_Data_Business_WM" +
-                "S_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner\"><End Role=\"ParentPa" +
-                "rtner\" EntitySet=\"Products\" /><End Role=\"Parent\" EntitySet=\"Products\" /></Associ" +
-                "ationSet><AssociationSet Name=\"TF_Data_Business_WMS_Product_ChildProducts_TF_Dat" +
-                "a_Business_WMS_Product_ChildProductsPartnerSet\" Association=\"TF.Data.Business.WM" +
-                "S.TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildP" +
-                "roductsPartner\"><End Role=\"ChildProductsPartner\" EntitySet=\"Products\" /><End Rol" +
-                "e=\"ChildProducts\" EntitySet=\"Products\" /></AssociationSet><AssociationSet Name=\"" +
-                "TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_ProductPrice_PricePartne" +
-                "rSet\" Association=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Price_TF_Da" +
-                "ta_Business_WMS_ProductPrice_PricePartner\"><End Role=\"PricePartner\" EntitySet=\"P" +
-                "roducts\" /><End Role=\"Price\" EntitySet=\"ProductPrices\" /></AssociationSet></Enti" +
-                "tyContainer></Schema></edmx:DataServices></edmx:Edmx>";
+                "Namespace=\"TF.Data.Business\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/edm" +
+                "\"><EntityType Name=\"Unit\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id" +
+                "\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Key\" Type=\"Edm.String\" /><P" +
+                "roperty Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"ParentId\" Type=\"Edm.Guid" +
+                "\" /></EntityType><EntityType Name=\"Category\"><Key><PropertyRef Name=\"Id\" /></Key" +
+                "><Property Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Key\" Typ" +
+                "e=\"Edm.String\" /><Property Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"Paren" +
+                "tId\" Type=\"Edm.Guid\" /></EntityType><EntityType Name=\"Currency\"><Key><PropertyRe" +
+                "f Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Prop" +
+                "erty Name=\"Key\" Type=\"Edm.String\" /><Property Name=\"Name\" Type=\"Edm.String\" /></" +
+                "EntityType><EntityType Name=\"Location\"><Key><PropertyRef Name=\"Id\" /></Key><Prop" +
+                "erty Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"UnitId\" Type=\"" +
+                "Edm.Guid\" Nullable=\"false\" /><Property Name=\"Type\" Type=\"Edm.String\" /><Property" +
+                " Name=\"Key\" Type=\"Edm.String\" /><Property Name=\"Name\" Type=\"Edm.String\" /><Navig" +
+                "ationProperty Name=\"Unit\" Relationship=\"TF.Data.Business.TF_Data_Business_Locati" +
+                "on_Unit_TF_Data_Business_Unit_UnitPartner\" ToRole=\"Unit\" FromRole=\"UnitPartner\" " +
+                "/></EntityType><EntityType Name=\"Person\"><Key><PropertyRef Name=\"Id\" /></Key><Pr" +
+                "operty Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Firstname\" T" +
+                "ype=\"Edm.String\" /><Property Name=\"Lastname\" Type=\"Edm.String\" /><Property Name=" +
+                "\"Midname\" Type=\"Edm.String\" /><Property Name=\"Birthdate\" Type=\"Edm.DateTime\" /><" +
+                "Property Name=\"UserGuid\" Type=\"Edm.Guid\" /><Property Name=\"BatchGuid\" Type=\"Edm." +
+                "Guid\" /><Property Name=\"Hidden\" Type=\"Edm.Boolean\" Nullable=\"false\" /><Property " +
+                "Name=\"Deleted\" Type=\"Edm.Boolean\" Nullable=\"false\" /></EntityType><EntityType Na" +
+                "me=\"Uom\"><Key><PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Guid\"" +
+                " Nullable=\"false\" /><Property Name=\"Key\" Type=\"Edm.String\" /><Property Name=\"Nam" +
+                "e\" Type=\"Edm.String\" /></EntityType><Association Name=\"TF_Data_Business_Location" +
+                "_Unit_TF_Data_Business_Unit_UnitPartner\"><End Type=\"TF.Data.Business.Unit\" Role=" +
+                "\"Unit\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.Location\" Role=\"UnitPar" +
+                "tner\" Multiplicity=\"0..1\" /><ReferentialConstraint><Principal Role=\"Unit\"><Prope" +
+                "rtyRef Name=\"Id\" /></Principal><Dependent Role=\"UnitPartner\"><PropertyRef Name=\"" +
+                "UnitId\" /></Dependent></ReferentialConstraint></Association><Association Name=\"T" +
+                "F_Data_Business_WMS_Order_Customer_TF_Data_Business_Unit_CustomerPartner\"><End T" +
+                "ype=\"TF.Data.Business.Unit\" Role=\"Customer\" Multiplicity=\"0..1\" /><End Type=\"TF." +
+                "Data.Business.WMS.Order\" Role=\"CustomerPartner\" Multiplicity=\"0..1\" /></Associat" +
+                "ion><Association Name=\"TF_Data_Business_WMS_Order_Source_TF_Data_Business_Locati" +
+                "on_SourcePartner\"><End Type=\"TF.Data.Business.Location\" Role=\"Source\" Multiplici" +
+                "ty=\"0..1\" /><End Type=\"TF.Data.Business.WMS.Order\" Role=\"SourcePartner\" Multipli" +
+                "city=\"0..1\" /></Association><Association Name=\"TF_Data_Business_WMS_Order_Destin" +
+                "ation_TF_Data_Business_Location_DestinationPartner\"><End Type=\"TF.Data.Business." +
+                "Location\" Role=\"Destination\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.W" +
+                "MS.Order\" Role=\"DestinationPartner\" Multiplicity=\"0..1\" /></Association><Associa" +
+                "tion Name=\"TF_Data_Business_WMS_Order_Currency_TF_Data_Business_Currency_Currenc" +
+                "yPartner\"><End Type=\"TF.Data.Business.Currency\" Role=\"Currency\" Multiplicity=\"0." +
+                ".1\" /><End Type=\"TF.Data.Business.WMS.Order\" Role=\"CurrencyPartner\" Multiplicity" +
+                "=\"0..1\" /><ReferentialConstraint><Principal Role=\"Currency\"><PropertyRef Name=\"I" +
+                "d\" /></Principal><Dependent Role=\"CurrencyPartner\"><PropertyRef Name=\"CurrencyId" +
+                "\" /></Dependent></ReferentialConstraint></Association><Association Name=\"TF_Data" +
+                "_Business_WMS_OrderLine_Uom_TF_Data_Business_Uom_UomPartner\"><End Type=\"TF.Data." +
+                "Business.Uom\" Role=\"Uom\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.O" +
+                "rderLine\" Role=\"UomPartner\" Multiplicity=\"0..1\" /><ReferentialConstraint><Princi" +
+                "pal Role=\"Uom\"><PropertyRef Name=\"Id\" /></Principal><Dependent Role=\"UomPartner\"" +
+                "><PropertyRef Name=\"UomId\" /></Dependent></ReferentialConstraint></Association><" +
+                "/Schema><Schema Namespace=\"TF.Data.Business.WMS\" xmlns=\"http://schemas.microsoft" +
+                ".com/ado/2009/11/edm\"><EntityType Name=\"Product\"><Key><PropertyRef Name=\"Id\" /><" +
+                "/Key><Property Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Type" +
+                "\" Type=\"Edm.String\" /><Property Name=\"Key\" Type=\"Edm.String\" /><Property Name=\"N" +
+                "ame\" Type=\"Edm.String\" /><NavigationProperty Name=\"Parent\" Relationship=\"TF.Data" +
+                ".Business.WMS.TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_P" +
+                "arentPartner\" ToRole=\"Parent\" FromRole=\"ParentPartner\" /><NavigationProperty Nam" +
+                "e=\"ChildProducts\" Relationship=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Produc" +
+                "t_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartner\" ToRole=\"Child" +
+                "Products\" FromRole=\"ChildProductsPartner\" /><NavigationProperty Name=\"Price\" Rel" +
+                "ationship=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Price_TF_Data_Busin" +
+                "ess_WMS_ProductPrice_PricePartner\" ToRole=\"Price\" FromRole=\"PricePartner\" /></En" +
+                "tityType><EntityType Name=\"ProductPrice\"><Key><PropertyRef Name=\"Id\" /></Key><Pr" +
+                "operty Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"ProductId\" T" +
+                "ype=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Price\" Type=\"Edm.Double\" Nulla" +
+                "ble=\"false\" /></EntityType><EntityType Name=\"Order\"><Key><PropertyRef Name=\"Id\" " +
+                "/></Key><Property Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"T" +
+                "ype\" Type=\"Edm.String\" /><Property Name=\"DueDate\" Type=\"Edm.DateTime\" Nullable=\"" +
+                "false\" /><Property Name=\"Number\" Type=\"Edm.String\" /><Property Name=\"Date\" Type=" +
+                "\"Edm.DateTime\" Nullable=\"false\" /><Property Name=\"CustomerId\" Type=\"Edm.Guid\" Nu" +
+                "llable=\"false\" /><Property Name=\"SourceId\" Type=\"Edm.Guid\" Nullable=\"false\" /><P" +
+                "roperty Name=\"DestinationId\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"" +
+                "CurrencyId\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"LinesCount\" Type=" +
+                "\"Edm.Int16\" Nullable=\"false\" /><Property Name=\"Amount\" Type=\"Edm.Single\" Nullabl" +
+                "e=\"false\" /><Property Name=\"BaseAmount\" Type=\"Edm.Single\" Nullable=\"false\" /><Na" +
+                "vigationProperty Name=\"Customer\" Relationship=\"TF.Data.Business.TF_Data_Business" +
+                "_WMS_Order_Customer_TF_Data_Business_Unit_CustomerPartner\" ToRole=\"Customer\" Fro" +
+                "mRole=\"CustomerPartner\" /><NavigationProperty Name=\"Source\" Relationship=\"TF.Dat" +
+                "a.Business.TF_Data_Business_WMS_Order_Source_TF_Data_Business_Location_SourcePar" +
+                "tner\" ToRole=\"Source\" FromRole=\"SourcePartner\" /><NavigationProperty Name=\"Desti" +
+                "nation\" Relationship=\"TF.Data.Business.TF_Data_Business_WMS_Order_Destination_TF" +
+                "_Data_Business_Location_DestinationPartner\" ToRole=\"Destination\" FromRole=\"Desti" +
+                "nationPartner\" /><NavigationProperty Name=\"Currency\" Relationship=\"TF.Data.Busin" +
+                "ess.TF_Data_Business_WMS_Order_Currency_TF_Data_Business_Currency_CurrencyPartne" +
+                "r\" ToRole=\"Currency\" FromRole=\"CurrencyPartner\" /><NavigationProperty Name=\"Line" +
+                "s\" Relationship=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Order_Lines_TF_Data_B" +
+                "usiness_WMS_OrderLine_LinesPartner\" ToRole=\"Lines\" FromRole=\"LinesPartner\" /></E" +
+                "ntityType><EntityType Name=\"OrderLine\"><Key><PropertyRef Name=\"Id\" /></Key><Prop" +
+                "erty Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property";
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+            private const string ModelPart1 = " Name=\"OrderId\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Priority\" Type" +
+                "=\"Edm.Int16\" Nullable=\"false\" /><Property Name=\"ItemId\" Type=\"Edm.Guid\" Nullable" +
+                "=\"false\" /><Property Name=\"UomId\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property N" +
+                "ame=\"Qty\" Type=\"Edm.Single\" Nullable=\"false\" /><Property Name=\"BaseQty\" Type=\"Ed" +
+                "m.Single\" Nullable=\"false\" /><Property Name=\"Price\" Type=\"Edm.Single\" Nullable=\"" +
+                "false\" /><Property Name=\"BasePrice\" Type=\"Edm.Single\" Nullable=\"false\" /><Proper" +
+                "ty Name=\"Amount\" Type=\"Edm.Single\" Nullable=\"false\" /><Property Name=\"BaseAmount" +
+                "\" Type=\"Edm.Single\" Nullable=\"false\" /><NavigationProperty Name=\"Order\" Relation" +
+                "ship=\"TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLine_Order_TF_Data_Business" +
+                "_WMS_Order_OrderPartner\" ToRole=\"Order\" FromRole=\"OrderPartner\" /><NavigationPro" +
+                "perty Name=\"Item\" Relationship=\"TF.Data.Business.WMS.TF_Data_Business_WMS_OrderL" +
+                "ine_Item_TF_Data_Business_WMS_Product_ItemPartner\" ToRole=\"Item\" FromRole=\"ItemP" +
+                "artner\" /><NavigationProperty Name=\"Uom\" Relationship=\"TF.Data.Business.TF_Data_" +
+                "Business_WMS_OrderLine_Uom_TF_Data_Business_Uom_UomPartner\" ToRole=\"Uom\" FromRol" +
+                "e=\"UomPartner\" /></EntityType><Association Name=\"TF_Data_Business_WMS_Product_Pa" +
+                "rent_TF_Data_Business_WMS_Product_ParentPartner\"><End Type=\"TF.Data.Business.WMS" +
+                ".Product\" Role=\"Parent\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.Pr" +
+                "oduct\" Role=\"ParentPartner\" Multiplicity=\"0..1\" /></Association><Association Nam" +
+                "e=\"TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_Child" +
+                "ProductsPartner\"><End Type=\"TF.Data.Business.WMS.Product\" Role=\"ChildProducts\" M" +
+                "ultiplicity=\"*\" /><End Type=\"TF.Data.Business.WMS.Product\" Role=\"ChildProductsPa" +
+                "rtner\" Multiplicity=\"0..1\" /></Association><Association Name=\"TF_Data_Business_W" +
+                "MS_Product_Price_TF_Data_Business_WMS_ProductPrice_PricePartner\"><End Type=\"TF.D" +
+                "ata.Business.WMS.ProductPrice\" Role=\"Price\" Multiplicity=\"0..1\" /><End Type=\"TF." +
+                "Data.Business.WMS.Product\" Role=\"PricePartner\" Multiplicity=\"0..1\" /></Associati" +
+                "on><Association Name=\"TF_Data_Business_WMS_Order_Lines_TF_Data_Business_WMS_Orde" +
+                "rLine_LinesPartner\"><End Type=\"TF.Data.Business.WMS.OrderLine\" Role=\"Lines\" Mult" +
+                "iplicity=\"*\" /><End Type=\"TF.Data.Business.WMS.Order\" Role=\"LinesPartner\" Multip" +
+                "licity=\"0..1\" /></Association><Association Name=\"TF_Data_Business_WMS_OrderLine_" +
+                "Order_TF_Data_Business_WMS_Order_OrderPartner\"><End Type=\"TF.Data.Business.WMS.O" +
+                "rder\" Role=\"Order\" Multiplicity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.OrderLi" +
+                "ne\" Role=\"OrderPartner\" Multiplicity=\"0..1\" /><ReferentialConstraint><Principal " +
+                "Role=\"Order\"><PropertyRef Name=\"Id\" /></Principal><Dependent Role=\"OrderPartner\"" +
+                "><PropertyRef Name=\"OrderId\" /></Dependent></ReferentialConstraint></Association" +
+                "><Association Name=\"TF_Data_Business_WMS_OrderLine_Item_TF_Data_Business_WMS_Pro" +
+                "duct_ItemPartner\"><End Type=\"TF.Data.Business.WMS.Product\" Role=\"Item\" Multiplic" +
+                "ity=\"0..1\" /><End Type=\"TF.Data.Business.WMS.OrderLine\" Role=\"ItemPartner\" Multi" +
+                "plicity=\"0..1\" /></Association></Schema><Schema Namespace=\"TF.Data.Systems\" xmln" +
+                "s=\"http://schemas.microsoft.com/ado/2009/11/edm\"><EntityType Name=\"Entity\"><Key>" +
+                "<PropertyRef Name=\"Id\" /></Key><Property Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"fal" +
+                "se\" /><Property Name=\"Key\" Type=\"Edm.String\" /><Property Name=\"Name\" Type=\"Edm.S" +
+                "tring\" /><Property Name=\"ParentId\" Type=\"Edm.Guid\" /></EntityType></Schema><Sche" +
+                "ma Namespace=\"TF.Data.Systems.Security\" xmlns=\"http://schemas.microsoft.com/ado/" +
+                "2009/11/edm\"><EntityType Name=\"Role\"><Key><PropertyRef Name=\"Id\" /></Key><Proper" +
+                "ty Name=\"Id\" Type=\"Edm.Guid\" Nullable=\"false\" /><Property Name=\"Key\" Type=\"Edm.S" +
+                "tring\" /><Property Name=\"Name\" Type=\"Edm.String\" /><Property Name=\"BatchGuid\" Ty" +
+                "pe=\"Edm.Guid\" /><Property Name=\"Hidden\" Type=\"Edm.Boolean\" Nullable=\"false\" /><P" +
+                "roperty Name=\"Deleted\" Type=\"Edm.Boolean\" Nullable=\"false\" /></EntityType></Sche" +
+                "ma><Schema Namespace=\"Default\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/e" +
+                "dm\"><EntityContainer Name=\"Container\" m:IsDefaultEntityContainer=\"true\"><EntityS" +
+                "et Name=\"Units\" EntityType=\"TF.Data.Business.Unit\" /><EntitySet Name=\"Products\" " +
+                "EntityType=\"TF.Data.Business.WMS.Product\" /><EntitySet Name=\"Categories\" EntityT" +
+                "ype=\"TF.Data.Business.Category\" /><EntitySet Name=\"ProductPrices\" EntityType=\"TF" +
+                ".Data.Business.WMS.ProductPrice\" /><EntitySet Name=\"Currencies\" EntityType=\"TF.D" +
+                "ata.Business.Currency\" /><EntitySet Name=\"Entities\" EntityType=\"TF.Data.Systems." +
+                "Entity\" /><EntitySet Name=\"Locations\" EntityType=\"TF.Data.Business.Location\" /><" +
+                "EntitySet Name=\"Orders\" EntityType=\"TF.Data.Business.WMS.Order\" /><EntitySet Nam" +
+                "e=\"Persons\" EntityType=\"TF.Data.Business.Person\" /><EntitySet Name=\"Roles\" Entit" +
+                "yType=\"TF.Data.Systems.Security.Role\" /><EntitySet Name=\"Uoms\" EntityType=\"TF.Da" +
+                "ta.Business.Uom\" /><AssociationSet Name=\"TF_Data_Business_WMS_Product_Parent_TF_" +
+                "Data_Business_WMS_Product_ParentPartnerSet\" Association=\"TF.Data.Business.WMS.TF" +
+                "_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner\"><E" +
+                "nd Role=\"ParentPartner\" EntitySet=\"Products\" /><End Role=\"Parent\" EntitySet=\"Pro" +
+                "ducts\" /></AssociationSet><AssociationSet Name=\"TF_Data_Business_WMS_Product_Chi" +
+                "ldProducts_TF_Data_Business_WMS_Product_ChildProductsPartnerSet\" Association=\"TF" +
+                ".Data.Business.WMS.TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_W" +
+                "MS_Product_ChildProductsPartner\"><End Role=\"ChildProductsPartner\" EntitySet=\"Pro" +
+                "ducts\" /><End Role=\"ChildProducts\" EntitySet=\"Products\" /></AssociationSet><Asso" +
+                "ciationSet Name=\"TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_Product" +
+                "Price_PricePartnerSet\" Association=\"TF.Data.Business.WMS.TF_Data_Business_WMS_Pr" +
+                "oduct_Price_TF_Data_Business_WMS_ProductPrice_PricePartner\"><End Role=\"PricePart" +
+                "ner\" EntitySet=\"Products\" /><End Role=\"Price\" EntitySet=\"ProductPrices\" /></Asso" +
+                "ciationSet><AssociationSet Name=\"TF_Data_Business_Location_Unit_TF_Data_Business" +
+                "_Unit_UnitPartnerSet\" Association=\"TF.Data.Business.TF_Data_Business_Location_Un" +
+                "it_TF_Data_Business_Unit_UnitPartner\"><End Role=\"UnitPartner\" EntitySet=\"Locatio" +
+                "ns\" /><End Role=\"Unit\" EntitySet=\"Units\" /></AssociationSet><AssociationSet Name" +
+                "=\"TF_Data_Business_WMS_Order_Customer_TF_Data_Business_Unit_CustomerPartnerSet\" " +
+                "Association=\"TF.Data.Business.TF_Data_Business_WMS_Order_Customer_TF_Data_Busine" +
+                "ss_Unit_CustomerPartner\"><End Role=\"CustomerPartner\" EntitySet=\"Orders\" /><End R" +
+                "ole=\"Customer\" EntitySet=\"Units\" /></AssociationSet><AssociationSet Name=\"TF_Dat" +
+                "a_Business_WMS_Order_Source_TF_Data_Business_Location_SourcePartnerSet\" Associat" +
+                "ion=\"TF.Data.Business.TF_Data_Business_WMS_Order_Source_TF_Data_Business_Locatio" +
+                "n_SourcePartner\"><End Role=\"SourcePartner\" EntitySet=\"Orders\" /><End Role=\"Sourc" +
+                "e\" EntitySet=\"Locations\" /></AssociationSet><AssociationSet Name=\"TF_Data_Busine" +
+                "ss_WMS_Order_Destination_TF_Data_Business_Location_DestinationPartnerSet\" Associ" +
+                "ation=\"TF.Data.Business.TF_Data_Business_WMS_Order_Destination_TF_Data_Business_" +
+                "Location_DestinationPartner\"><End Role=\"DestinationPartner\" EntitySet=\"Orders\" /" +
+                "><End Role=\"Destination\" EntitySet=\"Locations\" /></AssociationSet><AssociationSe" +
+                "t Name=\"TF_Data_Business_WMS_Order_Currency_TF_Data_Business_Currency_CurrencyPa" +
+                "rtnerSet\" Association=\"TF.Data.Business.TF_Data_Business_WMS_Order_Currency_TF_D" +
+                "ata_Business_Currency_CurrencyPartner\"><End Role=\"CurrencyPartner\" EntitySet=\"Or" +
+                "ders\" /><End Role=\"Currency\" EntitySet=\"Currencies\" /></AssociationSet></EntityC" +
+                "ontainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
-                return string.Concat(ModelPart0);
+                return string.Concat(ModelPart0, ModelPart1);
             }
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             public static global::Microsoft.Data.Edm.IEdmModel GetInstance()
@@ -230,6 +584,1595 @@ namespace TF.Web.API.Test.NoodleService
             private static global::System.Xml.XmlReader CreateXmlReader(string edmxToParse)
             {
                 return global::System.Xml.XmlReader.Create(new global::System.IO.StringReader(edmxToParse));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.Unit.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Units")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Unit : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Unit.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Unit CreateUnit(global::System.Guid ID)
+        {
+            Unit unit = new Unit();
+            unit.Id = ID;
+            return unit;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Key.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Key
+        {
+            get
+            {
+                return this._Key;
+            }
+            set
+            {
+                this.OnKeyChanging(value);
+                this._Key = value;
+                this.OnKeyChanged();
+                this.OnPropertyChanged("Key");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Key;
+        partial void OnKeyChanging(string value);
+        partial void OnKeyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства ParentId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<global::System.Guid> ParentId
+        {
+            get
+            {
+                return this._ParentId;
+            }
+            set
+            {
+                this.OnParentIdChanging(value);
+                this._ParentId = value;
+                this.OnParentIdChanged();
+                this.OnPropertyChanged("ParentId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<global::System.Guid> _ParentId;
+        partial void OnParentIdChanging(global::System.Nullable<global::System.Guid> value);
+        partial void OnParentIdChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.Category.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Categories")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Category : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Category.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Category CreateCategory(global::System.Guid ID)
+        {
+            Category category = new Category();
+            category.Id = ID;
+            return category;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Key.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Key
+        {
+            get
+            {
+                return this._Key;
+            }
+            set
+            {
+                this.OnKeyChanging(value);
+                this._Key = value;
+                this.OnKeyChanged();
+                this.OnPropertyChanged("Key");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Key;
+        partial void OnKeyChanging(string value);
+        partial void OnKeyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства ParentId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<global::System.Guid> ParentId
+        {
+            get
+            {
+                return this._ParentId;
+            }
+            set
+            {
+                this.OnParentIdChanging(value);
+                this._ParentId = value;
+                this.OnParentIdChanged();
+                this.OnPropertyChanged("ParentId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<global::System.Guid> _ParentId;
+        partial void OnParentIdChanging(global::System.Nullable<global::System.Guid> value);
+        partial void OnParentIdChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.Currency.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Currencies")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Currency : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Currency.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Currency CreateCurrency(global::System.Guid ID)
+        {
+            Currency currency = new Currency();
+            currency.Id = ID;
+            return currency;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Key.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Key
+        {
+            get
+            {
+                return this._Key;
+            }
+            set
+            {
+                this.OnKeyChanging(value);
+                this._Key = value;
+                this.OnKeyChanged();
+                this.OnPropertyChanged("Key");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Key;
+        partial void OnKeyChanging(string value);
+        partial void OnKeyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.Location.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Locations")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Location : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Location.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        /// <param name="unitId">Начальное значение UnitId.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Location CreateLocation(global::System.Guid ID, global::System.Guid unitId)
+        {
+            Location location = new Location();
+            location.Id = ID;
+            location.UnitId = unitId;
+            return location;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства UnitId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid UnitId
+        {
+            get
+            {
+                return this._UnitId;
+            }
+            set
+            {
+                this.OnUnitIdChanging(value);
+                this._UnitId = value;
+                this.OnUnitIdChanged();
+                this.OnPropertyChanged("UnitId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _UnitId;
+        partial void OnUnitIdChanging(global::System.Guid value);
+        partial void OnUnitIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Type.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Type
+        {
+            get
+            {
+                return this._Type;
+            }
+            set
+            {
+                this.OnTypeChanging(value);
+                this._Type = value;
+                this.OnTypeChanged();
+                this.OnPropertyChanged("Type");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Type;
+        partial void OnTypeChanging(string value);
+        partial void OnTypeChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Key.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Key
+        {
+            get
+            {
+                return this._Key;
+            }
+            set
+            {
+                this.OnKeyChanging(value);
+                this._Key = value;
+                this.OnKeyChanged();
+                this.OnPropertyChanged("Key");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Key;
+        partial void OnKeyChanging(string value);
+        partial void OnKeyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Unit.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Unit Unit
+        {
+            get
+            {
+                return this._Unit;
+            }
+            set
+            {
+                this._Unit = value;
+                this.OnPropertyChanged("Unit");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Unit _Unit;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.Person.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Persons")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Person : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Person.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        /// <param name="hidden">Начальное значение Hidden.</param>
+        /// <param name="deleted">Начальное значение Deleted.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Person CreatePerson(global::System.Guid ID, bool hidden, bool deleted)
+        {
+            Person person = new Person();
+            person.Id = ID;
+            person.Hidden = hidden;
+            person.Deleted = deleted;
+            return person;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Firstname.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Firstname
+        {
+            get
+            {
+                return this._Firstname;
+            }
+            set
+            {
+                this.OnFirstnameChanging(value);
+                this._Firstname = value;
+                this.OnFirstnameChanged();
+                this.OnPropertyChanged("Firstname");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Firstname;
+        partial void OnFirstnameChanging(string value);
+        partial void OnFirstnameChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Lastname.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Lastname
+        {
+            get
+            {
+                return this._Lastname;
+            }
+            set
+            {
+                this.OnLastnameChanging(value);
+                this._Lastname = value;
+                this.OnLastnameChanged();
+                this.OnPropertyChanged("Lastname");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Lastname;
+        partial void OnLastnameChanging(string value);
+        partial void OnLastnameChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Midname.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Midname
+        {
+            get
+            {
+                return this._Midname;
+            }
+            set
+            {
+                this.OnMidnameChanging(value);
+                this._Midname = value;
+                this.OnMidnameChanged();
+                this.OnPropertyChanged("Midname");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Midname;
+        partial void OnMidnameChanging(string value);
+        partial void OnMidnameChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Birthdate.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<global::System.DateTime> Birthdate
+        {
+            get
+            {
+                return this._Birthdate;
+            }
+            set
+            {
+                this.OnBirthdateChanging(value);
+                this._Birthdate = value;
+                this.OnBirthdateChanged();
+                this.OnPropertyChanged("Birthdate");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<global::System.DateTime> _Birthdate;
+        partial void OnBirthdateChanging(global::System.Nullable<global::System.DateTime> value);
+        partial void OnBirthdateChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства UserGuid.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<global::System.Guid> UserGuid
+        {
+            get
+            {
+                return this._UserGuid;
+            }
+            set
+            {
+                this.OnUserGuidChanging(value);
+                this._UserGuid = value;
+                this.OnUserGuidChanged();
+                this.OnPropertyChanged("UserGuid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<global::System.Guid> _UserGuid;
+        partial void OnUserGuidChanging(global::System.Nullable<global::System.Guid> value);
+        partial void OnUserGuidChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства BatchGuid.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<global::System.Guid> BatchGuid
+        {
+            get
+            {
+                return this._BatchGuid;
+            }
+            set
+            {
+                this.OnBatchGuidChanging(value);
+                this._BatchGuid = value;
+                this.OnBatchGuidChanged();
+                this.OnPropertyChanged("BatchGuid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<global::System.Guid> _BatchGuid;
+        partial void OnBatchGuidChanging(global::System.Nullable<global::System.Guid> value);
+        partial void OnBatchGuidChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Hidden.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool Hidden
+        {
+            get
+            {
+                return this._Hidden;
+            }
+            set
+            {
+                this.OnHiddenChanging(value);
+                this._Hidden = value;
+                this.OnHiddenChanged();
+                this.OnPropertyChanged("Hidden");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _Hidden;
+        partial void OnHiddenChanging(bool value);
+        partial void OnHiddenChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Deleted.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool Deleted
+        {
+            get
+            {
+                return this._Deleted;
+            }
+            set
+            {
+                this.OnDeletedChanging(value);
+                this._Deleted = value;
+                this.OnDeletedChanged();
+                this.OnPropertyChanged("Deleted");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _Deleted;
+        partial void OnDeletedChanging(bool value);
+        partial void OnDeletedChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.Uom.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Uoms")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Uom : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Uom.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Uom CreateUom(global::System.Guid ID)
+        {
+            Uom uom = new Uom();
+            uom.Id = ID;
+            return uom;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Key.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Key
+        {
+            get
+            {
+                return this._Key;
+            }
+            set
+            {
+                this.OnKeyChanging(value);
+                this._Key = value;
+                this.OnKeyChanged();
+                this.OnPropertyChanged("Key");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Key;
+        partial void OnKeyChanging(string value);
+        partial void OnKeyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+}
+// Исходное имя файла:
+// Дата создания: 03.04.2016 11:46:49
+namespace TF.Data.Business.WMS
+{
+    
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.WMS.Order.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Orders")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Order : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Order.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        /// <param name="dueDate">Начальное значение DueDate.</param>
+        /// <param name="date">Начальное значение Date.</param>
+        /// <param name="customerId">Начальное значение CustomerId.</param>
+        /// <param name="sourceId">Начальное значение SourceId.</param>
+        /// <param name="destinationId">Начальное значение DestinationId.</param>
+        /// <param name="currencyId">Начальное значение CurrencyId.</param>
+        /// <param name="linesCount">Начальное значение LinesCount.</param>
+        /// <param name="amount">Начальное значение Amount.</param>
+        /// <param name="baseAmount">Начальное значение BaseAmount.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Order CreateOrder(global::System.Guid ID, global::System.DateTime dueDate, global::System.DateTime date, global::System.Guid customerId, global::System.Guid sourceId, global::System.Guid destinationId, global::System.Guid currencyId, short linesCount, float amount, float baseAmount)
+        {
+            Order order = new Order();
+            order.Id = ID;
+            order.DueDate = dueDate;
+            order.Date = date;
+            order.CustomerId = customerId;
+            order.SourceId = sourceId;
+            order.DestinationId = destinationId;
+            order.CurrencyId = currencyId;
+            order.LinesCount = linesCount;
+            order.Amount = amount;
+            order.BaseAmount = baseAmount;
+            return order;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Type.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Type
+        {
+            get
+            {
+                return this._Type;
+            }
+            set
+            {
+                this.OnTypeChanging(value);
+                this._Type = value;
+                this.OnTypeChanged();
+                this.OnPropertyChanged("Type");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Type;
+        partial void OnTypeChanging(string value);
+        partial void OnTypeChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства DueDate.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.DateTime DueDate
+        {
+            get
+            {
+                return this._DueDate;
+            }
+            set
+            {
+                this.OnDueDateChanging(value);
+                this._DueDate = value;
+                this.OnDueDateChanged();
+                this.OnPropertyChanged("DueDate");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.DateTime _DueDate;
+        partial void OnDueDateChanging(global::System.DateTime value);
+        partial void OnDueDateChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Number.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Number
+        {
+            get
+            {
+                return this._Number;
+            }
+            set
+            {
+                this.OnNumberChanging(value);
+                this._Number = value;
+                this.OnNumberChanged();
+                this.OnPropertyChanged("Number");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Number;
+        partial void OnNumberChanging(string value);
+        partial void OnNumberChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Date.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return this._Date;
+            }
+            set
+            {
+                this.OnDateChanging(value);
+                this._Date = value;
+                this.OnDateChanged();
+                this.OnPropertyChanged("Date");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства CustomerId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid CustomerId
+        {
+            get
+            {
+                return this._CustomerId;
+            }
+            set
+            {
+                this.OnCustomerIdChanging(value);
+                this._CustomerId = value;
+                this.OnCustomerIdChanged();
+                this.OnPropertyChanged("CustomerId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _CustomerId;
+        partial void OnCustomerIdChanging(global::System.Guid value);
+        partial void OnCustomerIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства SourceId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid SourceId
+        {
+            get
+            {
+                return this._SourceId;
+            }
+            set
+            {
+                this.OnSourceIdChanging(value);
+                this._SourceId = value;
+                this.OnSourceIdChanged();
+                this.OnPropertyChanged("SourceId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _SourceId;
+        partial void OnSourceIdChanging(global::System.Guid value);
+        partial void OnSourceIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства DestinationId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid DestinationId
+        {
+            get
+            {
+                return this._DestinationId;
+            }
+            set
+            {
+                this.OnDestinationIdChanging(value);
+                this._DestinationId = value;
+                this.OnDestinationIdChanged();
+                this.OnPropertyChanged("DestinationId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _DestinationId;
+        partial void OnDestinationIdChanging(global::System.Guid value);
+        partial void OnDestinationIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства CurrencyId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid CurrencyId
+        {
+            get
+            {
+                return this._CurrencyId;
+            }
+            set
+            {
+                this.OnCurrencyIdChanging(value);
+                this._CurrencyId = value;
+                this.OnCurrencyIdChanged();
+                this.OnPropertyChanged("CurrencyId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _CurrencyId;
+        partial void OnCurrencyIdChanging(global::System.Guid value);
+        partial void OnCurrencyIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства LinesCount.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public short LinesCount
+        {
+            get
+            {
+                return this._LinesCount;
+            }
+            set
+            {
+                this.OnLinesCountChanging(value);
+                this._LinesCount = value;
+                this.OnLinesCountChanged();
+                this.OnPropertyChanged("LinesCount");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private short _LinesCount;
+        partial void OnLinesCountChanging(short value);
+        partial void OnLinesCountChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Amount.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float Amount
+        {
+            get
+            {
+                return this._Amount;
+            }
+            set
+            {
+                this.OnAmountChanging(value);
+                this._Amount = value;
+                this.OnAmountChanged();
+                this.OnPropertyChanged("Amount");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _Amount;
+        partial void OnAmountChanging(float value);
+        partial void OnAmountChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства BaseAmount.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float BaseAmount
+        {
+            get
+            {
+                return this._BaseAmount;
+            }
+            set
+            {
+                this.OnBaseAmountChanging(value);
+                this._BaseAmount = value;
+                this.OnBaseAmountChanged();
+                this.OnPropertyChanged("BaseAmount");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _BaseAmount;
+        partial void OnBaseAmountChanging(float value);
+        partial void OnBaseAmountChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Customer.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public TF.Web.API.Test.NoodleService.Unit Customer
+        {
+            get
+            {
+                return this._Customer;
+            }
+            set
+            {
+                this._Customer = value;
+                this.OnPropertyChanged("Customer");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private TF.Web.API.Test.NoodleService.Unit _Customer;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Source.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public TF.Web.API.Test.NoodleService.Location Source
+        {
+            get
+            {
+                return this._Source;
+            }
+            set
+            {
+                this._Source = value;
+                this.OnPropertyChanged("Source");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private TF.Web.API.Test.NoodleService.Location _Source;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Destination.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public TF.Web.API.Test.NoodleService.Location Destination
+        {
+            get
+            {
+                return this._Destination;
+            }
+            set
+            {
+                this._Destination = value;
+                this.OnPropertyChanged("Destination");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private TF.Web.API.Test.NoodleService.Location _Destination;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Currency.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public TF.Web.API.Test.NoodleService.Currency Currency
+        {
+            get
+            {
+                return this._Currency;
+            }
+            set
+            {
+                this._Currency = value;
+                this.OnPropertyChanged("Currency");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private TF.Web.API.Test.NoodleService.Currency _Currency;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Lines.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceCollection<OrderLine> Lines
+        {
+            get
+            {
+                return this._Lines;
+            }
+            set
+            {
+                this._Lines = value;
+                this.OnPropertyChanged("Lines");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceCollection<OrderLine> _Lines = new global::System.Data.Services.Client.DataServiceCollection<OrderLine>(null, global::System.Data.Services.Client.TrackingMode.None);
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Business.WMS.OrderLine.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class OrderLine : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект OrderLine.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        /// <param name="orderId">Начальное значение OrderId.</param>
+        /// <param name="priority">Начальное значение Priority.</param>
+        /// <param name="itemId">Начальное значение ItemId.</param>
+        /// <param name="uomId">Начальное значение UomId.</param>
+        /// <param name="qty">Начальное значение Qty.</param>
+        /// <param name="baseQty">Начальное значение BaseQty.</param>
+        /// <param name="price">Начальное значение Price.</param>
+        /// <param name="basePrice">Начальное значение BasePrice.</param>
+        /// <param name="amount">Начальное значение Amount.</param>
+        /// <param name="baseAmount">Начальное значение BaseAmount.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static OrderLine CreateOrderLine(global::System.Guid ID, global::System.Guid orderId, short priority, global::System.Guid itemId, global::System.Guid uomId, float qty, float baseQty, float price, float basePrice, float amount, float baseAmount)
+        {
+            OrderLine orderLine = new OrderLine();
+            orderLine.Id = ID;
+            orderLine.OrderId = orderId;
+            orderLine.Priority = priority;
+            orderLine.ItemId = itemId;
+            orderLine.UomId = uomId;
+            orderLine.Qty = qty;
+            orderLine.BaseQty = baseQty;
+            orderLine.Price = price;
+            orderLine.BasePrice = basePrice;
+            orderLine.Amount = amount;
+            orderLine.BaseAmount = baseAmount;
+            return orderLine;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства OrderId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid OrderId
+        {
+            get
+            {
+                return this._OrderId;
+            }
+            set
+            {
+                this.OnOrderIdChanging(value);
+                this._OrderId = value;
+                this.OnOrderIdChanged();
+                this.OnPropertyChanged("OrderId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _OrderId;
+        partial void OnOrderIdChanging(global::System.Guid value);
+        partial void OnOrderIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Priority.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public short Priority
+        {
+            get
+            {
+                return this._Priority;
+            }
+            set
+            {
+                this.OnPriorityChanging(value);
+                this._Priority = value;
+                this.OnPriorityChanged();
+                this.OnPropertyChanged("Priority");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private short _Priority;
+        partial void OnPriorityChanging(short value);
+        partial void OnPriorityChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства ItemId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid ItemId
+        {
+            get
+            {
+                return this._ItemId;
+            }
+            set
+            {
+                this.OnItemIdChanging(value);
+                this._ItemId = value;
+                this.OnItemIdChanged();
+                this.OnPropertyChanged("ItemId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _ItemId;
+        partial void OnItemIdChanging(global::System.Guid value);
+        partial void OnItemIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства UomId.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid UomId
+        {
+            get
+            {
+                return this._UomId;
+            }
+            set
+            {
+                this.OnUomIdChanging(value);
+                this._UomId = value;
+                this.OnUomIdChanged();
+                this.OnPropertyChanged("UomId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _UomId;
+        partial void OnUomIdChanging(global::System.Guid value);
+        partial void OnUomIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Qty.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float Qty
+        {
+            get
+            {
+                return this._Qty;
+            }
+            set
+            {
+                this.OnQtyChanging(value);
+                this._Qty = value;
+                this.OnQtyChanged();
+                this.OnPropertyChanged("Qty");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _Qty;
+        partial void OnQtyChanging(float value);
+        partial void OnQtyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства BaseQty.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float BaseQty
+        {
+            get
+            {
+                return this._BaseQty;
+            }
+            set
+            {
+                this.OnBaseQtyChanging(value);
+                this._BaseQty = value;
+                this.OnBaseQtyChanged();
+                this.OnPropertyChanged("BaseQty");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _BaseQty;
+        partial void OnBaseQtyChanging(float value);
+        partial void OnBaseQtyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Price.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float Price
+        {
+            get
+            {
+                return this._Price;
+            }
+            set
+            {
+                this.OnPriceChanging(value);
+                this._Price = value;
+                this.OnPriceChanged();
+                this.OnPropertyChanged("Price");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _Price;
+        partial void OnPriceChanging(float value);
+        partial void OnPriceChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства BasePrice.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float BasePrice
+        {
+            get
+            {
+                return this._BasePrice;
+            }
+            set
+            {
+                this.OnBasePriceChanging(value);
+                this._BasePrice = value;
+                this.OnBasePriceChanged();
+                this.OnPropertyChanged("BasePrice");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _BasePrice;
+        partial void OnBasePriceChanging(float value);
+        partial void OnBasePriceChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Amount.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float Amount
+        {
+            get
+            {
+                return this._Amount;
+            }
+            set
+            {
+                this.OnAmountChanging(value);
+                this._Amount = value;
+                this.OnAmountChanged();
+                this.OnPropertyChanged("Amount");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _Amount;
+        partial void OnAmountChanging(float value);
+        partial void OnAmountChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства BaseAmount.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public float BaseAmount
+        {
+            get
+            {
+                return this._BaseAmount;
+            }
+            set
+            {
+                this.OnBaseAmountChanging(value);
+                this._BaseAmount = value;
+                this.OnBaseAmountChanged();
+                this.OnPropertyChanged("BaseAmount");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private float _BaseAmount;
+        partial void OnBaseAmountChanging(float value);
+        partial void OnBaseAmountChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Order.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Order Order
+        {
+            get
+            {
+                return this._Order;
+            }
+            set
+            {
+                this._Order = value;
+                this.OnPropertyChanged("Order");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Order _Order;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Item.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public Product Item
+        {
+            get
+            {
+                return this._Item;
+            }
+            set
+            {
+                this._Item = value;
+                this.OnPropertyChanged("Item");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private Product _Item;
+        /// <summary>
+        /// В схеме отсутствуют комментарии для Uom.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public TF.Web.API.Test.NoodleService.Uom Uom
+        {
+            get
+            {
+                return this._Uom;
+            }
+            set
+            {
+                this._Uom = value;
+                this.OnPropertyChanged("Uom");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private TF.Web.API.Test.NoodleService.Uom _Uom;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
             }
         }
     }
@@ -511,30 +2454,30 @@ namespace TF.Web.API.Test.NoodleService
     }
 }
 // Исходное имя файла:
-// Дата создания: 27.03.2016 12:14:52
-namespace TF.Data.Business
+// Дата создания: 03.04.2016 11:46:49
+namespace TF.Data.Systems
 {
     
     /// <summary>
-    /// В схеме отсутствуют комментарии для TF.Data.Business.Category.
+    /// В схеме отсутствуют комментарии для TF.Data.Systems.Entity.
     /// </summary>
     /// <KeyProperties>
     /// Id
     /// </KeyProperties>
-    [global::System.Data.Services.Common.EntitySetAttribute("Categories")]
+    [global::System.Data.Services.Common.EntitySetAttribute("Entities")]
     [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
-    public partial class Category : global::System.ComponentModel.INotifyPropertyChanged
+    public partial class Entity : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
-        /// Создайте новый объект Category.
+        /// Создайте новый объект Entity.
         /// </summary>
         /// <param name="ID">Начальное значение Id.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static Category CreateCategory(global::System.Guid ID)
+        public static Entity CreateEntity(global::System.Guid ID)
         {
-            Category category = new Category();
-            category.Id = ID;
-            return category;
+            Entity entity = new Entity();
+            entity.Id = ID;
+            return entity;
         }
         /// <summary>
         /// В схеме отсутствуют комментарии для свойства Id.
@@ -624,6 +2567,180 @@ namespace TF.Data.Business
         private global::System.Nullable<global::System.Guid> _ParentId;
         partial void OnParentIdChanging(global::System.Nullable<global::System.Guid> value);
         partial void OnParentIdChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+}
+// Исходное имя файла:
+// Дата создания: 03.04.2016 11:46:49
+namespace TF.Data.Systems.Security
+{
+    
+    /// <summary>
+    /// В схеме отсутствуют комментарии для TF.Data.Systems.Security.Role.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("Roles")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Id")]
+    public partial class Role : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Создайте новый объект Role.
+        /// </summary>
+        /// <param name="ID">Начальное значение Id.</param>
+        /// <param name="hidden">Начальное значение Hidden.</param>
+        /// <param name="deleted">Начальное значение Deleted.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static Role CreateRole(global::System.Guid ID, bool hidden, bool deleted)
+        {
+            Role role = new Role();
+            role.Id = ID;
+            role.Hidden = hidden;
+            role.Deleted = deleted;
+            return role;
+        }
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Id.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Key.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Key
+        {
+            get
+            {
+                return this._Key;
+            }
+            set
+            {
+                this.OnKeyChanging(value);
+                this._Key = value;
+                this.OnKeyChanged();
+                this.OnPropertyChanged("Key");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Key;
+        partial void OnKeyChanging(string value);
+        partial void OnKeyChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Name.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this._Name = value;
+                this.OnNameChanged();
+                this.OnPropertyChanged("Name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства BatchGuid.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<global::System.Guid> BatchGuid
+        {
+            get
+            {
+                return this._BatchGuid;
+            }
+            set
+            {
+                this.OnBatchGuidChanging(value);
+                this._BatchGuid = value;
+                this.OnBatchGuidChanged();
+                this.OnPropertyChanged("BatchGuid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<global::System.Guid> _BatchGuid;
+        partial void OnBatchGuidChanging(global::System.Nullable<global::System.Guid> value);
+        partial void OnBatchGuidChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Hidden.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool Hidden
+        {
+            get
+            {
+                return this._Hidden;
+            }
+            set
+            {
+                this.OnHiddenChanging(value);
+                this._Hidden = value;
+                this.OnHiddenChanged();
+                this.OnPropertyChanged("Hidden");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _Hidden;
+        partial void OnHiddenChanging(bool value);
+        partial void OnHiddenChanged();
+        /// <summary>
+        /// В схеме отсутствуют комментарии для свойства Deleted.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool Deleted
+        {
+            get
+            {
+                return this._Deleted;
+            }
+            set
+            {
+                this.OnDeletedChanging(value);
+                this._Deleted = value;
+                this.OnDeletedChanged();
+                this.OnPropertyChanged("Deleted");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _Deleted;
+        partial void OnDeletedChanging(bool value);
+        partial void OnDeletedChanged();
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

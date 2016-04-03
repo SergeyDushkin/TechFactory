@@ -78,6 +78,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IntegrationDemoTest.cs" />
     <Compile Include="ProductsEnpointTest.cs" />
     <Compile Include="CategoriesEnpointTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

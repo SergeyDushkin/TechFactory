@@ -80,6 +80,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="PersonEnpointTest.cs" />
     <Compile Include="IntegrationDemoTest.cs" />
     <Compile Include="ProductsEnpointTest.cs" />
     <Compile Include="CategoriesEnpointTest.cs" />

@@ -129,7 +129,58 @@ namespace TF.Web.API.Test
 
         void CreateProducts()
         {
+            var uom_kg = container.Uoms.Where(r => r.Key == "KG").SingleOrDefault();
 
+            Assert.IsNotNull(uom_kg);
+
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Egg Noodle", Name = "Egg Noodle" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Rice Noodle", Name = "Rice Noodle" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Udon Noodle", Name = "Udon Noodle" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Buckwheat Noodle", Name = "Buckwheat Noodle" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Spinach Noodle", Name = "Spinach Noodle" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Teriyaki Sauce", Name = "Teriyaki Sauce" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Sweet Chili", Name = "Sweet Chili" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Black Bean", Name = "Black Bean" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Japanese Curry", Name = "Japanese Curry" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Oyster Sause", Name = "Oyster Sause" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Sweet and Sour", Name = "Sweet and Sour" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Hot Sauce", Name = "Hot Sauce" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Chicken", Name = "Chicken" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Duck", Name = "Duck" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Pork", Name = "Pork" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Beef", Name = "Beef" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Prawns", Name = "Prawns" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Squid", Name = "Squid" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Mussels", Name = "Mussels" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Cashew Nuts", Name = "Cashew Nuts" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Tofu", Name = "Tofu" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Broccoli", Name = "Broccoli" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Mixed Peppers", Name = "Mixed Peppers" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Mushrooms", Name = "Mushrooms" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Spinach", Name = "Spinach" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Pineapple", Name = "Pineapple" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Bamboo Shots", Name = "Bamboo Shots" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Peas", Name = "Peas" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Pak Choi", Name = "Pak Choi" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Spring Onions", Name = "Spring Onions" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Dried Onions", Name = "Dried Onions" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Fresh Coriander", Name = "Fresh Coriander" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Sesame Seeds", Name = "Sesame Seeds" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Garlic Flakes", Name = "Garlic Flakes" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Chili Oil", Name = "Chili Oil" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Wasabi", Name = "Wasabi" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Chicken Broth", Name = "Chicken Broth" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Miso Broth", Name = "Miso Broth" });
+            container.AddToProducts(new Product { Type = "INGREDIENT", Key = "Tonkotsu Broth", Name = "Tonkotsu Broth" });
+            container.AddToProducts(new Product { Type = "REGULAR", Key = "Bolognese REG", Name = "Bolognese regular" });
+            container.AddToProducts(new Product { Type = "REGULAR", Key = "Bolognese HALF", Name = "Bolognese half" });
+            container.AddToProducts(new Product { Type = "REGULAR", Key = "Carbonara REG", Name = "Carbonara regular" });
+            container.AddToProducts(new Product { Type = "REGULAR", Key = "Carbonara HALF", Name = "Carbonara half" });
+            container.AddToProducts(new Product { Type = "REGULAR", Key = "Coca-Cola CAN 0.33", Name = "Coca-Cola CAN 0.33" });
+            container.AddToProducts(new Product { Type = "REGULAR", Key = "Coca-Cola BOTL 0.5", Name = "Coca-Cola bottle 0.5" });
+            container.AddToProducts(new Product { Type = "KIT", Key = "POT CHI REG", Name = "Pot of soup Chicken regular" });
+
+            container.SaveChanges();
         }
 
         void CreateProductCategories()

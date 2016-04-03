@@ -117,6 +117,19 @@ namespace TF.Web.API.Controllers
             return NotFound();
         }
 
+        [HttpGet]
+        public IHttpActionResult GetCategories([FromODataUri] System.Guid key)
+        {
+            logger.Trace("Call ProductsController GetCategory");
+
+            var query = productCategoryService.GetCategoriesByProductId(key);
+
+            if (query != null)
+                return Ok(query);
+
+            return NotFound();
+        }
+
         protected override void Dispose(bool disposing)
         {
             logger.Trace("End ProductsController");

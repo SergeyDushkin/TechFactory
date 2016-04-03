@@ -44,17 +44,30 @@ namespace TF.Web.API.Test
                 container.AddToProductPrices(price);
                 container.SaveChanges();
 
+                var category = new ProductCategory
+                {
+                    ProductId = entity.Id,
+                    CategoryId = Guid.Empty
+                };
+
+                container.AddToProductCategories(category);
+                container.SaveChanges();
+
                 /// Get Product
                 var entity2 = container.Products.Where(r => r.Id == entity.Id).Single();
 
                 /// Get Related ProductPrice
                 var entity3 = container.Products.Where(r => r.Id == entity.Id).Select(r => r.Price).Single();
 
+                /// Get Related ProductCategory
+                var entity4 = container.Products.Where(r => r.Id == entity.Id).SelectMany(r => r.Categories).ToList();
+
                 container.DeleteObject(entity);
                 var deleteResponses = container.SaveChanges();
 
                 Assert.IsNotNull(entity2);
                 Assert.IsNotNull(entity3);
+                Assert.IsNotNull(entity4);
                 Assert.IsNotNull(deleteResponses);
             }
 

@@ -60,6 +60,7 @@ namespace TF.Web.API
             builder.EntitySet<Product>("Products");
             builder.EntitySet<Category>("Categories");
             builder.EntitySet<ProductPrice>("ProductPrices");
+            builder.EntitySet<ProductCategory>("ProductCategories");
             builder.EntitySet<Currency>("Currencies");
             builder.EntitySet<Entity>("Entities");
             builder.EntitySet<Location>("Locations");

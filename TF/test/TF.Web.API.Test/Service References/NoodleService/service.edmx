@@ -75,6 +75,10 @@
         <Property Name="Longitude" Type="Edm.Single" Nullable="false" />
         <Property Name="Elevation" Type="Edm.Single" Nullable="false" />
       </EntityType>
+      <Association Name="TF_Data_Business_WMS_Product_Categories_TF_Data_Business_Category_CategoriesPartner">
+        <End Type="TF.Data.Business.Category" Role="Categories" Multiplicity="*" />
+        <End Type="TF.Data.Business.WMS.Product" Role="CategoriesPartner" Multiplicity="0..1" />
+      </Association>
       <Association Name="TF_Data_Business_Location_Unit_TF_Data_Business_Unit_UnitPartner">
         <End Type="TF.Data.Business.Unit" Role="Unit" Multiplicity="0..1" />
         <End Type="TF.Data.Business.Location" Role="UnitPartner" Multiplicity="0..1" />
@@ -128,6 +132,7 @@
         <NavigationProperty Name="Parent" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner" ToRole="Parent" FromRole="ParentPartner" />
         <NavigationProperty Name="ChildProducts" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_ChildProducts_TF_Data_Business_WMS_Product_ChildProductsPartner" ToRole="ChildProducts" FromRole="ChildProductsPartner" />
         <NavigationProperty Name="Price" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_ProductPrice_PricePartner" ToRole="Price" FromRole="PricePartner" />
+        <NavigationProperty Name="Categories" Relationship="TF.Data.Business.TF_Data_Business_WMS_Product_Categories_TF_Data_Business_Category_CategoriesPartner" ToRole="Categories" FromRole="CategoriesPartner" />
       </EntityType>
       <EntityType Name="ProductPrice">
         <Key>
@@ -136,6 +141,14 @@
         <Property Name="Id" Type="Edm.Guid" Nullable="false" />
         <Property Name="ProductId" Type="Edm.Guid" Nullable="false" />
         <Property Name="Price" Type="Edm.Double" Nullable="false" />
+      </EntityType>
+      <EntityType Name="ProductCategory">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="CategoryId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ProductId" Type="Edm.Guid" Nullable="false" />
       </EntityType>
       <EntityType Name="Order">
         <Key>
@@ -241,6 +254,7 @@
         <EntitySet Name="Products" EntityType="TF.Data.Business.WMS.Product" />
         <EntitySet Name="Categories" EntityType="TF.Data.Business.Category" />
         <EntitySet Name="ProductPrices" EntityType="TF.Data.Business.WMS.ProductPrice" />
+        <EntitySet Name="ProductCategories" EntityType="TF.Data.Business.WMS.ProductCategory" />
         <EntitySet Name="Currencies" EntityType="TF.Data.Business.Currency" />
         <EntitySet Name="Entities" EntityType="TF.Data.Systems.Entity" />
         <EntitySet Name="Locations" EntityType="TF.Data.Business.Location" />
@@ -260,6 +274,10 @@
         <AssociationSet Name="TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_ProductPrice_PricePartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Price_TF_Data_Business_WMS_ProductPrice_PricePartner">
           <End Role="PricePartner" EntitySet="Products" />
           <End Role="Price" EntitySet="ProductPrices" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_Product_Categories_TF_Data_Business_Category_CategoriesPartnerSet" Association="TF.Data.Business.TF_Data_Business_WMS_Product_Categories_TF_Data_Business_Category_CategoriesPartner">
+          <End Role="CategoriesPartner" EntitySet="Products" />
+          <End Role="Categories" EntitySet="Categories" />
         </AssociationSet>
         <AssociationSet Name="TF_Data_Business_Location_Unit_TF_Data_Business_Unit_UnitPartnerSet" Association="TF.Data.Business.TF_Data_Business_Location_Unit_TF_Data_Business_Unit_UnitPartner">
           <End Role="UnitPartner" EntitySet="Locations" />

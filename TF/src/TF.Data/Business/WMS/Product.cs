@@ -21,5 +21,7 @@ namespace TF.Data.Business.WMS
 
         [ForeignKey("ProductId")]
         public virtual ProductPrice Price { get; set; }
+        
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ContactDetailServiceTest.cs" />
     <Compile Include="LocationRepositoryTest.cs" />
     <Compile Include="OrderRepositoryTest.cs" />
     <Compile Include="UomRepositoryTest.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="UserIdentityServiceTest.cs" />
     <Compile Include="RoleServiceTest.cs" />
     <Compile Include="UserRoleServiceTest.cs" />
+    <Compile Include="ContactServiceTest.cs" />
     <Compile Include="UserServiceTest.cs" />
     <Compile Include="PersonServiceTest.cs" />
     <Compile Include="ProductCategoryServiceTest.cs" />

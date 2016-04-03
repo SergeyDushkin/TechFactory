@@ -185,6 +185,229 @@ namespace TF.Web.API.Test
 
         void CreateProductCategories()
         {
+            var category_noodle = container.Categories.Where(r => r.Key == "NOODLE").SingleOrDefault();
+            var category_sauce = container.Categories.Where(r => r.Key == "SAUCE").SingleOrDefault();
+            var category_protein = container.Categories.Where(r => r.Key == "PROTEIN").SingleOrDefault();
+            var category_vagetables = container.Categories.Where(r => r.Key == "VEGETABLES").SingleOrDefault();
+            var category_garnish = container.Categories.Where(r => r.Key == "GARNISH").SingleOrDefault();
+
+            Assert.IsNotNull(category_noodle);
+            Assert.IsNotNull(category_sauce);
+            Assert.IsNotNull(category_protein);
+            Assert.IsNotNull(category_vagetables);
+            Assert.IsNotNull(category_garnish);
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Egg Noodle").SingleOrDefault().Id,
+                CategoryId = category_noodle.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Rice Noodle").SingleOrDefault().Id,
+                CategoryId = category_noodle.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Udon Noodle").SingleOrDefault().Id,
+                CategoryId = category_noodle.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Buckwheat Noodle").SingleOrDefault().Id,
+                CategoryId = category_noodle.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Spinach Noodle").SingleOrDefault().Id,
+                CategoryId = category_noodle.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Teriyaki Sauce").SingleOrDefault().Id,
+                CategoryId = category_sauce.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Sweet Chili").SingleOrDefault().Id,
+                CategoryId = category_sauce.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Black Bean").SingleOrDefault().Id,
+                CategoryId = category_sauce.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Japanese Curry").SingleOrDefault().Id,
+                CategoryId = category_sauce.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Oyster Sause").SingleOrDefault().Id,
+                CategoryId = category_sauce.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Sweet and Sour").SingleOrDefault().Id,
+                CategoryId = category_sauce.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Hot Sauce").SingleOrDefault().Id,
+                CategoryId = category_sauce.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Chicken").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Duck").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Pork").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Beef").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Prawns").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Squid").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Mussels").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Cashew Nuts").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Tofu").SingleOrDefault().Id,
+                CategoryId = category_protein.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Broccoli").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Mixed Peppers").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Mushrooms").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Spinach").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Pineapple").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Bamboo Shots").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Peas").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Pak Choi").SingleOrDefault().Id,
+                CategoryId = category_vagetables.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Spring Onions").SingleOrDefault().Id,
+                CategoryId = category_garnish.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Dried Onions").SingleOrDefault().Id,
+                CategoryId = category_garnish.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Fresh Coriander").SingleOrDefault().Id,
+                CategoryId = category_garnish.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Sesame Seeds").SingleOrDefault().Id,
+                CategoryId = category_garnish.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Garlic Flakes").SingleOrDefault().Id,
+                CategoryId = category_garnish.Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Chili Oil").SingleOrDefault().Id,
+                CategoryId = category_garnish.Id
+            });
+
+            container.SaveChanges();
 
         }
 

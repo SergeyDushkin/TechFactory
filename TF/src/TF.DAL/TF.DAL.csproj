@@ -50,11 +50,14 @@
     <Compile Include="CategoryTreeServiceCreate.cs" />
     <Compile Include="CategoryTreeServiceDelete.cs" />
     <Compile Include="CategoryTreeServiceUpdate.cs" />
+    <Compile Include="ContactDetailRepository.cs" />
     <Compile Include="LocationRepository.cs" />
+    <Compile Include="Query\ContactDetailQuery.cs" />
     <Compile Include="Query\LocationQuery.cs" />
     <Compile Include="Query\OrderQuery.cs" />
     <Compile Include="Query\UomQuery.cs" />
     <Compile Include="OrderRepository.cs" />
+    <Compile Include="Query\ContactQuery.cs" />
     <Compile Include="UomRepository.cs" />
     <Compile Include="NoodleDbContext.cs" />
     <Compile Include="Query\UserIdentityQuery.cs" />
@@ -65,6 +68,7 @@
     <Compile Include="Query\UserQuery.cs" />
     <Compile Include="UserIdentityRepository.cs" />
     <Compile Include="RoleRepository.cs" />
+    <Compile Include="ContactRepository.cs" />
     <Compile Include="UserRoleRepository.cs" />
     <Compile Include="EntityRepository.cs" />
     <Compile Include="CurrencyRepository.cs" />

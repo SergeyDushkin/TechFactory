@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace TF.Data.Business
 {
-    public interface IContactService
+    public interface IContactRepository
     {
         Contact Create(Contact contact);
         Contact Update(Contact contact);

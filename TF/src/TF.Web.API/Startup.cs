@@ -42,6 +42,7 @@ namespace TF.Web.API
             container.RegisterType<IProductRepository, ProductRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IProductCategoryService, ProductCategoryService>(new InjectionConstructor(dbContext));
             container.RegisterType<IProductPriceService, ProductPriceService>(new InjectionConstructor(dbContext));
+            container.RegisterType<IUomRepository, UomRepository>(new InjectionConstructor(dbContext));
 
             container.RegisterType<ILogger, Logger>(new InjectionFactory(x => LogManager.GetCurrentClassLogger()));
 

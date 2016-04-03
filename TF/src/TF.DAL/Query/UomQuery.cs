@@ -8,12 +8,12 @@ namespace TF.DAL.Query
     {
         public static CommandDefinition All()
         {
-            return new CommandDefinition("SELECT [GUID_RECORD] Id, [KEY], [NAME] FROM [BUSINESS.UOM]");
+            return new CommandDefinition("SELECT [GUID_RECORD] Id, [KEY], [NAME] FROM [BUSINESS.UOM] WHERE [DELETED] = 0");
         }
 
         public static CommandDefinition ById(Guid id)
         {
-            return new CommandDefinition("SELECT [GUID_RECORD] Id, [KEY], [NAME] FROM [BUSINESS.UOM] where GUID_RECORD = @id", new { id });
+            return new CommandDefinition("SELECT [GUID_RECORD] Id, [KEY], [NAME] FROM [BUSINESS.UOM] where GUID_RECORD = @id AND [DELETED] = 0", new { id });
         }
 
         public static CommandDefinition Update(Uom record)
@@ -48,7 +48,7 @@ namespace TF.DAL.Query
         public static CommandDefinition Delete(Guid id)
         {
             return new CommandDefinition(
-                @"DELETE [BUSINESS.UOM] WHERE GUID_RECORD = @GUID_RECORD", new
+                @"UPDATE [BUSINESS.UOM] SET [DELETED] = 1 WHERE [GUID_RECORD] = @GUID_RECORD", new
                 {
                     GUID_RECORD = id
                 });

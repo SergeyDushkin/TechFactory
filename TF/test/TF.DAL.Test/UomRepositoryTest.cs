@@ -31,17 +31,17 @@ namespace TF.DAL.Test
 
             repository.Update(record);
 
-            var record2 = repository.GetById(id);
+            var UpdatedRecord = repository.GetById(id);
 
-            Assert.AreEqual(record.Id, record2.Id);
-            Assert.AreEqual(record.Key, record2.Key);
-            Assert.AreEqual(record.Name, record2.Name);
+            Assert.AreEqual(record.Id, UpdatedRecord.Id);
+            Assert.AreEqual(record.Key, UpdatedRecord.Key);
+            Assert.AreEqual(record.Name, UpdatedRecord.Name);
 
             repository.Delete(record.Id);
 
-            var record3 = repository.GetById(id);
+            var deletedRecord = repository.GetById(id);
 
-            Assert.IsNull(record3);
+            Assert.IsNull(deletedRecord);
         }
     }
 }

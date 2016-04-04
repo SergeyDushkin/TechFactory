@@ -15,11 +15,11 @@ namespace TF.DAL.Query
 	            [ITEM_GUID] ItemId,
 	            [UOM_GUID] UomId,
 	            [QTY],
-	            [BASE_QTY],
+	            [BASE_QTY] BaseQty,
 	            [PRICE],
-	            [BASE_PRICE],
+	            [BASE_PRICE] BasePrice,
 	            [AMOUNT],
-	            [BASE_AMOUNT]
+	            [BASE_AMOUNT] BaseAmount
                 FROM [BUSINESS.WMS.ORDER_LINE] WHERE [DELETED] = 0");
         }
 
@@ -32,11 +32,11 @@ namespace TF.DAL.Query
 	            [ITEM_GUID] ItemId,
 	            [UOM_GUID] UomId,
 	            [QTY],
-	            [BASE_QTY],
+	            [BASE_QTY] BaseQty,
 	            [PRICE],
-	            [BASE_PRICE],
+	            [BASE_PRICE] BasePrice,
 	            [AMOUNT],
-	            [BASE_AMOUNT]
+	            [BASE_AMOUNT] BaseAmount
                 FROM[BUSINESS.WMS.ORDER_LINE] WHERE GUID_RECORD = @id AND [DELETED] = 0", new { id });
         }
 
@@ -45,7 +45,7 @@ namespace TF.DAL.Query
             return new CommandDefinition(
                 @"UPDATE [BUSINESS.WMS.ORDER_LINE]
                 SET [ORDER_GUID] = @ORDER_GUID,
-	                [PRIORITY] = @PRIORITY		
+	                [PRIORITY] = @PRIORITY,
 	                [ITEM_GUID] = @ITEM_GUID,
 	                [UOM_GUID] = @UOM_GUID,
 	                [QTY] = @QTY,

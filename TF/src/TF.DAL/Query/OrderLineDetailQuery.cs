@@ -17,7 +17,7 @@ namespace TF.DAL.Query
                 [LOCATION_GUID] LocationId,
                 [UOM_GUID] UomId,
                 [QTY],
-                [BASE_QTY],
+                [BASE_QTY] BaseQty,
                 [NUMBER]
                 FROM [BUSINESS.WMS.ORDER_LINE_DETAIL] WHERE [DELETED] = 0");
         }
@@ -33,7 +33,7 @@ namespace TF.DAL.Query
                 [LOCATION_GUID] LocationId,
                 [UOM_GUID] UomId,
                 [QTY],
-                [BASE_QTY],
+                [BASE_QTY] BaseQty,
                 [NUMBER]
                 FROM[BUSINESS.WMS.ORDER_LINE_DETAIL] WHERE GUID_RECORD = @id AND [DELETED] = 0", new { id });
         }
@@ -84,15 +84,14 @@ namespace TF.DAL.Query
                     [DELETED]) 
                 VALUES (@GUID_RECORD,
                     @ORDER_GUID,
+                    @ORDER_LINE_GUID,
                     @PRIORITY,
                     @ITEM_GUID,
+                    @LOCATION_GUID,
                     @UOM_GUID,
                     @QTY, 
                     @BASE_QTY,
-                    @PRICE,
-                    @BASE_PRICE,
-                    @AMOUNT,
-                    @BASE_AMOUNT,
+                    @NUMBER,
                     @BATCH_GUID,
                     @HIDDEN,
                     @DELETED)", new

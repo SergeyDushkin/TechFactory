@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="ContactDetailServiceTest.cs" />
     <Compile Include="LocationRepositoryTest.cs" />
+    <Compile Include="OrderLineDetailRepositoryTest.cs" />
+    <Compile Include="OrderLineRepositoryTest.cs" />
     <Compile Include="OrderRepositoryTest.cs" />
     <Compile Include="AddressRepositoryTest.cs" />
     <Compile Include="EmployeeRepositoryTest.cs" />

@@ -2,16 +2,20 @@
 
 namespace TF.Data.Business.WMS
 {
-    public class OrderLine
+    public class OrderLineDetail
     {
         public Guid Id { get; set; }
-        public short Priority { get; set; } 
+        
+        public short Priority { get; set; }
         public float Qty { get; set; }
         public float BaseQty { get; set; }
-        public float Price { get; set; }
-        public float BasePrice { get; set; }
-        public float Amount { get; set; }
-        public float BaseAmount { get; set; }
+        public string Number { get; set; }
+
+        public Guid LocationId { get; set; }
+        public virtual Location Location { get; set; }
+
+        public Guid OrderLineId { get; set; }
+        public virtual OrderLine OrderLine { get; set; }
 
         public Guid OrderId { get; set; }
         public virtual Order Order { get; set; }

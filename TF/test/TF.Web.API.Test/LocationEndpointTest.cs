@@ -32,7 +32,7 @@ namespace TF.Web.API.Test
                 Key = "TestLocation",
                 Name = "TestLocation",
                 Type = "WAREHOUSE",
-                Unit = savedUnit
+                UnitId = savedUnit.Id
             };
 
             context.AddToLocations(location);
@@ -49,7 +49,9 @@ namespace TF.Web.API.Test
                 context.SaveChanges(SaveChangesOptions.ReplaceOnUpdate);
 
                 var savedEntity = context.Locations.Where(r => r.Id == entity.Id).Single();
+                var referencedUnit = context.Locations.Where(r => r.Id == entity.Id).Select(r => r.Unit).Single();
 
+                context.DeleteObject(savedUnit);
                 context.DeleteObject(entity);
                 var deleteResponses = context.SaveChanges();
 

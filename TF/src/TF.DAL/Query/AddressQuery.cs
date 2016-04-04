@@ -109,8 +109,8 @@ namespace TF.DAL.Query
                     LONGITUDE = record.Longitude,
                     ELEVATION = record.Elevation,
                     BATCH_GUID = (Guid?)null,
-                    ENTITY_GUID = Guid.NewGuid(),
-                    RECORD_GUID = Guid.NewGuid(),
+                    ENTITY_GUID = Guid.Empty,
+                    RECORD_GUID = Guid.Empty,
                     HIDDEN = 0,
                     DELETED = 0
                 });

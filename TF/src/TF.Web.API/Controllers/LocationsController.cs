@@ -57,7 +57,6 @@ namespace TF.Web.API.Controllers
             logger.Trace("Call LocationController Get by Id");
 
             var query = locationRepository.GetById(key);
-
             return Ok(query);
         }
 
@@ -94,12 +93,13 @@ namespace TF.Web.API.Controllers
             logger.Trace("Call LocationController GetUnit");
 
             var location = locationRepository.GetById(key);
-            if ((location == null) || (location.Unit != null))
+            if ((location == null) || (!location.UnitId.HasValue))
             {
                 return NotFound();
             }
 
-            return Ok(location.Unit);
+            var unit = unitRepository.GetById(location.UnitId.Value);
+            return Ok(unit);
         }
 
         protected override void Dispose(bool disposing)

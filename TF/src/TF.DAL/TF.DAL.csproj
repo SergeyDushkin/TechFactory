@@ -54,6 +54,8 @@
     <Compile Include="LocationRepository.cs" />
     <Compile Include="Query\ContactDetailQuery.cs" />
     <Compile Include="Query\LocationQuery.cs" />
+    <Compile Include="Query\OrderLineDetailQuery.cs" />
+    <Compile Include="Query\OrderLineQuery.cs" />
     <Compile Include="Query\OrderQuery.cs" />
     <Compile Include="Query\AddressQuery.cs" />
     <Compile Include="Query\EmployeeQuery.cs" />

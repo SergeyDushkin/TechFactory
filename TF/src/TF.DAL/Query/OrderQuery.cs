@@ -20,11 +20,8 @@ namespace TF.DAL.Query
                 [CURRENCY_GUID] CurrencyId, 
                 [LINES] LinesCount, 
                 [AMOUNT], 
-                [BASE_AMOUNT] BaseAmount, 
-                [BATCH_GUID], 
-                [HIDDEN], 
-                [DELETED]
-                FROM [BUSINESS.WMS.ORDER]");
+                [BASE_AMOUNT] BaseAmount
+                FROM [BUSINESS.WMS.ORDER] WHERE [DELETED] = 0");
         }
 
         public static CommandDefinition ById(Guid id)
@@ -41,11 +38,8 @@ namespace TF.DAL.Query
                 [CURRENCY_GUID] CurrencyId, 
                 [LINES] LinesCount, 
                 [AMOUNT], 
-                [BASE_AMOUNT] BaseAmount, 
-                [BATCH_GUID], 
-                [HIDDEN], 
-                [DELETED]
-                FROM[BUSINESS.WMS.ORDER] where GUID_RECORD = @id", new { id });
+                [BASE_AMOUNT] BaseAmount
+                FROM[BUSINESS.WMS.ORDER] WHERE GUID_RECORD = @id AND [DELETED] = 0", new { id });
         }
 
         public static CommandDefinition Update(Order record)
@@ -123,7 +117,7 @@ namespace TF.DAL.Query
         public static CommandDefinition Delete(Guid id)
         {
             return new CommandDefinition(
-                @"DELETE [BUSINESS.WMS.ORDER] WHERE GUID_RECORD = @GUID_RECORD", new
+                @"UPDATE [BUSINESS.WMS.ORDER] SET[DELETED] = 1 WHERE GUID_RECORD = @GUID_RECORD", new
                 {
                     GUID_RECORD = id
                 });

@@ -16,7 +16,7 @@ namespace TF.Web.API.Test
 
             context.AddToCurrencies(new Currency
             {
-                Key = "TestCurrency",
+                Key = "TestCurrency" + Guid.NewGuid(),
                 Name = "TestCurrency"
             });
 
@@ -33,7 +33,7 @@ namespace TF.Web.API.Test
                 context.UpdateObject(entity);
                 context.SaveChanges(SaveChangesOptions.ReplaceOnUpdate);
 
-                var savedEntity = context.Currencies.Where(r => r.Id == entity.Id).Single();
+                var savedEntity = context.Currencies.Where(r => r.Key == entity.Key).Single();
 
                 //context.DeleteObject(entity);
                 var deleteResponses = context.SaveChanges();

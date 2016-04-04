@@ -8,7 +8,7 @@ namespace TF.DAL.Query
     {
         public static CommandDefinition All()
         {
-            return new CommandDefinition("SELECT [GUID_RECORD] Id, [KEY], [NAME] FROM [BUSINESS.CURRENCY] WHERE WHERE [DELETED] = 0");
+            return new CommandDefinition("SELECT [GUID_RECORD] Id, [KEY], [NAME] FROM [BUSINESS.CURRENCY] WHERE [DELETED] = 0");
         }
 
         public static CommandDefinition ById(Guid id)

@@ -8,10 +8,10 @@ using TF.Data.Business.WMS;
 namespace TF.Web.API.Test
 {
     [TestClass]
-    public class OrderLineDetailEndpointTest
+    public class OrderLineEndpointTest
     {
         [TestMethod]
-        public void OrderLineDetailCrudTest()
+        public void OrderLineCrudTest()
         {
             var context = new Container(new Uri("http://localhost:5588/odata/"));
 
@@ -25,34 +25,6 @@ namespace TF.Web.API.Test
             context.AddToProducts(item);
             context.SaveChanges();
             var savedItem = context.Products.Where(u => u.Key == item.Key).Single();
-
-            var location = new Location
-            {
-                Key = "TestLocation" + Guid.NewGuid(),
-                Name = "TestLocation",
-                Type = "WAREHOUSE",
-                UnitId = Guid.NewGuid()
-            };
-
-            context.AddToLocations(location);
-            context.SaveChanges();
-            var savedLocation = context.Locations.Where(l => l.Key == location.Key).Single();
-
-            var orderLine = new OrderLine
-            {
-                Id = Guid.NewGuid(),
-                BasePrice = .1f,
-                BaseQty = .1f,
-                Price = .1f,
-                Priority = 1,
-                Qty = .1f,
-                Amount = 10,
-                BaseAmount = 10
-            };
-
-            context.AddToOrderLines(orderLine);
-            context.SaveChanges();
-            var savedOrderLine = context.OrderLines.Where(ol => ol.Id == orderLine.Id).Single();
 
             var uom = new Uom
             {
@@ -84,52 +56,47 @@ namespace TF.Web.API.Test
             context.SaveChanges();
             var savedOrder = context.Orders.Where(o => o.Id == order.Id).Single();
 
-            var orderLineDetail = new OrderLineDetail
+            var orderLine = new OrderLine
             {
+                BasePrice = .1f,
                 BaseQty = .1f,
+                Price = .1f,
                 Priority = 1,
                 Qty = .1f,
-                Number = "SO001",
+                Amount = 10,
+                BaseAmount = 10,
                 ItemId = savedItem.Id,
-                LocationId = savedLocation.Id,
-                OrderLineId = savedOrderLine.Id,
-                UomId = savedUom.Id,
-                OrderId = order.Id
+                OrderId = savedOrder.Id,
+                UomId = savedUom.Id
             };
 
-            context.AddToOrderLineDetails(orderLineDetail);
+            context.AddToOrderLines(orderLine);
 
             var response = context.SaveChanges();
 
             foreach (ChangeOperationResponse change in response)
             {
                 var descriptor = change.Descriptor as EntityDescriptor;
-                var entity = descriptor.Entity as OrderLineDetail;
+                var entity = descriptor.Entity as OrderLine;
 
-                entity.Number = "SO002";
+                entity.BasePrice = .2f;
                 context.UpdateObject(entity);
                 context.SaveChanges(SaveChangesOptions.ReplaceOnUpdate);
 
-                var savedEntity = context.OrderLineDetails.Where(r => r.Id == entity.Id).Single();
-                var referencedItem = context.OrderLineDetails.Where(r => r.Id == entity.Id).Select(r => r.Item).Single();
-                var referencedLocation = context.OrderLineDetails.Where(r => r.Id == entity.Id).Select(r => r.Location).Single();
-                var referencedOrderLine = context.OrderLineDetails.Where(r => r.Id == entity.Id).Select(r => r.OrderLine).Single();
-                var referencedUom = context.OrderLineDetails.Where(r => r.Id == entity.Id).Select(r => r.Uom).Single();
-                var referencedOrder = context.OrderLineDetails.Where(r => r.Id == entity.Id).Select(r => r.Order).Single();
+                var savedEntity = context.OrderLines.Where(r => r.Id == entity.Id).Single();
+                var referencedItem = context.OrderLines.Where(r => r.Id == entity.Id).Select(r => r.Item).Single();
+                var referencedUom = context.OrderLines.Where(r => r.Id == entity.Id).Select(r => r.Uom).Single();
+                var referencedOrder = context.OrderLines.Where(r => r.Id == entity.Id).Select(r => r.Order).Single();
 
                 context.DeleteObject(savedItem);
-                context.DeleteObject(savedLocation);
                 context.DeleteObject(savedOrder);
-                context.DeleteObject(savedOrderLine);
                 context.DeleteObject(savedUom);
                 context.DeleteObject(entity);
                 var deleteResponses = context.SaveChanges();
 
                 Assert.IsNotNull(savedEntity);
-                Assert.AreEqual(savedEntity.Number, entity.Number);
+                Assert.AreEqual(entity.BasePrice, savedEntity.BasePrice);
                 Assert.AreEqual(referencedItem.Key,item.Key);
-                Assert.AreEqual(referencedLocation.Key, location.Key);
-                Assert.AreEqual(referencedOrderLine.Id, orderLine.Id);
                 Assert.AreEqual(referencedUom.Key, referencedUom.Key);
                 Assert.AreEqual(referencedOrder.Id, order.Id);
                 Assert.IsNotNull(deleteResponses);

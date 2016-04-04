@@ -52,6 +52,8 @@
     <Compile Include="CategoryTreeServiceUpdate.cs" />
     <Compile Include="ContactDetailRepository.cs" />
     <Compile Include="LocationRepository.cs" />
+    <Compile Include="OrderLineDetailRepository.cs" />
+    <Compile Include="OrderLineRepository.cs" />
     <Compile Include="Query\ContactDetailQuery.cs" />
     <Compile Include="Query\LocationQuery.cs" />
     <Compile Include="Query\OrderLineDetailQuery.cs" />

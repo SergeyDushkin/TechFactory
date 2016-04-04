@@ -55,6 +55,8 @@
     <Compile Include="Business\ICurrencyRepository.cs" />
     <Compile Include="Business\Employee.cs" />
     <Compile Include="Business\Person.cs" />
+    <Compile Include="Business\WMS\IOrderLineDetailRepository.cs" />
+    <Compile Include="Business\WMS\IOrderLineRepository.cs" />
     <Compile Include="Business\WMS\IOrderRepository.cs" />
     <Compile Include="Business\WMS\OrderLineDetail.cs" />
     <Compile Include="Systems\IEntityRepository.cs" />

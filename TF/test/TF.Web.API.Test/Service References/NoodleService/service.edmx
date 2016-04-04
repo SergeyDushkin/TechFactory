@@ -75,6 +75,16 @@
         <Property Name="Longitude" Type="Edm.Single" Nullable="false" />
         <Property Name="Elevation" Type="Edm.Single" Nullable="false" />
       </EntityType>
+      <EntityType Name="Employee">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="UnitId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="PersonId" Type="Edm.Guid" Nullable="false" />
+        <NavigationProperty Name="Unit" Relationship="TF.Data.Business.TF_Data_Business_Employee_Unit_TF_Data_Business_Unit_UnitPartner" ToRole="Unit" FromRole="UnitPartner" />
+        <NavigationProperty Name="Person" Relationship="TF.Data.Business.TF_Data_Business_Employee_Person_TF_Data_Business_Person_PersonPartner" ToRole="Person" FromRole="PersonPartner" />
+      </EntityType>
       <Association Name="TF_Data_Business_WMS_Product_Categories_TF_Data_Business_Category_CategoriesPartner">
         <End Type="TF.Data.Business.Category" Role="Categories" Multiplicity="*" />
         <End Type="TF.Data.Business.WMS.Product" Role="CategoriesPartner" Multiplicity="0..1" />
@@ -107,9 +117,57 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
+      <Association Name="TF_Data_Business_Employee_Unit_TF_Data_Business_Unit_UnitPartner">
+        <End Type="TF.Data.Business.Unit" Role="Unit" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.Employee" Role="UnitPartner" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="Unit">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UnitPartner">
+            <PropertyRef Name="UnitId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="TF_Data_Business_Employee_Person_TF_Data_Business_Person_PersonPartner">
+        <End Type="TF.Data.Business.Person" Role="Person" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.Employee" Role="PersonPartner" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="Person">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="PersonPartner">
+            <PropertyRef Name="PersonId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
       <Association Name="TF_Data_Business_WMS_OrderLine_Uom_TF_Data_Business_Uom_UomPartner">
         <End Type="TF.Data.Business.Uom" Role="Uom" Multiplicity="0..1" />
         <End Type="TF.Data.Business.WMS.OrderLine" Role="UomPartner" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="Uom">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="UomPartner">
+            <PropertyRef Name="UomId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="TF_Data_Business_WMS_OrderLineDetail_Location_TF_Data_Business_Location_LocationPartner">
+        <End Type="TF.Data.Business.Location" Role="Location" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.WMS.OrderLineDetail" Role="LocationPartner" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="Location">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="LocationPartner">
+            <PropertyRef Name="LocationId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="TF_Data_Business_WMS_OrderLineDetail_Uom_TF_Data_Business_Uom_UomPartner">
+        <End Type="TF.Data.Business.Uom" Role="Uom" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.WMS.OrderLineDetail" Role="UomPartner" Multiplicity="0..1" />
         <ReferentialConstraint>
           <Principal Role="Uom">
             <PropertyRef Name="Id" />
@@ -159,13 +217,13 @@
         <Property Name="DueDate" Type="Edm.DateTime" Nullable="false" />
         <Property Name="Number" Type="Edm.String" />
         <Property Name="Date" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="LinesCount" Type="Edm.Int16" Nullable="false" />
+        <Property Name="Amount" Type="Edm.Single" Nullable="false" />
+        <Property Name="BaseAmount" Type="Edm.Single" Nullable="false" />
         <Property Name="CustomerId" Type="Edm.Guid" Nullable="false" />
         <Property Name="SourceId" Type="Edm.Guid" Nullable="false" />
         <Property Name="DestinationId" Type="Edm.Guid" Nullable="false" />
         <Property Name="CurrencyId" Type="Edm.Guid" Nullable="false" />
-        <Property Name="LinesCount" Type="Edm.Int16" Nullable="false" />
-        <Property Name="Amount" Type="Edm.Single" Nullable="false" />
-        <Property Name="BaseAmount" Type="Edm.Single" Nullable="false" />
         <NavigationProperty Name="Customer" Relationship="TF.Data.Business.TF_Data_Business_WMS_Order_Customer_TF_Data_Business_Unit_CustomerPartner" ToRole="Customer" FromRole="CustomerPartner" />
         <NavigationProperty Name="Source" Relationship="TF.Data.Business.TF_Data_Business_WMS_Order_Source_TF_Data_Business_Location_SourcePartner" ToRole="Source" FromRole="SourcePartner" />
         <NavigationProperty Name="Destination" Relationship="TF.Data.Business.TF_Data_Business_WMS_Order_Destination_TF_Data_Business_Location_DestinationPartner" ToRole="Destination" FromRole="DestinationPartner" />
@@ -177,19 +235,39 @@
           <PropertyRef Name="Id" />
         </Key>
         <Property Name="Id" Type="Edm.Guid" Nullable="false" />
-        <Property Name="OrderId" Type="Edm.Guid" Nullable="false" />
         <Property Name="Priority" Type="Edm.Int16" Nullable="false" />
-        <Property Name="ItemId" Type="Edm.Guid" Nullable="false" />
-        <Property Name="UomId" Type="Edm.Guid" Nullable="false" />
         <Property Name="Qty" Type="Edm.Single" Nullable="false" />
         <Property Name="BaseQty" Type="Edm.Single" Nullable="false" />
         <Property Name="Price" Type="Edm.Single" Nullable="false" />
         <Property Name="BasePrice" Type="Edm.Single" Nullable="false" />
         <Property Name="Amount" Type="Edm.Single" Nullable="false" />
         <Property Name="BaseAmount" Type="Edm.Single" Nullable="false" />
+        <Property Name="OrderId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ItemId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="UomId" Type="Edm.Guid" Nullable="false" />
         <NavigationProperty Name="Order" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLine_Order_TF_Data_Business_WMS_Order_OrderPartner" ToRole="Order" FromRole="OrderPartner" />
         <NavigationProperty Name="Item" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLine_Item_TF_Data_Business_WMS_Product_ItemPartner" ToRole="Item" FromRole="ItemPartner" />
         <NavigationProperty Name="Uom" Relationship="TF.Data.Business.TF_Data_Business_WMS_OrderLine_Uom_TF_Data_Business_Uom_UomPartner" ToRole="Uom" FromRole="UomPartner" />
+      </EntityType>
+      <EntityType Name="OrderLineDetail">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Priority" Type="Edm.Int16" Nullable="false" />
+        <Property Name="Qty" Type="Edm.Single" Nullable="false" />
+        <Property Name="BaseQty" Type="Edm.Single" Nullable="false" />
+        <Property Name="Number" Type="Edm.String" />
+        <Property Name="LocationId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="OrderLineId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="OrderId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="ItemId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="UomId" Type="Edm.Guid" Nullable="false" />
+        <NavigationProperty Name="Location" Relationship="TF.Data.Business.TF_Data_Business_WMS_OrderLineDetail_Location_TF_Data_Business_Location_LocationPartner" ToRole="Location" FromRole="LocationPartner" />
+        <NavigationProperty Name="OrderLine" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLineDetail_OrderLine_TF_Data_Business_WMS_OrderLine_OrderLinePartner" ToRole="OrderLine" FromRole="OrderLinePartner" />
+        <NavigationProperty Name="Order" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLineDetail_Order_TF_Data_Business_WMS_Order_OrderPartner" ToRole="Order" FromRole="OrderPartner" />
+        <NavigationProperty Name="Item" Relationship="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLineDetail_Item_TF_Data_Business_WMS_Product_ItemPartner" ToRole="Item" FromRole="ItemPartner" />
+        <NavigationProperty Name="Uom" Relationship="TF.Data.Business.TF_Data_Business_WMS_OrderLineDetail_Uom_TF_Data_Business_Uom_UomPartner" ToRole="Uom" FromRole="UomPartner" />
       </EntityType>
       <Association Name="TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner">
         <End Type="TF.Data.Business.WMS.Product" Role="Parent" Multiplicity="0..1" />
@@ -222,6 +300,34 @@
       <Association Name="TF_Data_Business_WMS_OrderLine_Item_TF_Data_Business_WMS_Product_ItemPartner">
         <End Type="TF.Data.Business.WMS.Product" Role="Item" Multiplicity="0..1" />
         <End Type="TF.Data.Business.WMS.OrderLine" Role="ItemPartner" Multiplicity="0..1" />
+      </Association>
+      <Association Name="TF_Data_Business_WMS_OrderLineDetail_OrderLine_TF_Data_Business_WMS_OrderLine_OrderLinePartner">
+        <End Type="TF.Data.Business.WMS.OrderLine" Role="OrderLine" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.WMS.OrderLineDetail" Role="OrderLinePartner" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="OrderLine">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="OrderLinePartner">
+            <PropertyRef Name="OrderLineId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="TF_Data_Business_WMS_OrderLineDetail_Order_TF_Data_Business_WMS_Order_OrderPartner">
+        <End Type="TF.Data.Business.WMS.Order" Role="Order" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.WMS.OrderLineDetail" Role="OrderPartner" Multiplicity="0..1" />
+        <ReferentialConstraint>
+          <Principal Role="Order">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="OrderPartner">
+            <PropertyRef Name="OrderId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <Association Name="TF_Data_Business_WMS_OrderLineDetail_Item_TF_Data_Business_WMS_Product_ItemPartner">
+        <End Type="TF.Data.Business.WMS.Product" Role="Item" Multiplicity="0..1" />
+        <End Type="TF.Data.Business.WMS.OrderLineDetail" Role="ItemPartner" Multiplicity="0..1" />
       </Association>
     </Schema>
     <Schema Namespace="TF.Data.Systems" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -263,6 +369,9 @@
         <EntitySet Name="Roles" EntityType="TF.Data.Systems.Security.Role" />
         <EntitySet Name="Uoms" EntityType="TF.Data.Business.Uom" />
         <EntitySet Name="Addresses" EntityType="TF.Data.Business.Address" />
+        <EntitySet Name="Employees" EntityType="TF.Data.Business.Employee" />
+        <EntitySet Name="OrderLines" EntityType="TF.Data.Business.WMS.OrderLine" />
+        <EntitySet Name="OrderLineDetails" EntityType="TF.Data.Business.WMS.OrderLineDetail" />
         <AssociationSet Name="TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner">
           <End Role="ParentPartner" EntitySet="Products" />
           <End Role="Parent" EntitySet="Products" />
@@ -298,6 +407,50 @@
         <AssociationSet Name="TF_Data_Business_WMS_Order_Currency_TF_Data_Business_Currency_CurrencyPartnerSet" Association="TF.Data.Business.TF_Data_Business_WMS_Order_Currency_TF_Data_Business_Currency_CurrencyPartner">
           <End Role="CurrencyPartner" EntitySet="Orders" />
           <End Role="Currency" EntitySet="Currencies" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_Order_Lines_TF_Data_Business_WMS_OrderLine_LinesPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_Order_Lines_TF_Data_Business_WMS_OrderLine_LinesPartner">
+          <End Role="LinesPartner" EntitySet="Orders" />
+          <End Role="Lines" EntitySet="OrderLines" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_Employee_Unit_TF_Data_Business_Unit_UnitPartnerSet" Association="TF.Data.Business.TF_Data_Business_Employee_Unit_TF_Data_Business_Unit_UnitPartner">
+          <End Role="UnitPartner" EntitySet="Employees" />
+          <End Role="Unit" EntitySet="Units" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_Employee_Person_TF_Data_Business_Person_PersonPartnerSet" Association="TF.Data.Business.TF_Data_Business_Employee_Person_TF_Data_Business_Person_PersonPartner">
+          <End Role="PersonPartner" EntitySet="Employees" />
+          <End Role="Person" EntitySet="Persons" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLine_Order_TF_Data_Business_WMS_Order_OrderPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLine_Order_TF_Data_Business_WMS_Order_OrderPartner">
+          <End Role="OrderPartner" EntitySet="OrderLines" />
+          <End Role="Order" EntitySet="Orders" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLine_Item_TF_Data_Business_WMS_Product_ItemPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLine_Item_TF_Data_Business_WMS_Product_ItemPartner">
+          <End Role="ItemPartner" EntitySet="OrderLines" />
+          <End Role="Item" EntitySet="Products" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLine_Uom_TF_Data_Business_Uom_UomPartnerSet" Association="TF.Data.Business.TF_Data_Business_WMS_OrderLine_Uom_TF_Data_Business_Uom_UomPartner">
+          <End Role="UomPartner" EntitySet="OrderLines" />
+          <End Role="Uom" EntitySet="Uoms" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLineDetail_Location_TF_Data_Business_Location_LocationPartnerSet" Association="TF.Data.Business.TF_Data_Business_WMS_OrderLineDetail_Location_TF_Data_Business_Location_LocationPartner">
+          <End Role="LocationPartner" EntitySet="OrderLineDetails" />
+          <End Role="Location" EntitySet="Locations" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLineDetail_OrderLine_TF_Data_Business_WMS_OrderLine_OrderLinePartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLineDetail_OrderLine_TF_Data_Business_WMS_OrderLine_OrderLinePartner">
+          <End Role="OrderLinePartner" EntitySet="OrderLineDetails" />
+          <End Role="OrderLine" EntitySet="OrderLines" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLineDetail_Order_TF_Data_Business_WMS_Order_OrderPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLineDetail_Order_TF_Data_Business_WMS_Order_OrderPartner">
+          <End Role="OrderPartner" EntitySet="OrderLineDetails" />
+          <End Role="Order" EntitySet="Orders" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLineDetail_Item_TF_Data_Business_WMS_Product_ItemPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_OrderLineDetail_Item_TF_Data_Business_WMS_Product_ItemPartner">
+          <End Role="ItemPartner" EntitySet="OrderLineDetails" />
+          <End Role="Item" EntitySet="Products" />
+        </AssociationSet>
+        <AssociationSet Name="TF_Data_Business_WMS_OrderLineDetail_Uom_TF_Data_Business_Uom_UomPartnerSet" Association="TF.Data.Business.TF_Data_Business_WMS_OrderLineDetail_Uom_TF_Data_Business_Uom_UomPartner">
+          <End Role="UomPartner" EntitySet="OrderLineDetails" />
+          <End Role="Uom" EntitySet="Uoms" />
         </AssociationSet>
       </EntityContainer>
     </Schema>

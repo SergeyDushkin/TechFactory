@@ -40,6 +40,23 @@ namespace TF.DAL.Query
                 FROM[BUSINESS.WMS.ORDER_LINE] WHERE GUID_RECORD = @id AND [DELETED] = 0", new { id });
         }
 
+        public static CommandDefinition ByOrderId(Guid id)
+        {
+            return new CommandDefinition(@"SELECT 
+                [GUID_RECORD] Id,
+	            [ORDER_GUID] OrderId,
+	            [PRIORITY],			
+	            [ITEM_GUID] ItemId,
+	            [UOM_GUID] UomId,
+	            [QTY],
+	            [BASE_QTY] BaseQty,
+	            [PRICE],
+	            [BASE_PRICE] BasePrice,
+	            [AMOUNT],
+	            [BASE_AMOUNT] BaseAmount
+                FROM[BUSINESS.WMS.ORDER_LINE] WHERE [ORDER_GUID] = @id AND [DELETED] = 0", new { id });
+        }
+
         public static CommandDefinition Update(OrderLine record)
         {
             return new CommandDefinition(

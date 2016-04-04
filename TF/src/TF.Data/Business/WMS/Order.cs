@@ -20,19 +20,21 @@ namespace TF.Data.Business.WMS
         public string Number { get; set; }
         public DateTime Date { get; set; }
 
-        public Guid CustomerId { get; set; }
-        public Guid SourceId { get; set; }
-        public Guid DestinationId { get; set; }
-        public Guid CurrencyId { get; set; }
-
         public short LinesCount { get; set; }
 
         public float Amount { get; set; }
         public float BaseAmount { get; set; }
 
+        public Guid CustomerId { get; set; }
         public virtual Unit Customer { get; set; }
+
+        public Guid SourceId { get; set; }
         public virtual Location Source { get; set; }
+
+        public Guid DestinationId { get; set; }
         public virtual Location Destination { get; set; }
+
+        public Guid CurrencyId { get; set; }
         public virtual Currency Currency { get; set; }
 
         public virtual ICollection<OrderLine> Lines { get; set; }

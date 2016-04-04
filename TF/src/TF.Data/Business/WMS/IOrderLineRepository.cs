@@ -18,6 +18,9 @@ namespace TF.Data.Business.WMS
         OrderLine GetById(Guid id);
         Task<OrderLine> GetByIdAsync(Guid id);
 
+        IEnumerable<OrderLine> GetByOrderId(Guid id);
+        Task<IEnumerable<OrderLine>> GetByOrderIdAsync(Guid id);
+
         IEnumerable<OrderLine> GetAll();
         Task<IEnumerable<OrderLine>> GetAllAsync();
     }

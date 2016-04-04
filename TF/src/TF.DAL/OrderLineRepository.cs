@@ -96,5 +96,18 @@ namespace TF.DAL
                 return await connection.QueryAsync<OrderLine>(OrderLineQuery.All());
             }
         }
+
+        public IEnumerable<OrderLine> GetByOrderId(Guid id)
+        {
+            return GetByOrderIdAsync(id).Result;
+        }
+
+        public async Task<IEnumerable<OrderLine>> GetByOrderIdAsync(Guid id)
+        {
+            using (var connection = context.CreateConnection())
+            {
+                return await connection.QueryAsync<OrderLine>(OrderLineQuery.ByOrderId(id));
+            }
+        }
     }
 }

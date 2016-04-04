@@ -118,6 +118,9 @@
   <ItemGroup>
     <Compile Include="Controllers\ContactDetailsController.cs" />
     <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Controllers\OrderLineDetailsController.cs" />
+    <Compile Include="Controllers\OrderLinesController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ProductCategoriesController.cs" />

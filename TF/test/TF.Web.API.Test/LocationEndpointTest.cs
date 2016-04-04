@@ -16,7 +16,7 @@ namespace TF.Web.API.Test
 
             var unit = new Unit()
             {
-                Key = "TestUnit",
+                Key = "TestUnit" + Guid.NewGuid(),
                 Name = "TestUnit"
             };
 
@@ -29,7 +29,7 @@ namespace TF.Web.API.Test
 
             var location = new Location
             {
-                Key = "TestLocation",
+                Key = "TestLocation" + Guid.NewGuid(),
                 Name = "TestLocation",
                 Type = "WAREHOUSE",
                 UnitId = savedUnit.Id
@@ -56,7 +56,7 @@ namespace TF.Web.API.Test
                 var deleteResponses = context.SaveChanges();
 
                 Assert.IsNotNull(savedEntity);
-                Assert.AreEqual(savedEntity.Unit.Key,unit.Key);
+                Assert.AreEqual(referencedUnit.Key,unit.Key);
                 Assert.IsNotNull(deleteResponses);
             }
 

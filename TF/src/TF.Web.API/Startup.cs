@@ -46,6 +46,7 @@ namespace TF.Web.API
             container.RegisterType<ILocationRepository, LocationRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<ICurrencyRepository, CurrencyRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IAddressRepository, AddressRepository>(new InjectionConstructor(dbContext));
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>(new InjectionConstructor(dbContext));
 
             container.RegisterType<ILogger, Logger>(new InjectionFactory(x => LogManager.GetCurrentClassLogger()));
 
@@ -69,6 +70,7 @@ namespace TF.Web.API
             builder.EntitySet<Role>("Roles");
             builder.EntitySet<Uom>("Uoms");
             builder.EntitySet<Address>("Addresses");
+            builder.EntitySet<Employee>("Employees");
 
             config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
         }

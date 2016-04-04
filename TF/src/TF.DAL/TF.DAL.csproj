@@ -56,10 +56,12 @@
     <Compile Include="Query\LocationQuery.cs" />
     <Compile Include="Query\OrderQuery.cs" />
     <Compile Include="Query\AddressQuery.cs" />
+    <Compile Include="Query\EmployeeQuery.cs" />
     <Compile Include="Query\UomQuery.cs" />
     <Compile Include="OrderRepository.cs" />
     <Compile Include="Query\ContactQuery.cs" />
     <Compile Include="AddressRepository.cs" />
+    <Compile Include="EmployeeRepository.cs" />
     <Compile Include="UomRepository.cs" />
     <Compile Include="NoodleDbContext.cs" />
     <Compile Include="Query\UserIdentityQuery.cs" />
@@ -199,6 +201,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SQL\Trunk\Tables\BUSINESS.ADDRESS.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Trunk\Tables\BUSINESS.EMPLOYEE.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

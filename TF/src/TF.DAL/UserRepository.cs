@@ -55,6 +55,9 @@ namespace TF.DAL
             if (user.Id == Guid.Empty)
                 user.Id = Guid.NewGuid();
 
+            if (user.LastLogin == DateTime.MinValue)
+                user.LastLogin = DateTime.Now;
+
             using (var connection = context.CreateConnection())
             {
                 connection.Execute(UserQuery.Insert(user));

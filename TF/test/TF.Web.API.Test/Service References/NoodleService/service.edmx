@@ -85,6 +85,17 @@
         <NavigationProperty Name="Unit" Relationship="TF.Data.Business.TF_Data_Business_Employee_Unit_TF_Data_Business_Unit_UnitPartner" ToRole="Unit" FromRole="UnitPartner" />
         <NavigationProperty Name="Person" Relationship="TF.Data.Business.TF_Data_Business_Employee_Person_TF_Data_Business_Person_PersonPartner" ToRole="Person" FromRole="PersonPartner" />
       </EntityType>
+      <EntityType Name="Contact">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="RecordGuid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Type" Type="Edm.String" />
+        <Property Name="BatchGuid" Type="Edm.Guid" />
+        <Property Name="Hidden" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Deleted" Type="Edm.Boolean" Nullable="false" />
+      </EntityType>
       <Association Name="TF_Data_Business_WMS_Product_Categories_TF_Data_Business_Category_CategoriesPartner">
         <End Type="TF.Data.Business.Category" Role="Categories" Multiplicity="*" />
         <End Type="TF.Data.Business.WMS.Product" Role="CategoriesPartner" Multiplicity="0..1" />
@@ -353,6 +364,18 @@
         <Property Name="Hidden" Type="Edm.Boolean" Nullable="false" />
         <Property Name="Deleted" Type="Edm.Boolean" Nullable="false" />
       </EntityType>
+      <EntityType Name="User">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Key" Type="Edm.String" />
+        <Property Name="LastLogin" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="LoginAttemptCount" Type="Edm.Int16" Nullable="false" />
+        <Property Name="BatchGuid" Type="Edm.Guid" />
+        <Property Name="Hidden" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Deleted" Type="Edm.Boolean" Nullable="false" />
+      </EntityType>
     </Schema>
     <Schema Namespace="Default" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
       <EntityContainer Name="Container" m:IsDefaultEntityContainer="true">
@@ -372,6 +395,8 @@
         <EntitySet Name="Employees" EntityType="TF.Data.Business.Employee" />
         <EntitySet Name="OrderLines" EntityType="TF.Data.Business.WMS.OrderLine" />
         <EntitySet Name="OrderLineDetails" EntityType="TF.Data.Business.WMS.OrderLineDetail" />
+        <EntitySet Name="Users" EntityType="TF.Data.Systems.Security.User" />
+        <EntitySet Name="Contacts" EntityType="TF.Data.Business.Contact" />
         <AssociationSet Name="TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartnerSet" Association="TF.Data.Business.WMS.TF_Data_Business_WMS_Product_Parent_TF_Data_Business_WMS_Product_ParentPartner">
           <End Role="ParentPartner" EntitySet="Products" />
           <End Role="Parent" EntitySet="Products" />

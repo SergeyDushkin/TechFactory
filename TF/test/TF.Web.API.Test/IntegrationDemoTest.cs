@@ -179,6 +179,9 @@ namespace TF.Web.API.Test
             container.AddToProducts(new Product { Type = "REGULAR", Key = "Coca-Cola CAN 0.33", Name = "Coca-Cola CAN 0.33" });
             container.AddToProducts(new Product { Type = "REGULAR", Key = "Coca-Cola BOTL 0.5", Name = "Coca-Cola bottle 0.5" });
             container.AddToProducts(new Product { Type = "KIT", Key = "POT CHI REG", Name = "Pot of soup Chicken regular" });
+            container.AddToProducts(new Product { Type = "KIT", Key = "POT CHI HALF", Name = "Pot of soup Chicken half" });
+            container.AddToProducts(new Product { Type = "DYNAKIT", Key = "WOK REG", Name = "WOK Regular" });
+            container.AddToProducts(new Product { Type = "DYNAKIT", Key = "WOK HALF", Name = "WOK half" });
 
             container.SaveChanges();
         }
@@ -452,6 +455,120 @@ namespace TF.Web.API.Test
 
         void CreateOrders()
         {
+            var user = new Data.Systems.Security.User
+            {
+                Key = "arodionov",
+                LastLogin = DateTime.Now
+            };
+
+            container.AddToUsers(user);
+            container.SaveChanges();
+
+            /// TODO Add User Identity
+
+            var person = new Person
+            {
+                Firstname = "Alexey",
+                Lastname = "Rodionov",
+                UserGuid = user.Id
+            };
+
+            container.AddToPersons(person);
+            container.SaveChanges();
+
+            var contact = new Contact
+            {
+                RecordGuid = person.Id,
+                Type = "MAIN"
+            };
+
+            container.AddToContacts(contact);
+            container.SaveChanges();
+
+            /// TODO Add contact detail
+            
+            var unitId = container.Units.Where(r => r.Key == "NOONOODLES").SingleOrDefault().Id;
+            var unit = new Unit
+            {
+                ParentId = unitId,
+                Key = "arodionov",
+                Name = "Alexey Rodionov"
+            };
+
+            container.AddToUnits(unit);
+            container.SaveChanges();
+
+            var employee = new Employee
+            {
+                PersonId = person.Id,
+                UnitId = unit.Id
+            };
+
+            container.AddToEmployees(employee);
+            container.SaveChanges();
+
+            var location = new Location
+            {
+                Key = "MAIN",
+                Type = "MAIN",
+                Name = "Alexey Rodionov main delivery address",
+                UnitId = unitId
+            };
+
+            container.AddToLocations(location);
+            container.SaveChanges();
+
+            var address = new Address
+            {
+                Type = "MAIN",
+                Country = "RU",
+                Postalcode = "127015",
+                City = "Moscow",
+                Line1 = "17 proezd Marinoy Roshi, 2"
+            };
+
+            container.AddToAddresses(address);
+            container.SaveChanges();
+
+            var order = new Order
+            {
+                CurrencyId = container.Currencies.Where(r => r.Key == "GBP").SingleOrDefault().Id,
+                CustomerId = unit.Id,
+                Date = DateTime.Now,
+                DestinationId = container.Locations.Where(r => r.Key == "NOO001").SingleOrDefault().Id,
+                DueDate = DateTime.Now.AddHours(1),
+                Number = "000001",
+                SourceId = container.Locations.Where(r => r.Key == "NOO001").SingleOrDefault().Id,
+                Type = "SO"
+            };
+
+            container.AddToOrders(order);
+            container.SaveChanges();
+
+            var orderLine1 = new OrderLine
+            {
+                BaseQty = 1,
+                Qty = 1,
+                ItemId = container.Products.Where(r => r.Key == "Coca-Cola CAN 0.33").SingleOrDefault().Id,
+                OrderId = order.Id,
+                Priority = 1,
+                UomId = Guid.Empty
+            };
+
+            var orderLine2 = new OrderLine
+            {
+                BaseQty = 1,
+                Qty = 1,
+                ItemId = container.Products.Where(r => r.Key == "WOK REG").SingleOrDefault().Id,
+                OrderId = order.Id,
+                Priority = 1,
+                UomId = Guid.Empty
+            };
+
+
+            container.AddToOrderLines(orderLine1);
+            container.AddToOrderLines(orderLine2);
+            container.SaveChanges();
         }
     }
 }

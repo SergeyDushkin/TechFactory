@@ -37,6 +37,9 @@ namespace TF.DAL
             if (Address.Id == Guid.Empty)
                 Address.Id = Guid.NewGuid();
 
+            if (Address.Line2 == null)
+                Address.Line2 = String.Empty;
+
             using (var connection = context.CreateConnection())
             {
                 connection.Execute(AddressQuery.Insert(Address));

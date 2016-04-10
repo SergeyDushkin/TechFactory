@@ -4,8 +4,19 @@ using NLog;
 using Owin;
 using System;
 using System.Web.Http;
+
+/*
 using System.Web.Http.OData.Builder;
+using System.Web.Http.OData.Routing;
+using System.Web.Http.OData.Routing.Conventions;
 using System.Web.Http.OData.Extensions;
+*/
+/**/
+using System.Web.OData.Builder;
+using System.Web.OData.Routing;
+using System.Web.OData.Extensions;
+using System.Web.OData.Routing.Conventions;
+
 using TF.DAL;
 using TF.Data.Business;
 using TF.Data.Business.WMS;
@@ -62,7 +73,7 @@ namespace TF.Web.API
 
         private static void RegisterOdataRoutes(HttpConfiguration config)
         {
-            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+            ODataModelBuilder builder = new ODataConventionModelBuilder();
 
             builder.EntitySet<Unit>("Units");
             builder.EntitySet<Product>("Products");
@@ -84,7 +95,17 @@ namespace TF.Web.API
             builder.EntitySet<User>("Users");
             builder.EntitySet<Contact>("Contacts");
 
-            config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+            //config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+
+            var conventions = ODataRoutingConventions.CreateDefault();
+
+            config.MapODataServiceRoute(routeName: "ODataRoute",
+                 routePrefix: "odata",
+                 model: builder.GetEdmModel(),
+                 pathHandler: new DefaultODataPathHandler(),
+                 routingConventions: conventions);
+
+            config.AddODataQueryFilter();
         }
 
         public void Start(string baseAddress)

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TF.Web.API.Test.NoodleService;
-using System.Data.Services.Client;
 using System.Linq;
 using TF.Data.Business.WMS;
+using Default;
+using Microsoft.OData.Client;
 
 namespace TF.Web.API.Test
 {
@@ -15,61 +15,65 @@ namespace TF.Web.API.Test
         {
             var container = new Container(new Uri("http://localhost:5588/odata/"));
 
-            container.AddToProducts(new Product
+            var product = new Product
             {
                 Key = "TestProduct",
                 Name = "TestProduct",
                 Type = "REGULAR"
-            });
+            };
+
+            container.AddToProducts(product);
 
             var responses = container.SaveChanges();
 
-            foreach (var response in responses)
+            product.Name = "upd";
+
+            container.UpdateObject(product);
+            container.SaveChanges(SaveChangesOptions.ReplaceOnUpdate);
+
+            var product1 = container.Products.ByKey(product.Id);
+
+            product.Price = new ProductPrice
             {
-                var changeResponse = (ChangeOperationResponse)response;
-                var entityDescriptor = (EntityDescriptor)changeResponse.Descriptor;
-                var entity = (Product)entityDescriptor.Entity;
+                Price = 10
+            };
 
-                entity.Name = "upd";
+            container.SaveChanges()
 
-                container.UpdateObject(entity);
-                container.SaveChanges(SaveChangesOptions.ReplaceOnUpdate);
+            var price = new ProductPrice
+            {
+                ProductId = product.Id,
+                Price = 10
+            };
 
-                var price = new ProductPrice
-                {
-                    ProductId = entity.Id,
-                    Price = 10
-                };
+            container.AddToProductPrices(price);
+            container.SaveChanges();
 
-                container.AddToProductPrices(price);
-                container.SaveChanges();
+            var category = new ProductCategory
+            {
+                ProductId = product.Id,
+                CategoryId = Guid.Empty
+            };
 
-                var category = new ProductCategory
-                {
-                    ProductId = entity.Id,
-                    CategoryId = Guid.Empty
-                };
+            container.AddToProductCategories(category);
+            container.SaveChanges();
 
-                container.AddToProductCategories(category);
-                container.SaveChanges();
+            /// Get Product
+            var entity2 = container.Products.Where(r => r.Id == product.Id).Single();
 
-                /// Get Product
-                var entity2 = container.Products.Where(r => r.Id == entity.Id).Single();
+            /// Get Related ProductPrice
+            var entity3 = container.Products.Where(r => r.Id == product.Id).Select(r => r.Price).Single();
 
-                /// Get Related ProductPrice
-                var entity3 = container.Products.Where(r => r.Id == entity.Id).Select(r => r.Price).Single();
+            /// Get Related ProductCategory
+            var entity4 = container.Products.Where(r => r.Id == product.Id).SelectMany(r => r.Categories).ToList();
 
-                /// Get Related ProductCategory
-                var entity4 = container.Products.Where(r => r.Id == entity.Id).SelectMany(r => r.Categories).ToList();
+            container.DeleteObject(product);
+            var deleteResponses = container.SaveChanges();
 
-                container.DeleteObject(entity);
-                var deleteResponses = container.SaveChanges();
-
-                Assert.IsNotNull(entity2);
-                Assert.IsNotNull(entity3);
-                Assert.IsNotNull(entity4);
-                Assert.IsNotNull(deleteResponses);
-            }
+            Assert.IsNotNull(entity2);
+            Assert.IsNotNull(entity3);
+            Assert.IsNotNull(entity4);
+            Assert.IsNotNull(deleteResponses);
 
             Assert.IsNotNull(responses);
         }

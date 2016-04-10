@@ -1,9 +1,21 @@
-﻿using Microsoft.Data.OData;
+﻿/*
+using Microsoft.Data.OData;
 using NLog;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
+using System.Web.OData.Routing;
+using TF.Data.Business.WMS;
+*/
+
+using Microsoft.OData.Core;
+using NLog;
+using System.Linq;
+using System.Web.Http;
+using System.Web.OData;
+using System.Web.OData.Query;
+using System.Web.OData.Routing;
 using TF.Data.Business.WMS;
 
 namespace TF.Web.API.Controllers
@@ -57,12 +69,31 @@ namespace TF.Web.API.Controllers
         [HttpGet]
         public IHttpActionResult Get([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call ProductsController GetProduct");
+            logger.Trace("Call ProductsController GetProductById {0}", key);
 
             var query = productRepository.GetById(key);
 
+            if (query == null)
+                return NotFound();
+
             return Ok(query);
         }
+
+        /*
+        [HttpGet]
+        [ODataRoute("Products({key})")]
+        public IHttpActionResult Get([FromODataUri] string key)
+        {
+            logger.Trace("Call ProductsController GetProductByKey {0}", key);
+
+            var query = productRepository.GetByKey(key);
+
+            if (query == null)
+                return NotFound();
+
+            return Ok(query);
+        }
+        */
 
         [HttpPost]
         public IHttpActionResult Post([FromBody] Product entity)

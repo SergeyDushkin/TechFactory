@@ -1,15 +1,4 @@
-﻿/*
-using Microsoft.Data.OData;
-using NLog;
-using System.Linq;
-using System.Web.Http;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Query;
-using System.Web.OData.Routing;
-using TF.Data.Business.WMS;
-*/
-
-using Microsoft.OData.Core;
+﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
 using System.Web.Http;
@@ -125,14 +114,14 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult PostPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
+        public IHttpActionResult PostToPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
         {
             logger.Trace("Call ProductsController PostPrice");
 
             entity.ProductId = key;
 
             var record = productPriceService.Create(entity);
-            return Created<ProductPrice>(record);
+            return Created(record);
         }
 
         [HttpPut]
@@ -143,7 +132,7 @@ namespace TF.Web.API.Controllers
             entity.ProductId = key;
 
             var record = productPriceService.Update(entity);
-            return Created<ProductPrice>(record);
+            return Updated(record);
         }
 
         [HttpGet]
@@ -170,6 +159,26 @@ namespace TF.Web.API.Controllers
                 return Ok(query);
 
             return NotFound();
+        }
+
+        [HttpPost]
+        public IHttpActionResult PostToCategories([FromODataUri] System.Guid key, ProductCategory category)
+        {
+            logger.Trace("Call ProductsController PostToCategories");
+
+            var record = productCategoryService.Create(category);
+
+            return Created(record);
+        }
+
+        [HttpPut]
+        public IHttpActionResult PutToCategories([FromODataUri] System.Guid key, [FromODataUri] System.Guid refId, ProductCategory category)
+        {
+            logger.Trace("Call ProductsController PutToCategories");
+
+            var record = productCategoryService.Update(category);
+
+            return Created(record);
         }
 
         protected override void Dispose(bool disposing)

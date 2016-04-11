@@ -96,9 +96,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Service References\TFService\Reference.cs" />
     <Compile Include="ProductsEnpointTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\TFService\Reference.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

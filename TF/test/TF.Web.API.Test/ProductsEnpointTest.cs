@@ -38,7 +38,8 @@ namespace TF.Web.API.Test
                 Price = 10
             };
 
-            container.SaveChanges()
+            container.UpdateObject(product);
+            container.SaveChanges();
 
             var price = new ProductPrice
             {

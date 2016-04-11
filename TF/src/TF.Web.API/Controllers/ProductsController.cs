@@ -125,13 +125,24 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult AddPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
+        public IHttpActionResult PostPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
         {
-            logger.Trace("Call ProductsController AddPrice");
+            logger.Trace("Call ProductsController PostPrice");
 
             entity.ProductId = key;
 
             var record = productPriceService.Create(entity);
+            return Created<ProductPrice>(record);
+        }
+
+        [HttpPut]
+        public IHttpActionResult PutPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
+        {
+            logger.Trace("Call ProductsController PutPrice");
+
+            entity.ProductId = key;
+
+            var record = productPriceService.Update(entity);
             return Created<ProductPrice>(record);
         }
 

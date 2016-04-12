@@ -114,7 +114,7 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult PostToPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
+        public IHttpActionResult PostPriceToProducts([FromODataUri] System.Guid key, ProductPrice entity)
         {
             logger.Trace("Call ProductsController PostPrice");
 
@@ -125,7 +125,7 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult PutPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
+        public IHttpActionResult PutPriceToProducts([FromODataUri] System.Guid key, ProductPrice entity)
         {
             logger.Trace("Call ProductsController PutPrice");
 
@@ -151,7 +151,7 @@ namespace TF.Web.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCategories([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call ProductsController GetCategory");
+            logger.Trace("Call ProductsController GetCategories");
 
             var query = productCategoryService.GetCategoriesByProductId(key);
 
@@ -161,22 +161,43 @@ namespace TF.Web.API.Controllers
             return NotFound();
         }
 
+        [HttpGet]
+        [ODataRoute("Products({key})/Categories({relatedKey})")]
+        public IHttpActionResult GetCategoryByRelatedKey([FromODataUri] System.Guid key, [FromODataUri] System.Guid relatedKey)
+        {
+            logger.Trace("Call ProductsController GetCategory");
+
+            var query = productCategoryService
+                .GetCategoriesByProductId(key)
+                .Where(r => r.Id == relatedKey);
+
+            if (query != null)
+                return Ok(query);
+
+            return NotFound();
+        }
+
         [HttpPost]
-        public IHttpActionResult PostToCategories([FromODataUri] System.Guid key, ProductCategory category)
+        [ODataRoute("Products({key})/Categories")]
+        public IHttpActionResult PostCategoryToProducts([FromODataUri] System.Guid key, ProductCategory entity)
         {
             logger.Trace("Call ProductsController PostToCategories");
 
-            var record = productCategoryService.Create(category);
+            //var bodyJson = Request.Content.ReadAsStringAsync().Result;
+            //category = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductCategory>(bodyJson);
+
+            var record = productCategoryService.Create(entity);
 
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult PutToCategories([FromODataUri] System.Guid key, [FromODataUri] System.Guid refId, ProductCategory category)
+        [ODataRoute("Products({key})/Categories({relatedKey})")]
+        public IHttpActionResult PutCategoryToProducts([FromODataUri] System.Guid key, [FromODataUri] System.Guid relatedKey, ProductCategory entity)
         {
             logger.Trace("Call ProductsController PutToCategories");
 
-            var record = productCategoryService.Update(category);
+            var record = productCategoryService.Update(entity);
 
             return Created(record);
         }

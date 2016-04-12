@@ -31,14 +31,14 @@ namespace TF.Web.API.Test
             container.UpdateObject(product);
             container.SaveChanges(SaveChangesOptions.ReplaceOnUpdate);
 
-            var product1 = container.Products.ByKey(product.Id);
+            var product1 = container.Products.ByKey(product.Id).GetValue();
 
-            product.Price = new ProductPrice
+            product1.Price = new ProductPrice
             {
                 Price = 10
             };
-
-            container.UpdateObject(product);
+            
+            container.UpdateObject(product1);
             container.SaveChanges();
 
             var price = new ProductPrice

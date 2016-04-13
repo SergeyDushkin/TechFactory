@@ -53,7 +53,7 @@ namespace TF.Web.API
             container.RegisterType<IUserRepository, UserRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IContactRepository, ContactRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IContactDetailRepository, ContactDetailRepository>(new InjectionConstructor(dbContext));
-
+            container.RegisterType<IPersonRepository, PersonRepository>(new InjectionConstructor(dbContext));
 
             container.RegisterType<ILogger, Logger>(new InjectionFactory(x => LogManager.GetCurrentClassLogger()));
 

@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
 using System.Web.OData.Routing;
+using TF.Data.Business;
 using TF.Data.Business.WMS;
 
 namespace TF.Web.API.Controllers
@@ -67,22 +68,6 @@ namespace TF.Web.API.Controllers
 
             return Ok(query);
         }
-
-        /*
-        [HttpGet]
-        [ODataRoute("Products({key})")]
-        public IHttpActionResult Get([FromODataUri] string key)
-        {
-            logger.Trace("Call ProductsController GetProductByKey {0}", key);
-
-            var query = productRepository.GetByKey(key);
-
-            if (query == null)
-                return NotFound();
-
-            return Ok(query);
-        }
-        */
 
         [HttpPost]
         public IHttpActionResult Post([FromBody] Product entity)
@@ -181,27 +166,26 @@ namespace TF.Web.API.Controllers
 
         [HttpPost]
         [ODataRoute("Products({key})/Categories")]
-        public IHttpActionResult AddToCategories([FromODataUri] System.Guid key, ProductCategory entity)
+        public IHttpActionResult AddToCategories([FromODataUri] System.Guid key, [FromBody] Category entity)
         {
             logger.Trace("Call ProductsController PostToCategories");
 
-            //var bodyJson = Request.Content.ReadAsStringAsync().Result;
-            //category = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductCategory>(bodyJson);
+            //var record = productCategoryService.Create(entity);
+            //return Created(record);
 
-            var record = productCategoryService.Create(entity);
-
-            return Created(record);
+            return Ok();
         }
 
         [HttpPut]
         [ODataRoute("Products({key})/Categories({relatedKey})")]
-        public IHttpActionResult PutCategoryToProducts([FromODataUri] System.Guid key, [FromODataUri] System.Guid relatedKey, ProductCategory entity)
+        public IHttpActionResult UpdateCategories([FromODataUri] System.Guid key, [FromODataUri] System.Guid relatedKey, Category entity)
         {
             logger.Trace("Call ProductsController PutToCategories");
 
-            var record = productCategoryService.Update(entity);
+            //var record = productCategoryService.Update(entity);
+            //return Created(record);
 
-            return Created(record);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

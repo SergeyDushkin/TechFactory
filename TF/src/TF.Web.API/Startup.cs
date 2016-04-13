@@ -165,6 +165,7 @@ namespace TF.Web.API
                 }
             }
 
+            /*
             if (context.Request.Method == HttpMethod.Post &&
                 odataPath.PathTemplate == "~/entityset/key/navigation")
             {
@@ -195,6 +196,7 @@ namespace TF.Web.API
                     return actionName;
                 }
             }
+            */
 
             if (context.Request.Method == HttpMethod.Put &&
                 odataPath.PathTemplate == "~/entityset/key/navigation/key")
@@ -222,7 +224,9 @@ namespace TF.Web.API
                     .Target
                     .EntityType();
 
-                string actionName = "Put" + navigationEntityName + "To" + entityName;
+                string actionName = "Update" + navigationEntityName;
+                //string actionName = "Put" + navigationEntityName + "To" + entityName;
+
                 if (actionMap.Contains(actionName))
                 {
                     // Add keys to route data, so they will bind to action parameters.
@@ -235,6 +239,38 @@ namespace TF.Web.API
                     var content = context.Request.Content.ReadAsStringAsync().Result;
                     var entity = Newtonsoft.Json.JsonConvert.DeserializeObject(content, Type.GetType(navigationPropertyType.FullTypeName()));
                     context.RouteData.Values["entity"] = entity;
+
+                    return actionName;
+                }
+            }
+
+            if (context.Request.Method == HttpMethod.Put &&
+                odataPath.PathTemplate == "~/entityset/key/navigation")
+            {
+                string navigationPropertyName = (odataPath.Segments[2] as NavigationPathSegment).NavigationPropertyName;
+                string actionName = "Update" + navigationPropertyName;
+
+                if (actionMap.Contains(actionName))
+                {
+                    // Add keys to route data, so they will bind to action parameters.
+                    KeyValuePathSegment keyValueSegment = odataPath.Segments[1] as KeyValuePathSegment;
+                    context.RouteData.Values[ODataRouteConstants.Key] = keyValueSegment.Value;
+
+                    return actionName;
+                }
+            }
+
+            if (context.Request.Method == HttpMethod.Post &&
+                odataPath.PathTemplate == "~/entityset/key/navigation")
+            {
+                string navigationPropertyName = (odataPath.Segments[2] as NavigationPathSegment).NavigationPropertyName;
+                string actionName = "Create" + navigationPropertyName;
+
+                if (actionMap.Contains(actionName))
+                {
+                    // Add keys to route data, so they will bind to action parameters.
+                    KeyValuePathSegment keyValueSegment = odataPath.Segments[1] as KeyValuePathSegment;
+                    context.RouteData.Values[ODataRouteConstants.Key] = keyValueSegment.Value;
 
                     return actionName;
                 }

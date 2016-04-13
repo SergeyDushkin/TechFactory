@@ -114,7 +114,8 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult PostPriceToProducts([FromODataUri] System.Guid key, ProductPrice entity)
+        [ODataRoute("Products({key})/Price")]
+        public IHttpActionResult CreatePrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
         {
             logger.Trace("Call ProductsController PostPrice");
 
@@ -125,7 +126,8 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult PutPriceToProducts([FromODataUri] System.Guid key, ProductPrice entity)
+        [ODataRoute("Products({key})/Price")]
+        public IHttpActionResult UpdatePrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
         {
             logger.Trace("Call ProductsController PutPrice");
 
@@ -179,7 +181,7 @@ namespace TF.Web.API.Controllers
 
         [HttpPost]
         [ODataRoute("Products({key})/Categories")]
-        public IHttpActionResult PostCategoryToProducts([FromODataUri] System.Guid key, ProductCategory entity)
+        public IHttpActionResult AddToCategories([FromODataUri] System.Guid key, ProductCategory entity)
         {
             logger.Trace("Call ProductsController PostToCategories");
 

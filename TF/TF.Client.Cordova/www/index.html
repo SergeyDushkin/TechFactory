@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="locationsApp">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1251"/>
+            <!--
+                Настройте политику безопасности содержимого в метатеге ниже. Добавьте "unsafe-inline" к default-src, чтобы включить встроенный код JavaScript.
+                Дополнительные сведения см. по ссылке http://go.microsoft.com/fwlink/?LinkID=617521
+            -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="lib/mobile-angular-ui/css/mobile-angular-ui-base.min.css" type="text/css">
+        <title>TF.Client.Cordova</title>
+    </head>
+    <body>
+        <locations-list></locations-list>
+        
+        <!-- JQuery JS -->
+        <script src="lib/jquery/dist/jquery.min.js"></script>
+
+        <!-- Angular JS -->
+        <script src="lib/angular/angular.min.js"></script>
+
+
+        <!-- Mobile-Angular-UI JS -->
+        <script src="lib/mobile-angular-ui/js/mobile-angular-ui.min.js" type="text/javascript"></script>
+        <script src="lib/mobile-angular-ui/js/mobile-angular-ui.gestures.min.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="scripts/mobileAppInit.js"></script>
+        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+        <script type="text/javascript" src="scripts/locations.service.js"></script>
+        <script type="text/javascript" src="scripts/locations.directive.js"></script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>

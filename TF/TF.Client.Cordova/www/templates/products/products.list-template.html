@@ -1,0 +1,12 @@
+﻿<div class="scrollable-content" ui-scroll-bottom='bottomReached()'>
+    <div class="list-group">
+        <a ng-repeat="product in products" href="#" class="list-group-item ng-binding ng-scope" ng-click="productClick(product)">
+            {{product.Name}}<i class="fa pull-right" ng-class="{'fa-check':picked.indexOf(product)>=0}"></i>
+        </a>
+    </div>
+
+    <a class="btn btn-block btn-lg btn-primary scrollable-footer" ui-toggle='searchBar' ng-click="order()">
+        <i class="fa fa-shopping-cart"></i>
+        Order
+    </a>
+</div>

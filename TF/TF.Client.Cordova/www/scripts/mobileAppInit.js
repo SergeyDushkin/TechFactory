@@ -15,11 +15,6 @@
         var element = document.getElementById("deviceready");
     };
 
-    function getLocations()
-    {
-        $.get("http://localhost:5588/odata/Locations");
-    }
-
     function onPause() {
         // TODO: Это приложение приостановлено. Сохраните здесь состояние приложения.
     };

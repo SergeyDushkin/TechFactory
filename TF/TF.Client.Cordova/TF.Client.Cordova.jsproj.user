@@ -7,4 +7,8 @@
   <PropertyGroup>
     <ReferenceCachePath>C:\Users\1\AppData\Local\Temp\TF.Client.Cordova_refcache</ReferenceCachePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <DebuggerFlavor>AndroidEmulator</DebuggerFlavor>
+    <AndroidEmulatorID>AndroidDevice;Устройство</AndroidEmulatorID>
+  </PropertyGroup>
 </Project>

@@ -13,7 +13,7 @@ namespace TF.Web.API.Test
         [TestMethod]
         public void ProductCrudTest()
         {
-            var container = new Container(new Uri("http://localhost:5588/odata/"));
+            var container = new Container(new Uri("http://partner-dev-srv.cloudapp.net/v1/odata/Products"));
 
             container.AddToProducts(new Product
             {

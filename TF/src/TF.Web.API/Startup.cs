@@ -4,6 +4,7 @@ using NLog;
 using Owin;
 using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.OData.Builder;
 using System.Web.Http.OData.Extensions;
 using TF.DAL;
@@ -27,6 +28,8 @@ namespace TF.Web.API
 
             /// Регистрация маршрутов odata
             Startup.RegisterOdataRoutes(config);
+
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             ///// Подключаем модуль web api
             app.UseWebApi(config);

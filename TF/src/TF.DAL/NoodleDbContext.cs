@@ -21,7 +21,7 @@ namespace TF.DAL
             providerName = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ProviderName;
 
             // ONLY FOR TEST
-            Init();
+            // Init();
         }
 
         public IDbConnection CreateConnection()

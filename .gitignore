@@ -3,3 +3,10 @@
 ################################################################################
 
 /TF/packages
+/TF/test/TF.DAL.Test/obj/Debug
+/TF/test/TF.Web.API.Test/obj/Debug
+/TF/src/TF.Web.Proxy/obj/Debug
+/TF/src/TF.Web.API/obj/Debug
+/TF/src/TF.Web.API/bin/Debug
+/TF/src/TF.DAL/obj/Debug
+/TF/src/TF.Data/obj/Debug

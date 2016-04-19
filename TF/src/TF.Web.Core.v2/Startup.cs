@@ -22,6 +22,16 @@ namespace TF.Web.Core.v2
         {
             app.UseIISPlatformHandler();
 
+            app.Use((context, next) =>
+            {
+                if (!context.Request.Path.StartsWithSegments(new PathString("/favicon.ico")))
+                {
+                    Console.WriteLine("Hello");
+                }
+
+                return next();
+            });
+
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");

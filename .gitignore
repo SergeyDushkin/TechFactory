@@ -10,3 +10,14 @@
 /TF/src/TF.Web.API/bin/Debug
 /TF/src/TF.DAL/obj/Debug
 /TF/src/TF.Data/obj/Debug
+/TF/src/TF.DAL/bin/Debug
+/TF/src/TF.Data/bin/Debug
+/TF/src/TF.Web.Proxy/bin/Debug
+/TF/test/TF.DAL.Test/bin/Debug
+/TF/test/TF.Web.API.Test/bin/Debug
+/TF.DAL/src/TF.DAL.CategoryTreeService/bin/Debug
+/TF.DAL/src/TF.DAL.CategoryTreeService/obj/Debug
+/TF.Data.Business/src/TF.Data.Business.CategoryTree/obj/Debug
+/TF.Data.Business/src/TF.Data.Business.CategoryTree/bin/Debug
+/TF.DAL
+/TF.Data.Business

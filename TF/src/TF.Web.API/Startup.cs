@@ -87,7 +87,6 @@ namespace TF.Web.API
             builder.EntitySet<Currency>("Currencies");
             builder.EntitySet<Entity>("Entities");
             builder.EntitySet<Location>("Locations");
-            builder.EntitySet<Order>("Orders");
             builder.EntitySet<Person>("Persons");
             builder.EntitySet<Role>("Roles");
             builder.EntitySet<Uom>("Uoms");

@@ -1,7 +1,8 @@
 ﻿using NLog;
 using System.Web.Http;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Query;
+using System.Web.OData;
+using System.Web.OData.Query;
+using System.Web.OData.Routing;
 using TF.Data.Business.WMS;
 
 namespace TF.Web.API.Controllers

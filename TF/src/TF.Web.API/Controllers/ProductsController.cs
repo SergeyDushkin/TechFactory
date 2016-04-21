@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Query;
 using TF.Data.Business.WMS;
+using System.Web.Http.Tracing;
 
 namespace TF.Web.API.Controllers
 {
@@ -15,27 +16,29 @@ namespace TF.Web.API.Controllers
         private readonly IProductRepository productRepository;
         private readonly IProductPriceService productPriceService;
         private readonly IProductCategoryService productCategoryService;
-        private readonly ILogger logger;
+        //private readonly ILogger logger;
 
         public ProductsController(
             IProductRepository productRepository,
             IProductPriceService productPriceService,
-            IProductCategoryService productCategoryService,
-            ILogger logger)
+            IProductCategoryService productCategoryService
+            //,ILogger logger
+            )
         {
             this.productRepository = productRepository;
             this.productPriceService = productPriceService;
             this.productCategoryService = productCategoryService;
-            this.logger = logger;
 
-            this.logger.Trace("Call ProductsController");
+            //this.logger = logger;
+            //this.logger.Trace("Call ProductsController");
         }
 
         [HttpGet]
         [EnableQuery]
         public IHttpActionResult Get(ODataQueryOptions<Product> queryOptions)
         {
-            logger.Trace("Call ProductsController GetProducts");
+            //Configuration.Services. .GetTraceWriter().Trace(Request, "CUSTOM::Trace", TraceLevel.Info, "Get Products"); 
+            //logger.Trace("Call ProductsController GetProducts");
 
             try
             {
@@ -57,7 +60,8 @@ namespace TF.Web.API.Controllers
         [HttpGet]
         public IHttpActionResult Get([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call ProductsController GetProduct");
+            Configuration.Services.GetTraceWriter().Info(Request, "ProductsController", "Get Product by id {0}", key);
+            //logger.Trace("Call ProductsController GetProduct");
 
             var query = productRepository.GetById(key);
 
@@ -67,7 +71,8 @@ namespace TF.Web.API.Controllers
         [HttpPost]
         public IHttpActionResult Post([FromBody] Product entity)
         {
-            logger.Trace("Call ProductsController Post");
+            Configuration.Services.GetTraceWriter().Info(Request, "ProductsController", "Create Product", entity);
+            //logger.Trace("Call ProductsController Post");
 
             var record = productRepository.Create(entity);
             return Created<Product>(record);
@@ -76,7 +81,8 @@ namespace TF.Web.API.Controllers
         [HttpPut]
         public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Product entity)
         {
-            logger.Trace("Call ProductsController Put");
+            Configuration.Services.GetTraceWriter().Info(Request, "ProductsController", "Update Product {0}", key, entity);
+            //logger.Trace("Call ProductsController Put");
 
             var record = productRepository.Update(entity);
             return Updated<Product>(record);
@@ -85,7 +91,8 @@ namespace TF.Web.API.Controllers
         [HttpDelete]
         public IHttpActionResult Delete([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call ProductsController Delete");
+            Configuration.Services.GetTraceWriter().Info(Request, "ProductsController", "Delete Product by id {0}", key);
+            //logger.Trace("Call ProductsController Delete");
 
             productRepository.Delete(key);
             productPriceService.DeleteByProduct(key);
@@ -96,7 +103,7 @@ namespace TF.Web.API.Controllers
         [HttpPost]
         public IHttpActionResult AddPrice([FromODataUri] System.Guid key, [FromBody] ProductPrice entity)
         {
-            logger.Trace("Call ProductsController AddPrice");
+            //logger.Trace("Call ProductsController AddPrice");
 
             entity.ProductId = key;
 
@@ -107,7 +114,7 @@ namespace TF.Web.API.Controllers
         [HttpGet]
         public IHttpActionResult GetPrice([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call ProductsController GetPrice");
+            //logger.Trace("Call ProductsController GetPrice");
 
             var query = productPriceService.GetByProductId(key);
 
@@ -120,7 +127,7 @@ namespace TF.Web.API.Controllers
         [HttpGet]
         public IHttpActionResult GetCategories([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call ProductsController GetCategory");
+            //logger.Trace("Call ProductsController GetCategory");
 
             var query = productCategoryService.GetCategoriesByProductId(key);
 
@@ -132,7 +139,7 @@ namespace TF.Web.API.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            logger.Trace("End ProductsController");
+            //logger.Trace("End ProductsController");
 
             base.Dispose(disposing);
         }

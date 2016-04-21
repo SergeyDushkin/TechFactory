@@ -18,6 +18,7 @@ namespace TF.Web.API.Controllers
         private readonly IUnitRepository unitRepository;
         private readonly ICurrencyRepository currencyRepository;
         private readonly IOrderLineRepository orderLineRepository;
+        private readonly IProductRepository productRepository;
         private readonly ILogger logger;
 
         public OrdersController(
@@ -26,6 +27,7 @@ namespace TF.Web.API.Controllers
             ILocationRepository locationRepository,
             ICurrencyRepository currencyRepository,
             IOrderLineRepository orderLineRepository,
+            IProductRepository productRepository,
             ILogger logger)
         {
             this.orderRepository = orderRepository;
@@ -33,6 +35,7 @@ namespace TF.Web.API.Controllers
             this.locationRepository = locationRepository;
             this.currencyRepository = currencyRepository;
             this.orderLineRepository = orderLineRepository;
+            this.productRepository = productRepository;
             this.logger = logger;
 
             this.logger.Trace("Call OrderController");
@@ -62,11 +65,20 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public IHttpActionResult Get(ODataQueryOptions<Order> queryOptions, [FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController Get by Id");
 
             var query = orderRepository.GetById(key);
+
+            var lineQuery = orderLineRepository.GetByOrderId(key).Select(r =>
+            {
+                r.Item = productRepository.GetById(r.ItemId);
+                return r;
+            });
+            
+            query.Lines = lineQuery.ToList();
+            
             return Ok(query);
         }
 

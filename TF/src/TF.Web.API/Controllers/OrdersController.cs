@@ -2,8 +2,9 @@
 using NLog;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Query;
+using System.Web.OData;
+using System.Web.OData.Query;
+using System.Web.OData.Routing;
 using TF.Data.Business;
 using TF.Data.Business.WMS;
 
@@ -65,7 +66,8 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(ODataQueryOptions<Order> queryOptions, [FromODataUri] System.Guid key)
+        [EnableQuery(MaxExpansionDepth = 5)]
+        public IHttpActionResult Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController Get by Id");
 
@@ -76,9 +78,9 @@ namespace TF.Web.API.Controllers
                 r.Item = productRepository.GetById(r.ItemId);
                 return r;
             });
-            
+
             query.Lines = lineQuery.ToList();
-            
+
             return Ok(query);
         }
 

@@ -40,6 +40,14 @@ namespace TF.DAL
             }
         }
 
+        public Product GetByKey(string key)
+        {
+            using (var connection = context.CreateConnection())
+            {
+                return connection.Query<Product>(SelectProduct.ByKey(key)).SingleOrDefault();
+            }
+        }
+
         public Product Update(Product product)
         {
             using (var connection = context.CreateConnection())

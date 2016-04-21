@@ -16,6 +16,11 @@ namespace TF.DAL.Query
             return new CommandDefinition("SELECT [GUID_RECORD] Id, [TYPE], [KEY], [NAME] FROM [BUSINESS.WMS.PRODUCT_N_SERVICE] where GUID_RECORD = @id", new { id });
         }
 
+        public static CommandDefinition ByKey(string key)
+        {
+            return new CommandDefinition("SELECT [GUID_RECORD] Id, [TYPE], [KEY], [NAME] FROM [BUSINESS.WMS.PRODUCT_N_SERVICE] where [KEY] = @key", new { key });
+        }
+
         public static CommandDefinition Update(Product product)
         {
             return new CommandDefinition(

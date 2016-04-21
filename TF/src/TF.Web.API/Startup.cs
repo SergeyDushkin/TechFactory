@@ -26,6 +26,7 @@ using System.Web.Http.Controllers;
 using System.Linq;
 using System.Net.Http;
 using Microsoft.OData.Edm;
+using System.Web.Http.Cors;
 
 namespace TF.Web.API
 {
@@ -42,6 +43,8 @@ namespace TF.Web.API
 
             /// Регистрация маршрутов odata
             Startup.RegisterOdataRoutes(config);
+
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             ///// Подключаем модуль web api
             app.UseWebApi(config);

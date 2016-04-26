@@ -14,6 +14,7 @@ using TF.Data.Business;
 using TF.Data.Business.WMS;
 using TF.Data.Systems;
 using TF.Data.Systems.Security;
+using TF.Web.API.Middleware;
 using TF.Web.API.OData;
 
 namespace TF.Web.API
@@ -33,6 +34,9 @@ namespace TF.Web.API
             Startup.RegisterOdataRoutes(config);
 
             config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+
+            /// Регистрируем инсталлятор базы данных
+            app.Map("/install", Installer.UseInstaller);
 
             ///// Подключаем модуль web api
             app.UseWebApi(config);

@@ -175,6 +175,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\AddressesController.cs" />
     <Compile Include="Controllers\UomsController.cs" />
+    <Compile Include="Middleware\Installer.cs" />
     <Compile Include="OData\NavigationIndexRoutingConvention.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

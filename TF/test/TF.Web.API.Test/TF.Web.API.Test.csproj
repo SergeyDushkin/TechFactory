@@ -96,6 +96,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="IntegrationDemoTest.cs" />
     <Compile Include="Service References\TFService\Reference.cs" />
     <Compile Include="ProductsEnpointTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

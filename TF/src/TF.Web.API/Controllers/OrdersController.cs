@@ -89,6 +89,8 @@ namespace TF.Web.API.Controllers
         {
             logger.Trace("Call OrderController Post");
 
+            entity.StatusCode = "DRAFT";
+
             var record = orderRepository.Create(entity);
             return Created(record);
         }

@@ -2,6 +2,7 @@
 CREATE TABLE [BUSINESS.WMS.ORDER](
 	[GUID_RECORD] [uniqueidentifier] NOT NULL,
 	[TYPE] nvarchar(20) NOT NULL,							-- valid values: SO
+	[STATUS_CODE] nvarchar(50) NOT NULL,					-- valid values: DRAFT, NEW, PROCESSED, CLOSED, CANCELED
 	[DUEDATE] smalldatetime NOT NULL,						-- Date/Time when order should be processed
 	[NUMBER] nvarchar(20) NOT NULL,
 	[DATE] smalldatetime NOT NULL,

@@ -30,7 +30,8 @@ namespace TF.DAL.Test
                 LinesCount = 5,
                 Number = "SO001",
                 SourceId = Guid.NewGuid(),
-                Type = "SO"
+                Type = "SO",
+                StatusCode = "DRAFT"
             };
 
             repository.Create(record);
@@ -54,6 +55,7 @@ namespace TF.DAL.Test
             Assert.AreEqual(record.Number, record2.Number);
             Assert.AreEqual(record.SourceId, record2.SourceId);
             Assert.AreEqual(record.Type, record2.Type);
+            Assert.AreEqual(record.StatusCode, record2.StatusCode);
 
             repository.Delete(record.Id);
 

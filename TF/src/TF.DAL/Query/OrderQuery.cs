@@ -11,6 +11,7 @@ namespace TF.DAL.Query
             return new CommandDefinition(@"SELECT 
                 [GUID_RECORD] Id, 
                 [TYPE], 
+                [STATUS_CODE] StatusCode, 
                 [DUEDATE], 
                 [NUMBER], 
                 [DATE], 
@@ -29,6 +30,7 @@ namespace TF.DAL.Query
             return new CommandDefinition(@"SELECT 
                 [GUID_RECORD] Id, 
                 [TYPE], 
+                [STATUS_CODE] StatusCode, 
                 [DUEDATE], 
                 [NUMBER], 
                 [DATE], 
@@ -47,6 +49,7 @@ namespace TF.DAL.Query
             return new CommandDefinition(
                 @"UPDATE [BUSINESS.WMS.ORDER]
                 SET [TYPE] = @TYPE,
+                [STATUS_CODE] = @STATUS_CODE,
                 [DUEDATE] = @DUEDATE,
                 [NUMBER] = @NUMBER,
                 [DATE] = @DATE,
@@ -61,6 +64,7 @@ namespace TF.DAL.Query
                 {
                     GUID_RECORD = record.Id,
                     TYPE = record.Type,
+                    STATUS_CODE = record.StatusCode,
                     DUEDATE = record.DueDate,
                     NUMBER = record.Number,
                     DATE = record.Date,
@@ -79,6 +83,7 @@ namespace TF.DAL.Query
             return new CommandDefinition(
                 @"INSERT INTO [BUSINESS.WMS.ORDER] ([GUID_RECORD],
                 [TYPE],
+                [STATUS_CODE],
                 [DUEDATE],
                 [NUMBER],
                 [DATE],
@@ -92,12 +97,13 @@ namespace TF.DAL.Query
                 [BATCH_GUID],
                 [HIDDEN],
                 [DELETED]) 
-                VALUES (@GUID_RECORD, @TYPE, @DUEDATE, @NUMBER, @DATE, @CUSTOMER_GUID, 
+                VALUES (@GUID_RECORD, @TYPE, @STATUS_CODE, @DUEDATE, @NUMBER, @DATE, @CUSTOMER_GUID, 
                 @SOURCE_GUID, @DESTINATION_GUID, @CURRENCY_GUID, @LINES, @AMOUNT, 
                 @BASE_AMOUNT, @BATCH_GUID, @HIDDEN, @DELETED)", new
                 {
                     GUID_RECORD = record.Id,
                     TYPE = record.Type,
+                    STATUS_CODE = record.StatusCode,
                     DUEDATE = record.DueDate,
                     NUMBER = record.Number,
                     DATE = record.Date,

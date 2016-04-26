@@ -13,6 +13,11 @@ namespace TF.Data.Business.WMS
         public string Type { get; set; }
 
         /// <summary>
+        /// DRAFT, NEW, PROCESSED, CLOSED, CANCELED
+        /// </summary>
+        public string StatusCode { get; set; }
+
+        /// <summary>
         /// Date/Time when order should be processed
         /// </summary>
         public DateTime DueDate { get; set; }

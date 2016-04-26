@@ -1,6 +1,8 @@
 ﻿using Microsoft.Data.OData;
 using NLog;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -17,6 +19,7 @@ namespace TF.Web.API.Controllers
         private readonly IOrderLineRepository orderLineRepository;
         private readonly IOrderRepository orderRepository;
         private readonly IProductRepository productRepository;
+        private readonly IProductPriceService productPriceRepository;
         private readonly IUomRepository uomRepository;
         private readonly ILogger logger;
 
@@ -24,12 +27,14 @@ namespace TF.Web.API.Controllers
             IOrderRepository orderRepository,
             IOrderLineRepository orderLineRepository,
             IProductRepository productRepository,
-             IUomRepository uomRepository,
+            IUomRepository uomRepository,
+            IProductPriceService productPriceRepository,
             ILogger logger)
         {
             this.orderRepository = orderRepository;
             this.orderLineRepository = orderLineRepository;
             this.productRepository = productRepository;
+            this.productPriceRepository = productPriceRepository;
             this.uomRepository = uomRepository;
             this.logger = logger;
 
@@ -73,7 +78,18 @@ namespace TF.Web.API.Controllers
         {
             logger.Trace("Call OrderLineController Post");
 
+            var price = productPriceRepository.GetByProductId(entity.ItemId);
+
+            if (price != null)
+            {
+                entity.Price = (float)price.Price;
+                entity.Amount = entity.Qty + entity.Price;
+            }
+
             var record = orderLineRepository.Create(entity);
+
+            Task.Factory.StartNew(() => RecalcOrderAsync(entity.OrderId));
+
             return Created(record);
         }
 
@@ -82,7 +98,18 @@ namespace TF.Web.API.Controllers
         {
             logger.Trace("Call OrderLineController Put");
 
+            var price = productPriceRepository.GetByProductId(entity.ItemId);
+
+            if (price != null)
+            {
+                entity.Price = (float)price.Price;
+                entity.Amount = entity.Qty + entity.Price;
+            }
+
             var record = orderLineRepository.Update(entity);
+
+            Task.Factory.StartNew(() => RecalcOrderAsync(entity.OrderId));
+
             return Updated(record);
         }
 
@@ -92,6 +119,9 @@ namespace TF.Web.API.Controllers
             logger.Trace("Call OrderLineController Delete");
 
             orderLineRepository.Delete(key);
+
+            Task.Factory.StartNew(() => RecalcOrderByLineIdAsync(key));
+
             return Ok();
         }
 
@@ -138,6 +168,28 @@ namespace TF.Web.API.Controllers
 
             var uom = uomRepository.GetById(orderLine.UomId);
             return Ok(uom);
+        }
+
+        private async Task<Order> RecalcOrderByLineIdAsync(Guid id)
+        {
+            var line = await orderLineRepository.GetByIdAsync(id);
+            return await RecalcOrderAsync(line.OrderId);
+        }
+
+        private async Task<Order> RecalcOrderAsync(Guid id)
+        {
+            var order = orderRepository.GetById(id);
+
+            if (order != null)
+            {
+                var lines = await orderLineRepository.GetByOrderIdAsync(id);
+
+                order.LinesCount = Convert.ToInt16(lines.Count());
+                order.Amount = lines.Sum(r => r.Amount);
+                order = await orderRepository.UpdateAsync(order);
+            }
+
+            return order;
         }
 
         protected override void Dispose(bool disposing)

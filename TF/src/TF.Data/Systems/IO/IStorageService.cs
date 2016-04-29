@@ -18,7 +18,7 @@ namespace TF.Data.Systems.IO
         void DeleteFolder(string path);
 
         void CreateFolder(string path);
-        void WriteFile(string path);
+        void WriteFile(string path, byte[] content);
 
         void CopyFile(string pathStart, string pathEnd);
         void MoveFile(string pathStart, string pathEnd);

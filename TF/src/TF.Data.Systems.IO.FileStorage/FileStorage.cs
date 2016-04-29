@@ -63,7 +63,15 @@ namespace TF.Data.Systems.IO
         {
             path = Path.Combine(root, path);
 
-            throw new NotImplementedException();
+            if (!File.Exists(path))
+                throw new FileNotFoundException();
+
+            using (var stream = new StreamReader(path))
+            {
+                var ms = new MemoryStream();
+                stream.BaseStream.CopyTo(ms);
+                return ms.ToArray();
+            }
         }
 
         public IFileInfo GetFileInfo(string path)
@@ -119,11 +127,10 @@ namespace TF.Data.Systems.IO
             throw new NotImplementedException();
         }
 
-        public void WriteFile(string path)
+        public void WriteFile(string path, byte[] content)
         {
             path = Path.Combine(root, path);
-
-            throw new NotImplementedException();
+            File.WriteAllBytes(path, content);
         }
     }
 }

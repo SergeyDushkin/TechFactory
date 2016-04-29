@@ -39,10 +39,10 @@ namespace TF.Data.Systems.IO.FileStorage.Test
             Directory.CreateDirectory(Path.Combine(root, _existFolderPath1));
             Directory.CreateDirectory(Path.Combine(root, _existFolderPath2));
 
-            File.Create(Path.Combine(root, _existFilePath1));
-            File.Create(Path.Combine(root, _existFilePath2));
-            File.Create(Path.Combine(root, _existFilePath3));
-            File.Create(Path.Combine(root, _existFilePath4));
+            File.WriteAllText(Path.Combine(root, _existFilePath1), "AAA");
+            File.WriteAllText(Path.Combine(root, _existFilePath2), "BBB");
+            File.WriteAllText(Path.Combine(root, _existFilePath3), "CCC");
+            File.WriteAllText(Path.Combine(root, _existFilePath4), "DDD");
 
             service = new FileStorageService(root);
         }
@@ -90,7 +90,8 @@ namespace TF.Data.Systems.IO.FileStorage.Test
         [TestMethod]
         public void GetFileTest()
         {
-            throw new NotImplementedException();
+            Assert.IsTrue(File.ReadAllBytes(Path.Combine(root, _existFilePath1))
+                .SequenceEqual(service.GetFile(_existFilePath1)));
         }
 
         [TestMethod]
@@ -138,7 +139,10 @@ namespace TF.Data.Systems.IO.FileStorage.Test
         [TestMethod]
         public void WriteFileTest()
         {
-            throw new NotImplementedException();
+            service.WriteFile(_noExistFilePath, File.ReadAllBytes(Path.Combine(root, _existFilePath1)));
+
+            Assert.IsTrue(File.ReadAllBytes(Path.Combine(root, _existFilePath1))
+                .SequenceEqual(service.GetFile(_noExistFilePath)));
         }
     }
 }

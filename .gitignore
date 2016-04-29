@@ -22,3 +22,7 @@
 /TF.DAL
 /TF.Data.Business
 /TF/artifacts/bin/TF.Web.Core.v2/Debug
+/TF/src/TF.Data.Systems.IO.FileStorage/bin/Debug
+/TF/src/TF.Data.Systems.IO.FileStorage/obj/Debug
+/TF/test/TF.Data.Systems.IO.FileStorage.Test/bin/Debug
+/TF/test/TF.Data.Systems.IO.FileStorage.Test/obj/Debug

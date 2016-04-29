@@ -67,7 +67,7 @@ namespace TF.Web.API.Controllers
 
         [HttpGet]
         [EnableQuery(MaxExpansionDepth = 5)]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public IHttpActionResult Get(ODataQueryOptions<Order> queryOptions, [FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController Get by Id");
 

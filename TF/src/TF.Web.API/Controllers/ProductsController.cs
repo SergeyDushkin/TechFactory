@@ -52,10 +52,18 @@ namespace TF.Web.API.Controllers
 
             var data = productRepository.Get();
 
-            var query = (IQueryable<Product>)queryOptions
+            data = data.Select(r =>
+            {
+                r.Price = productPriceService.GetByProductId(r.Id);
+                return r;
+            });
+
+            var query = queryOptions
                 .ApplyTo(data.AsQueryable());
 
-            return Ok(query);
+            //data = query.ToList();
+
+            return Ok(data);
         }
 
         [HttpGet]
@@ -67,6 +75,8 @@ namespace TF.Web.API.Controllers
 
             if (query == null)
                 return NotFound();
+
+            query.Price = productPriceService.GetByProductId(key);
 
             return Ok(query);
         }

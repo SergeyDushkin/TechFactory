@@ -93,6 +93,11 @@ namespace TF.Web.API
             builder.EntitySet<User>("Users");
             builder.EntitySet<Contact>("Contacts");
 
+
+            builder.Namespace = "NoodleService";
+            builder.EntityType<Order>()
+                .Action("Confirm");
+
             var model = builder.GetEdmModel();
 
             var conventions = ODataRoutingConventions.CreateDefault();

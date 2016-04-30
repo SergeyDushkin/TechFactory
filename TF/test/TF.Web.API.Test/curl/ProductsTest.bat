@@ -6,6 +6,8 @@ echo Test Products endpoint
 REM echo GET
 REM curl http://localhost:5588/odata/Products
 
+curl -H content-type:application/json -X POST http://localhost:5588/odata/Orders(abb00ddf-cc1c-420f-9efc-b2046ee6c892)/NoodleService.Confirm -d "{}"
+
 echo POST
 REM curl -H content-type:application/json -X POST http://localhost:5588/odata/Products -d "{Id:'5d7b24fd-18d1-4fd4-9247-9497f98a12dd',Type:'REGULAR',Key:'Bolognese REG',Name:'Bolognese regular'}"
 

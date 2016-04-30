@@ -198,6 +198,34 @@ namespace TF.Web.API.Controllers
             return Created<OrderLine>(record);
         }
 
+        [HttpPost]
+        public IHttpActionResult Confirm([FromODataUri] System.Guid key, ODataActionParameters parameters)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var order = orderRepository.GetById(key);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            if (order.Type != "DRAFT")
+            {
+                return NotFound();
+            }
+
+            order.Type = "NEW";
+
+            var record = orderRepository.Update(order);
+
+            return Ok(record);
+
+            //return StatusCode(HttpStatusCode.NoContent);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

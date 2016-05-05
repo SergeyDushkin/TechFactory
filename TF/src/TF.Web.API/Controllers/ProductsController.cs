@@ -55,6 +55,8 @@ namespace TF.Web.API.Controllers
             data = data.Select(r =>
             {
                 r.Price = productPriceService.GetByProductId(r.Id);
+                r.Categories = productCategoryService.GetCategoriesByProductId(r.Id).ToList();
+
                 return r;
             });
 
@@ -77,6 +79,7 @@ namespace TF.Web.API.Controllers
                 return NotFound();
 
             query.Price = productPriceService.GetByProductId(key);
+            query.Categories = productCategoryService.GetCategoriesByProductId(key).ToList();
 
             return Ok(query);
         }

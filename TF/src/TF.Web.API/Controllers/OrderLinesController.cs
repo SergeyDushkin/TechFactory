@@ -83,7 +83,7 @@ namespace TF.Web.API.Controllers
             if (price != null)
             {
                 entity.Price = (float)price.Price;
-                entity.Amount = entity.Qty + entity.Price;
+                entity.Amount = entity.Qty * entity.Price;
             }
 
             var record = orderLineRepository.Create(entity);
@@ -103,7 +103,7 @@ namespace TF.Web.API.Controllers
             if (price != null)
             {
                 entity.Price = (float)price.Price;
-                entity.Amount = entity.Qty + entity.Price;
+                entity.Amount = entity.Qty * entity.Price;
             }
 
             var record = orderLineRepository.Update(entity);

@@ -19,6 +19,35 @@ namespace TF.Web.API.OData
         public override string SelectAction(ODataPath odataPath, HttpControllerContext context,
             ILookup<string, HttpActionDescriptor> actionMap)
         {
+            /*
+            if (context.Request.Method == HttpMethod.Get &&
+                odataPath.PathTemplate == "~/entityset/key")
+            {
+                string navigationPropertyName = odataPath.NavigationSource.Name;
+                string actionName = "Get" + navigationPropertyName;
+
+                KeyValuePathSegment keyValueSegment = odataPath.Segments[1] as KeyValuePathSegment;
+
+                System.Guid key;
+
+                if (System.Guid.TryParse(keyValueSegment.Value, out key))
+                {
+                    actionName += "ById";
+                    context.RouteData.Values[ODataRouteConstants.Key] = key;
+                }
+                else
+                {
+                    actionName += "ByKey";
+                    context.RouteData.Values[ODataRouteConstants.Key] = keyValueSegment.Value;
+                }
+
+                if (actionMap.Contains(actionName))
+                {
+                    return actionName;
+                }
+            }
+            */
+
             if (context.Request.Method == HttpMethod.Get &&
                 odataPath.PathTemplate == "~/entityset/key/navigation/key")
             {

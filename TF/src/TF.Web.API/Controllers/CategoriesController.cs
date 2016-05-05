@@ -55,12 +55,22 @@ namespace TF.Web.API.Controllers
 
         public async Task<IHttpActionResult> GetCategory([FromODataUri] System.Guid key)
         {
-            logger.Trace("Call CategoriesController GetCategory");
+            logger.Trace("Call CategoriesController GetCategory by key {0}", key);
 
             var query = await service.GetByIdAsync(key);
 
             return Ok(query);
         }
+
+        //public async Task<IHttpActionResult> GetCategoriesByKey([FromODataUri] string key)
+        //{
+        //    logger.Trace("Call CategoriesController GetCategoriesByKey");
+
+        //    var query = await service.GetAllAsync();
+        //    var data = query.SingleOrDefault(r => r.Key == key);
+
+        //    return Ok(data);
+        //}
 
         public IHttpActionResult GetProducts([FromODataUri] System.Guid key)
         {

@@ -26,3 +26,5 @@
 /TF/src/TF.Data.Systems.IO.FileStorage/obj/Debug
 /TF/test/TF.Data.Systems.IO.FileStorage.Test/bin/Debug
 /TF/test/TF.Data.Systems.IO.FileStorage.Test/obj/Debug
+/TF/src/TF.Web.OData/bin
+/TF/src/TF.Web.OData/obj/Debug

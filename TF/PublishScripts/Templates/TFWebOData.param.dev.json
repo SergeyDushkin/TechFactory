@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "partner-web-api-v1"
+  },
+  "hostingPlanName": {
+    "value": "PartnerServicePlan"
+  },
+  "siteLocation": {
+    "value": "North Europe"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "partner-db-srv"
+  },
+  "serverLocation": {
+    "value": "North Europe"
+  },
+  "administratorLogin": {
+    "value": "sqladmin"
+  },
+  "administratorLoginPassword": {
+    "value": "!12345Aa"
+  },
+  "databaseName": {
+    "value": "partner-web-api-v1_db"
+  }
+}

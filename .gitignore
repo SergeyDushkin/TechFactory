@@ -28,3 +28,14 @@
 /TF/test/TF.Data.Systems.IO.FileStorage.Test/obj/Debug
 /TF/src/TF.Web.OData/bin
 /TF/src/TF.Web.OData/obj/Debug
+/TF/src/TF.DAL/obj/Release
+/TF/src/TF.DAL/bin/Release
+/TF/src/TF.Data/obj/Release
+/TF/src/TF.Data/bin/Release
+/TF/src/TF.Data.Systems.IO.FileStorage/obj/Release
+/TF/src/TF.Web.API/obj/Release
+/TF/src/TF.Web.OData/obj/Release
+/TF/src/TF.Web.Proxy/obj/Release
+/TF/test/TF.DAL.Test/obj/Release
+/TF/test/TF.Data.Systems.IO.FileStorage.Test/obj/Release
+/TF/test/TF.Web.API.Test/obj/Release

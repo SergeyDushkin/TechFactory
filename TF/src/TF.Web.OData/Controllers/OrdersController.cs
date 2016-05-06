@@ -88,7 +88,14 @@ namespace TF.Web.OData.Controllers
         {
             logger.Trace("Call OrderController Post");
 
+            entity.Amount = 0;
+            entity.BaseAmount = 0;
+            entity.Date = System.DateTime.Now;
+            entity.DueDate = System.DateTime.Now.AddHours(1);
+            entity.LinesCount = 0;
+            entity.Number = "XXX";
             entity.StatusCode = "DRAFT";
+            entity.Type = "SO";
 
             var record = orderRepository.Create(entity);
             return Created(record);
@@ -99,7 +106,15 @@ namespace TF.Web.OData.Controllers
         {
             logger.Trace("Call OrderController Put");
 
-            var record = orderRepository.Update(entity);
+            var order = orderRepository.GetById(key);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            order.StatusCode = entity.StatusCode;
+
+            var record = orderRepository.Update(order);
             return Updated(record);
         }
 
@@ -186,6 +201,7 @@ namespace TF.Web.OData.Controllers
             return Ok(lines);
         }
 
+        /*
         [HttpPost]
         public IHttpActionResult AddLine([FromODataUri] System.Guid key, [FromBody] OrderLine entity)
         {
@@ -196,6 +212,7 @@ namespace TF.Web.OData.Controllers
             var record = orderLineRepository.Create(entity);
             return Created<OrderLine>(record);
         }
+        */
 
         [HttpPost]
         public IHttpActionResult Confirm([FromODataUri] System.Guid key, ODataActionParameters parameters)

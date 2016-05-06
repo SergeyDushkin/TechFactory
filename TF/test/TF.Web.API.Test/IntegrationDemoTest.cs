@@ -14,7 +14,8 @@ namespace TF.Web.API.Test
 
         public IntegrationDemoTest()
         {
-            container = new Container(new Uri("http://localhost:5588/odata/"));
+            //container = new Container(new Uri("http://localhost:5588/odata/"));
+            container = new Container(new Uri("http://partner-web-api-v1.azurewebsites.net/odata/"));
         }
 
         [TestMethod]    
@@ -200,6 +201,66 @@ namespace TF.Web.API.Test
             Assert.IsNotNull(category_protein);
             Assert.IsNotNull(category_vagetables);
             Assert.IsNotNull(category_garnish);
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "POT CHI REG").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "SOUP POT").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "POT CHI HALF").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "SOUP POT").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "WOK REG").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "WOK").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "WOK HALF").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "WOK").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Bolognese REG").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "PASTA").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Bolognese HALF").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "PASTA").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Carbonara REG").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "PASTA").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Carbonara HALF").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "PASTA").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Coca-Cola CAN 0.33").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "COLD").SingleOrDefault().Id
+            });
+
+            container.AddToProductCategories(new ProductCategory
+            {
+                ProductId = container.Products.Where(r => r.Key == "Coca-Cola BOTL 0.5").SingleOrDefault().Id,
+                CategoryId = container.Categories.Where(r => r.Key == "COLD").SingleOrDefault().Id
+            });
 
             productId = container.Products.Where(r => r.Key == "Egg Noodle").SingleOrDefault().Id;
             container.AddToProductCategories(new ProductCategory
@@ -448,6 +509,30 @@ namespace TF.Web.API.Test
             {
                 ProductId = container.Products.Where(r => r.Key == "POT CHI HALF").SingleOrDefault().Id,
                 Price = 2
+            });
+
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "Bolognese REG").SingleOrDefault().Id,
+                Price = 5
+            });
+
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "Bolognese HALF").SingleOrDefault().Id,
+                Price = 3
+            });
+
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "Carbonara REG").SingleOrDefault().Id,
+                Price = 5
+            });
+
+            container.AddToProductPrices(new ProductPrice
+            {
+                ProductId = container.Products.Where(r => r.Key == "Carbonara HALF").SingleOrDefault().Id,
+                Price = 3
             });
 
             container.SaveChanges();

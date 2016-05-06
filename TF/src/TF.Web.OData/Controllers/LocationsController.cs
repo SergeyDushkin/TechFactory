@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -30,7 +31,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Location> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Location> queryOptions)
         {
             logger.Trace("Call LocationController Get All");
 
@@ -43,7 +44,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = locationRepository.GetAll();
+            var data = await locationRepository.GetAllAsync();
 
             var query = (IQueryable<Location>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -52,53 +53,53 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call LocationController Get by Id");
 
-            var query = locationRepository.GetById(key);
+            var query = await locationRepository.GetByIdAsync(key);
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Location entity)
+        public async Task<IHttpActionResult> Post([FromBody] Location entity)
         {
             logger.Trace("Call LocationController Post");
 
-            var record = locationRepository.Create(entity);
+            var record = await locationRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Location entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Location entity)
         {
             logger.Trace("Call LocationController Put");
 
-            var record = locationRepository.Update(entity);
+            var record = await locationRepository.UpdateAsync(entity);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call LocationController Delete");
 
-            locationRepository.Delete(key);
+            await locationRepository.DeleteAsync(key);
             return Ok();
         }
 
         [HttpGet]
-        public IHttpActionResult GetUnit([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetUnit([FromODataUri] System.Guid key)
         {
             logger.Trace("Call LocationController GetUnit");
 
-            var location = locationRepository.GetById(key);
+            var location = await locationRepository.GetByIdAsync(key);
             if ((location == null) || (!location.UnitId.HasValue))
             {
                 return NotFound();
             }
 
-            var unit = unitRepository.GetById(location.UnitId.Value);
+            var unit = await unitRepository.GetByIdAsync(location.UnitId.Value);
             return Ok(unit);
         }
 

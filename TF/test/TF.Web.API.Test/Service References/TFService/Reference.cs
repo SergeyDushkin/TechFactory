@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 11.04.2016 18:42:30
+// Generation date: 07.05.2016 1:11:34
 namespace TF.Data.Business
 {
     /// <summary>
@@ -2768,6 +2768,28 @@ namespace TF.Data.Business.WMS
         partial void OnTypeChanging(string value);
         partial void OnTypeChanged();
         /// <summary>
+        /// There are no comments for Property StatusCode in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public string StatusCode
+        {
+            get
+            {
+                return this._StatusCode;
+            }
+            set
+            {
+                this.OnStatusCodeChanging(value);
+                this._StatusCode = value;
+                this.OnStatusCodeChanged();
+                this.OnPropertyChanged("StatusCode");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private string _StatusCode;
+        partial void OnStatusCodeChanging(string value);
+        partial void OnStatusCodeChanged();
+        /// <summary>
         /// There are no comments for Property DueDate in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
@@ -4881,7 +4903,7 @@ namespace TF.Data.Systems.Security
         }
     }
 }
-namespace Default
+namespace NoodleService
 {
     /// <summary>
     /// There are no comments for Container in the schema.
@@ -5037,23 +5059,6 @@ namespace Default
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.Location> _Locations;
         /// <summary>
-        /// There are no comments for Orders in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.Order> Orders
-        {
-            get
-            {
-                if ((this._Orders == null))
-                {
-                    this._Orders = base.CreateQuery<global::TF.Data.Business.WMS.Order>("Orders");
-                }
-                return this._Orders;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.Order> _Orders;
-        /// <summary>
         /// There are no comments for Persons in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
@@ -5138,6 +5143,23 @@ namespace Default
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.Employee> _Employees;
+        /// <summary>
+        /// There are no comments for Orders in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.Order> Orders
+        {
+            get
+            {
+                if ((this._Orders == null))
+                {
+                    this._Orders = base.CreateQuery<global::TF.Data.Business.WMS.Order>("Orders");
+                }
+                return this._Orders;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.Order> _Orders;
         /// <summary>
         /// There are no comments for OrderLines in the schema.
         /// </summary>
@@ -5271,14 +5293,6 @@ namespace Default
             base.AddObject("Locations", location);
         }
         /// <summary>
-        /// There are no comments for Orders in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public void AddToOrders(global::TF.Data.Business.WMS.Order order)
-        {
-            base.AddObject("Orders", order);
-        }
-        /// <summary>
         /// There are no comments for Persons in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
@@ -5317,6 +5331,14 @@ namespace Default
         public void AddToEmployees(global::TF.Data.Business.Employee employee)
         {
             base.AddObject("Employees", employee);
+        }
+        /// <summary>
+        /// There are no comments for Orders in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public void AddToOrders(global::TF.Data.Business.WMS.Order order)
+        {
+            base.AddObject("Orders", order);
         }
         /// <summary>
         /// There are no comments for OrderLines in the schema.
@@ -5497,6 +5519,7 @@ namespace Default
         </Key>
         <Property Name=""Id"" Type=""Edm.Guid"" Nullable=""false"" />
         <Property Name=""Type"" Type=""Edm.String"" />
+        <Property Name=""StatusCode"" Type=""Edm.String"" />
         <Property Name=""DueDate"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""Number"" Type=""Edm.String"" />
         <Property Name=""Date"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
@@ -5603,7 +5626,10 @@ namespace Default
         <Property Name=""Deleted"" Type=""Edm.Boolean"" Nullable=""false"" />
       </EntityType>
     </Schema>
-    <Schema Namespace=""Default"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+    <Schema Namespace=""NoodleService"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
+      <Action Name=""Confirm"" IsBound=""true"">
+        <Parameter Name=""bindingParameter"" Type=""TF.Data.Business.WMS.Order"" />
+      </Action>
       <EntityContainer Name=""Container"">
         <EntitySet Name=""Units"" EntityType=""TF.Data.Business.Unit"" />
         <EntitySet Name=""Products"" EntityType=""TF.Data.Business.WMS.Product"">
@@ -5620,13 +5646,6 @@ namespace Default
         <EntitySet Name=""Locations"" EntityType=""TF.Data.Business.Location"">
           <NavigationPropertyBinding Path=""Unit"" Target=""Units"" />
         </EntitySet>
-        <EntitySet Name=""Orders"" EntityType=""TF.Data.Business.WMS.Order"">
-          <NavigationPropertyBinding Path=""Customer"" Target=""Units"" />
-          <NavigationPropertyBinding Path=""Source"" Target=""Locations"" />
-          <NavigationPropertyBinding Path=""Destination"" Target=""Locations"" />
-          <NavigationPropertyBinding Path=""Currency"" Target=""Currencies"" />
-          <NavigationPropertyBinding Path=""Lines"" Target=""OrderLines"" />
-        </EntitySet>
         <EntitySet Name=""Persons"" EntityType=""TF.Data.Business.Person"" />
         <EntitySet Name=""Roles"" EntityType=""TF.Data.Systems.Security.Role"" />
         <EntitySet Name=""Uoms"" EntityType=""TF.Data.Business.Uom"" />
@@ -5634,6 +5653,13 @@ namespace Default
         <EntitySet Name=""Employees"" EntityType=""TF.Data.Business.Employee"">
           <NavigationPropertyBinding Path=""Unit"" Target=""Units"" />
           <NavigationPropertyBinding Path=""Person"" Target=""Persons"" />
+        </EntitySet>
+        <EntitySet Name=""Orders"" EntityType=""TF.Data.Business.WMS.Order"">
+          <NavigationPropertyBinding Path=""Customer"" Target=""Units"" />
+          <NavigationPropertyBinding Path=""Source"" Target=""Locations"" />
+          <NavigationPropertyBinding Path=""Destination"" Target=""Locations"" />
+          <NavigationPropertyBinding Path=""Currency"" Target=""Currencies"" />
+          <NavigationPropertyBinding Path=""Lines"" Target=""OrderLines"" />
         </EntitySet>
         <EntitySet Name=""OrderLines"" EntityType=""TF.Data.Business.WMS.OrderLine"">
           <NavigationPropertyBinding Path=""Order"" Target=""Orders"" />
@@ -5676,6 +5702,24 @@ namespace Default
             {
                 return global::System.Xml.XmlReader.Create(new global::System.IO.StringReader(edmxToParse));
             }
+        }
+    }
+    /// <summary>
+    /// Class containing all extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// There are no comments for Confirm in the schema.
+        /// </summary>
+        public static global::Microsoft.OData.Client.DataServiceActionQuery Confirm(this global::Microsoft.OData.Client.DataServiceQuerySingle<global::TF.Data.Business.WMS.Order> source)
+        {
+            if (!source.IsComposable)
+            {
+                throw new global::System.NotSupportedException("The previous function is not composable.");
+            }
+
+            return new global::Microsoft.OData.Client.DataServiceActionQuery(source.Context, source.AppendRequestUri("NoodleService.Confirm"));
         }
     }
 }

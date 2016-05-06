@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -43,7 +44,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Order> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Order> queryOptions)
         {
             logger.Trace("Call OrderController Get All");
 
@@ -56,7 +57,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = orderRepository.GetAll();
+            var data = await orderRepository.GetAllAsync();
 
             var query = (IQueryable<Order>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -66,11 +67,11 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery(MaxExpansionDepth = 5)]
-        public IHttpActionResult Get(ODataQueryOptions<Order> queryOptions, [FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Order> queryOptions, [FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController Get by Id");
 
-            var query = orderRepository.GetById(key);
+            var query = await orderRepository.GetByIdAsync(key);
 
             var lineQuery = orderLineRepository.GetByOrderId(key).Select(r =>
             {
@@ -84,7 +85,7 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Order entity)
+        public async Task<IHttpActionResult> Post([FromBody] Order entity)
         {
             logger.Trace("Call OrderController Post");
 
@@ -97,16 +98,16 @@ namespace TF.Web.OData.Controllers
             entity.StatusCode = "DRAFT";
             entity.Type = "SO";
 
-            var record = orderRepository.Create(entity);
+            var record = await orderRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Order entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Order entity)
         {
             logger.Trace("Call OrderController Put");
 
-            var order = orderRepository.GetById(key);
+            var order = await orderRepository.GetByIdAsync(key);
             if (order == null)
             {
                 return NotFound();
@@ -114,85 +115,85 @@ namespace TF.Web.OData.Controllers
 
             order.StatusCode = entity.StatusCode;
 
-            var record = orderRepository.Update(order);
+            var record = await orderRepository.UpdateAsync(order);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController Delete");
 
-            orderRepository.Delete(key);
+            await orderRepository.DeleteAsync(key);
             return Ok();
         }
 
         [HttpGet]
-        public IHttpActionResult GetCustomer([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetCustomer([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController GetCustomer");
 
-            var order = orderRepository.GetById(key);
+            var order = await orderRepository.GetByIdAsync(key);
             if (order == null)
             {
                 return NotFound();
             }
 
-            var customer = unitRepository.GetById(order.CustomerId);
+            var customer = await unitRepository.GetByIdAsync(order.CustomerId);
             return Ok(customer);
         }
 
         [HttpGet]
-        public IHttpActionResult GetSource([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetSource([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController GetSource");
 
-            var order = orderRepository.GetById(key);
+            var order = await orderRepository.GetByIdAsync(key);
             if (order == null)
             {
                 return NotFound();
             }
 
-            var source = locationRepository.GetById(order.SourceId);
+            var source = await locationRepository.GetByIdAsync(order.SourceId);
             return Ok(source);
         }
 
         [HttpGet]
-        public IHttpActionResult GetDestination([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetDestination([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController GetDestination");
 
-            var order = orderRepository.GetById(key);
+            var order = await orderRepository.GetByIdAsync(key);
             if (order == null)
             {
                 return NotFound();
             }
 
-            var destination = locationRepository.GetById(order.DestinationId);
+            var destination = await locationRepository.GetByIdAsync(order.DestinationId);
             return Ok(destination);
         }
 
         [HttpGet]
-        public IHttpActionResult GetCurrency([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetCurrency([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController GetCurrency");
 
-            var order = orderRepository.GetById(key);
+            var order = await orderRepository.GetByIdAsync(key);
             if (order == null)
             {
                 return NotFound();
             }
 
-            var currency = currencyRepository.GetById(order.CurrencyId);
+            var currency = await currencyRepository.GetByIdAsync(order.CurrencyId);
             return Ok(currency);
         }
 
         [HttpGet]
-        public IHttpActionResult GetLines([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetLines([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderController GetLines");
 
-            var lines = orderLineRepository.GetByOrderId(key);
+            var lines = await orderLineRepository.GetByOrderIdAsync(key);
             if ((lines == null) || (lines.Count() == 0))
             {
                 return NotFound();
@@ -215,14 +216,14 @@ namespace TF.Web.OData.Controllers
         */
 
         [HttpPost]
-        public IHttpActionResult Confirm([FromODataUri] System.Guid key, ODataActionParameters parameters)
+        public async Task<IHttpActionResult> Confirm([FromODataUri] System.Guid key, ODataActionParameters parameters)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var order = orderRepository.GetById(key);
+            var order = await orderRepository.GetByIdAsync(key);
             if (order == null)
             {
                 return NotFound();
@@ -235,7 +236,7 @@ namespace TF.Web.OData.Controllers
 
             order.Type = "NEW";
 
-            var record = orderRepository.Update(order);
+            var record = await orderRepository.UpdateAsync(order);
 
             return Ok(record);
 

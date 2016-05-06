@@ -42,7 +42,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<OrderLine> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<OrderLine> queryOptions)
         {
             logger.Trace("Call OrderLineController Get All");
 
@@ -55,7 +55,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = orderLineRepository.GetAll();
+            var data = await orderLineRepository.GetAllAsync();
 
             var query = (IQueryable<OrderLine>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -64,16 +64,16 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineController Get by Id");
 
-            var query = orderLineRepository.GetById(key);
+            var query = await orderLineRepository.GetByIdAsync(key);
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] OrderLine entity)
+        public async Task<IHttpActionResult> Post([FromBody] OrderLine entity)
         {
             logger.Trace("Call OrderLineController Post");
 
@@ -85,15 +85,15 @@ namespace TF.Web.OData.Controllers
                 entity.Amount = entity.Qty * entity.Price;
             }
 
-            var record = orderLineRepository.Create(entity);
+            var record = await orderLineRepository.CreateAsync(entity);
 
-            Task.Factory.StartNew(() => RecalcOrderAsync(entity.OrderId));
+            await Task.Factory.StartNew(async () => await RecalcOrderAsync(entity.OrderId));
 
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] OrderLine entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] OrderLine entity)
         {
             logger.Trace("Call OrderLineController Put");
 
@@ -105,46 +105,46 @@ namespace TF.Web.OData.Controllers
                 entity.Amount = entity.Qty * entity.Price;
             }
 
-            var record = orderLineRepository.Update(entity);
+            var record = await orderLineRepository.UpdateAsync(entity);
 
-            Task.Factory.StartNew(() => RecalcOrderAsync(entity.OrderId));
+            await Task.Factory.StartNew(() => RecalcOrderAsync(entity.OrderId));
 
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineController Delete");
 
-            orderLineRepository.Delete(key);
+            await orderLineRepository.DeleteAsync(key);
 
-            Task.Factory.StartNew(() => RecalcOrderByLineIdAsync(key));
+            await Task.Factory.StartNew(() => RecalcOrderByLineIdAsync(key));
 
             return Ok();
         }
 
         [HttpGet]
-        public IHttpActionResult GetOrder([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetOrder([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineController GetOrder");
 
-            var orderLine = orderLineRepository.GetById(key);
+            var orderLine = await orderLineRepository.GetByIdAsync(key);
             if (orderLine == null)
             {
                 return NotFound();
             }
 
-            var order = orderRepository.GetById(orderLine.OrderId);
+            var order = await orderRepository.GetByIdAsync(orderLine.OrderId);
             return Ok(order);
         }
 
         [HttpGet]
-        public IHttpActionResult GetItem([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetItem([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineController GetItem");
 
-            var orderLine = orderLineRepository.GetById(key);
+            var orderLine = await orderLineRepository.GetByIdAsync(key);
             if (orderLine == null)
             {
                 return NotFound();
@@ -155,17 +155,17 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetUom([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetUom([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineController GetUom");
 
-            var orderLine = orderLineRepository.GetById(key);
+            var orderLine = await orderLineRepository.GetByIdAsync(key);
             if (orderLine == null)
             {
                 return NotFound();
             }
 
-            var uom = uomRepository.GetById(orderLine.UomId);
+            var uom = await uomRepository.GetByIdAsync(orderLine.UomId);
             return Ok(uom);
         }
 

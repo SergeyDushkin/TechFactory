@@ -2,8 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using TF.Data.Business.WMS;
-using Default;
 using TF.Data.Business;
+using NoodleService;
 
 namespace TF.Web.API.Test
 {

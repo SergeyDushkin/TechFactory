@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -27,7 +28,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Address> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Address> queryOptions)
         {
             logger.Trace("Call AddressController Get All");
 
@@ -40,7 +41,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = AddressRepository.GetAll();
+            var data = await AddressRepository.GetAllAsync();
 
             var query = (IQueryable<Address>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -49,39 +50,39 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call AddressController Get by Id");
 
-            var query = AddressRepository.GetById(key);
+            var query = await AddressRepository.GetByIdAsync(key);
 
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Address entity)
+        public async Task<IHttpActionResult> Post([FromBody] Address entity)
         {
             logger.Trace("Call AddressController Post");
 
-            var record = AddressRepository.Create(entity);
+            var record = await AddressRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Address entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Address entity)
         {
             logger.Trace("Call AddressController Put");
 
-            var record = AddressRepository.Update(entity);
+            var record = await AddressRepository.UpdateAsync(entity);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call AddressController Delete");
 
-            AddressRepository.Delete(key);
+            await AddressRepository.DeleteAsync(key);
             return Ok();
         }
 

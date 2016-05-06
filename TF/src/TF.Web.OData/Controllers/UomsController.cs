@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -27,7 +28,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Uom> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Uom> queryOptions)
         {
             logger.Trace("Call UomController Get All");
 
@@ -40,7 +41,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = uomRepository.GetAll();
+            var data = await uomRepository.GetAllAsync();
 
             var query = (IQueryable<Uom>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -49,39 +50,39 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call UomController Get by Id");
 
-            var query = uomRepository.GetById(key);
+            var query = await uomRepository.GetByIdAsync(key);
 
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Uom entity)
+        public async Task<IHttpActionResult> Post([FromBody] Uom entity)
         {
             logger.Trace("Call UomController Post");
 
-            var record = uomRepository.Create(entity);
+            var record = await uomRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Uom entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Uom entity)
         {
             logger.Trace("Call UomController Put");
 
-            var record = uomRepository.Update(entity);
+            var record = await uomRepository.UpdateAsync(entity);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call UomController Delete");
 
-            uomRepository.Delete(key);
+            await uomRepository.DeleteAsync(key);
             return Ok();
         }
 

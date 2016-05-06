@@ -9,7 +9,7 @@
     "IgnoreUnexpectedElementsAndAttributes": false,
     "IncludeT4File": false,
     "ServiceName": "TFService",
-    "Endpoint": "http://localhost:5588/odata/$metadata",
+    "Endpoint": "http://partner-web-api-v1.azurewebsites.net/odata/$metadata",
     "EdmxVersion": {
       "Major": 4,
       "Minor": 0,

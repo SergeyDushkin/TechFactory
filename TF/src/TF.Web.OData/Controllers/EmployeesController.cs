@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -27,7 +28,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Employee> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Employee> queryOptions)
         {
             logger.Trace("Call EmployeesController Get All");
 
@@ -40,7 +41,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = employeeRepository.GetAll();
+            var data = await employeeRepository.GetAllAsync();
 
             var query = (IQueryable<Employee>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -49,39 +50,39 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call EmployeesController Get by Id");
 
-            var query = employeeRepository.GetById(key);
+            var query = await employeeRepository.GetByIdAsync(key);
 
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Employee entity)
+        public async Task<IHttpActionResult> Post([FromBody] Employee entity)
         {
             logger.Trace("Call EmployeesController Post");
 
-            var record = employeeRepository.Create(entity);
+            var record = await employeeRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Employee entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Employee entity)
         {
             logger.Trace("Call EmployeesController Put");
 
-            var record = employeeRepository.Update(entity);
+            var record = await employeeRepository.UpdateAsync(entity);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call EmployeesController Delete");
 
-            employeeRepository.Delete(key);
+            await employeeRepository.DeleteAsync(key);
             return Ok();
         }
 

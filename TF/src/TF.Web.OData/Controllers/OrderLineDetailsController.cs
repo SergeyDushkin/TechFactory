@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -43,7 +44,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<OrderLineDetail> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<OrderLineDetail> queryOptions)
         {
             logger.Trace("Call OrderLineDetailController Get All");
 
@@ -56,7 +57,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = orderLineDetailRepository.GetAll();
+            var data = await orderLineDetailRepository.GetAllAsync();
 
             var query = (IQueryable<OrderLineDetail>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -65,92 +66,92 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineDetailController Get by Id");
 
-            var query = orderLineDetailRepository.GetById(key);
+            var query = await orderLineDetailRepository.GetByIdAsync(key);
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] OrderLineDetail entity)
+        public async Task<IHttpActionResult> Post([FromBody] OrderLineDetail entity)
         {
             logger.Trace("Call OrderLineDetailController Post");
 
-            var record = orderLineDetailRepository.Create(entity);
+            var record = await orderLineDetailRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] OrderLineDetail entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] OrderLineDetail entity)
         {
             logger.Trace("Call OrderLineDetailController Put");
 
-            var record = orderLineDetailRepository.Update(entity);
+            var record = await orderLineDetailRepository.UpdateAsync(entity);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineDetailController Delete");
 
-            orderLineDetailRepository.Delete(key);
+            await orderLineDetailRepository.DeleteAsync(key);
             return Ok();
         }
 
         [HttpGet]
-        public IHttpActionResult GetLocation([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetLocation([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineDetailController GetLocation");
 
-            var orderLineDetail = orderLineDetailRepository.GetById(key);
+            var orderLineDetail = await orderLineDetailRepository.GetByIdAsync(key);
             if (orderLineDetail == null)
             {
                 return NotFound();
             }
 
-            var location = locationRepository.GetById(orderLineDetail.LocationId);
+            var location = await locationRepository.GetByIdAsync(orderLineDetail.LocationId);
             return Ok(location);
         }
 
         [HttpGet]
-        public IHttpActionResult GetOrderLine([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetOrderLine([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineDetailController GetOrderLine");
 
-            var orderLineDetail = orderLineDetailRepository.GetById(key);
+            var orderLineDetail = await orderLineDetailRepository.GetByIdAsync(key);
             if (orderLineDetail == null)
             {
                 return NotFound();
             }
 
-            var orderLine = orderLineRepository.GetById(orderLineDetail.OrderLineId);
+            var orderLine = await orderLineRepository.GetByIdAsync(orderLineDetail.OrderLineId);
             return Ok(orderLine);
         }
 
         [HttpGet]
-        public IHttpActionResult GetOrder([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetOrder([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineDetailController GetOrder");
 
-            var orderLineDetail = orderLineDetailRepository.GetById(key);
+            var orderLineDetail = await orderLineDetailRepository.GetByIdAsync(key);
             if (orderLineDetail == null)
             {
                 return NotFound();
             }
 
-            var order = orderRepository.GetById(orderLineDetail.OrderId);
+            var order = await orderRepository.GetByIdAsync(orderLineDetail.OrderId);
             return Ok(order);
         }
 
         [HttpGet]
-        public IHttpActionResult GetItem([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetItem([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineDetailController GetItem");
 
-            var orderLineDetail = orderLineDetailRepository.GetById(key);
+            var orderLineDetail = await orderLineDetailRepository.GetByIdAsync(key);
             if (orderLineDetail == null)
             {
                 return NotFound();
@@ -161,17 +162,17 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult GetUom([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> GetUom([FromODataUri] System.Guid key)
         {
             logger.Trace("Call OrderLineDetailController GetUom");
 
-            var orderLineDetail = orderLineDetailRepository.GetById(key);
+            var orderLineDetail = await orderLineDetailRepository.GetByIdAsync(key);
             if (orderLineDetail == null)
             {
                 return NotFound();
             }
 
-            var uom = uomRepository.GetById(orderLineDetail.UomId);
+            var uom = await uomRepository.GetByIdAsync(orderLineDetail.UomId);
             return Ok(uom);
         }
 

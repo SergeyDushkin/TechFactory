@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -27,7 +28,7 @@ namespace TF.Web.API.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Unit> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Unit> queryOptions)
         {
             logger.Trace("Call UnitController Get All");
 
@@ -40,7 +41,7 @@ namespace TF.Web.API.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = unitRepository.GetAll();
+            var data = await unitRepository.GetAllAsync();
 
             var query = (IQueryable<Unit>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -49,39 +50,39 @@ namespace TF.Web.API.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call UnitController Get by Id");
 
-            var query = unitRepository.GetById(key);
+            var query = await unitRepository.GetByIdAsync(key);
 
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Unit entity)
+        public async Task<IHttpActionResult> Post([FromBody] Unit entity)
         {
             logger.Trace("Call UnitController Post");
 
-            var record = unitRepository.Create(entity);
+            var record = await unitRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Unit entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Unit entity)
         {
             logger.Trace("Call UnitController Put");
 
-            var record = unitRepository.Update(entity);
+            var record = await unitRepository.UpdateAsync(entity);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call UnitController Delete");
 
-            unitRepository.Delete(key);
+            await unitRepository.DeleteAsync(key);
             return Ok();
         }
 

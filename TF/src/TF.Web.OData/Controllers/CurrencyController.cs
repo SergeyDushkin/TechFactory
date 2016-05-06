@@ -1,6 +1,7 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
@@ -27,7 +28,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Currency> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Currency> queryOptions)
         {
             logger.Trace("Call CurrencyController Get All");
 
@@ -40,7 +41,7 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = CurrencyRepository.GetAll();
+            var data = await CurrencyRepository.GetAllAsync();
 
             var query = (IQueryable<Currency>)queryOptions
                 .ApplyTo(data.AsQueryable());
@@ -49,39 +50,39 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call CurrencyController Get by Id");
 
-            var query = CurrencyRepository.GetById(key);
+            var query = await CurrencyRepository.GetByIdAsync(key);
 
             return Ok(query);
         }
 
         [HttpPost]
-        public IHttpActionResult Post([FromBody] Currency entity)
+        public async Task<IHttpActionResult> Post([FromBody] Currency entity)
         {
             logger.Trace("Call CurrencyController Post");
 
-            var record = CurrencyRepository.Create(entity);
+            var record = await CurrencyRepository.CreateAsync(entity);
             return Created(record);
         }
 
         [HttpPut]
-        public IHttpActionResult Put([FromODataUri] System.Guid key, [FromBody] Currency entity)
+        public async Task<IHttpActionResult> Put([FromODataUri] System.Guid key, [FromBody] Currency entity)
         {
             logger.Trace("Call CurrencyController Put");
 
-            var record = CurrencyRepository.Update(entity);
+            var record = await CurrencyRepository.UpdateAsync(entity);
             return Updated(record);
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Delete([FromODataUri] System.Guid key)
         {
             logger.Trace("Call CurrencyController Delete");
 
-            CurrencyRepository.Delete(key);
+            await CurrencyRepository.DeleteAsync(key);
             return Ok();
         }
 

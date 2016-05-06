@@ -98,7 +98,10 @@ namespace TF.DAL
 
         public IEnumerable<Unit> GetAll()
         {
-            return GetAllAsync().Result;
+            using (var connection = context.CreateConnection())
+            {
+                return connection.Query<Unit>(UnitQuery.All());
+            }
         }
 
         public async Task<IEnumerable<Unit>> GetAllAsync()

@@ -124,6 +124,7 @@ namespace TF.Web.API.Test
             container.AddToCurrencies(new Currency { Key = "EUR", Name = "Euro" });
             container.AddToCurrencies(new Currency { Key = "JPY", Name = "JPY" });
             container.AddToCurrencies(new Currency { Key = "CNY", Name = "Chinese Yuan" });
+            container.AddToCurrencies(new Currency { Key = "RUB", Name = "Russian ruble" });
 
             container.SaveChanges();
         }

@@ -11,6 +11,7 @@ namespace TF.DAL.Test
         public void ProductPriceServiceCRUDTest()
         {
             var context = new NoodleDbContext("NoodleDb");
+            context.Init();
 
             IProductPriceService service = new ProductPriceService(context);
 
@@ -21,7 +22,8 @@ namespace TF.DAL.Test
             {
                 Id = id,
                 ProductId = productId,
-                Price = 10
+                Price = 10,
+                CurrencyCode = "USD"
             };
 
             service.Create(record);
@@ -35,6 +37,7 @@ namespace TF.DAL.Test
             Assert.AreEqual(record.Id, record2.Id);
             Assert.AreEqual(record.ProductId, record2.ProductId);
             Assert.AreEqual(record.Price, record2.Price);
+            Assert.AreEqual(record.CurrencyCode, record2.CurrencyCode);
 
             service.Delete(record.Id);
 

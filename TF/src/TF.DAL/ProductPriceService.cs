@@ -51,17 +51,19 @@ namespace TF.DAL
 	                    [GUID_RECORD],
 	                    [ITEM_GUID],
 	                    [CURRENCY_GUID],
+	                    [CURRENCY_CODE],
 	                    [LOCATION_GUID],
 	                    [PRICE],
 	                    [BATCH_GUID],
 	                    [HIDDEN],
 	                    [DELETED]) 
-                    values (@GUID_RECORD, @ITEM_GUID, @CURRENCY_GUID, @LOCATION_GUID, @PRICE, @BATCH_GUID, @HIDDEN, @DELETED)";
+                    values (@GUID_RECORD, @ITEM_GUID, @CURRENCY_GUID, @CURRENCY_CODE, @LOCATION_GUID, @PRICE, @BATCH_GUID, @HIDDEN, @DELETED)";
 
                     connection.Execute(command.CommandText, new {
                         GUID_RECORD = price.Id,
                         ITEM_GUID = price.ProductId,
                         CURRENCY_GUID = Guid.Empty,
+                        CURRENCY_CODE = price.CurrencyCode,
                         LOCATION_GUID = (Guid?)null,
                         PRICE = price.Price,
                         BATCH_GUID = (Guid?)null,
@@ -87,11 +89,16 @@ namespace TF.DAL
 
             using (var connection = context.CreateConnection())
             {
-                connection.Execute("update [BUSINESS.WMS.PRICE] set [ITEM_GUID] = @ITEM_GUID, [PRICE] = @PRICE where [GUID_RECORD] = @GUID_RECORD", new
+                connection.Execute(@"update [BUSINESS.WMS.PRICE] set 
+                    [ITEM_GUID] = @ITEM_GUID, 
+                    [PRICE] = @PRICE, 
+                    [CURRENCY_CODE] = @CURRENCY_CODE 
+                    where [GUID_RECORD] = @GUID_RECORD", new
                 {
                     GUID_RECORD = price.Id,
                     ITEM_GUID = price.ProductId,
-                    PRICE = price.Price
+                    PRICE = price.Price,
+                    CURRENCY_CODE = price.CurrencyCode
                 });
             }
 
@@ -133,7 +140,7 @@ namespace TF.DAL
 
             using (var connection = context.CreateConnection())
             {
-                return connection.Query<ProductPrice>(new CommandDefinition("select GUID_RECORD Id, ITEM_GUID ProductId, PRICE from [BUSINESS.WMS.PRICE] where [ITEM_GUID] = @ITEM_GUID", new { ITEM_GUID = id })).SingleOrDefault();
+                return connection.Query<ProductPrice>(new CommandDefinition("select GUID_RECORD Id, ITEM_GUID ProductId, PRICE, CURRENCY_CODE CurrencyCode from [BUSINESS.WMS.PRICE] where [ITEM_GUID] = @ITEM_GUID", new { ITEM_GUID = id })).SingleOrDefault();
             }
         }
 
@@ -144,7 +151,7 @@ namespace TF.DAL
 
             using (var connection = context.CreateConnection())
             {
-                return connection.Query<ProductPrice>(new CommandDefinition("select GUID_RECORD Id, ITEM_GUID ProductId, PRICE from [BUSINESS.WMS.PRICE] where [GUID_RECORD] = @GUID_RECORD", new { GUID_RECORD = id })).SingleOrDefault();
+                return connection.Query<ProductPrice>(new CommandDefinition("select GUID_RECORD Id, ITEM_GUID ProductId, PRICE, CURRENCY_CODE CurrencyCode from [BUSINESS.WMS.PRICE] where [GUID_RECORD] = @GUID_RECORD", new { GUID_RECORD = id })).SingleOrDefault();
             }
         }
     }

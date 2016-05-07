@@ -20,5 +20,15 @@ namespace TF.Data.Business.WMS
         /// Product price
         /// </summary>
         public double Price { get; set; }
+
+        /// <summary>
+        /// Price currency code
+        /// </summary>
+        public string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Price currency
+        /// </summary>
+        public virtual Currency Currency { get; set; }
     }
 }

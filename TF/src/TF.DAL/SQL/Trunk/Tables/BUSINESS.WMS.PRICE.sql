@@ -5,6 +5,7 @@ CREATE TABLE [dbo].[BUSINESS.WMS.PRICE](
 	[CURRENCY_GUID] [uniqueidentifier] NOT NULL,
 	[LOCATION_GUID] [uniqueidentifier],					-- NULL means that price applying for all locations
 	[PRICE] FLOAT NOT NULL,
+	[CURRENCY_CODE] [nvarchar](50) NOT NULL,
 	[BATCH_GUID] [uniqueidentifier],
 	[HIDDEN] [bit] NOT NULL,
 	[DELETED] [bit] NOT NULL

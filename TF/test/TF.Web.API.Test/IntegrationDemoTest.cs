@@ -485,55 +485,64 @@ namespace TF.Web.API.Test
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "Coca-Cola CAN 0.33").SingleOrDefault().Id,
-                Price = 1
+                Price = 1,
+                CurrencyCode = "USD"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "WOK REG").SingleOrDefault().Id,
-                Price = 6
+                Price = 6,
+                CurrencyCode = "USD"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "WOK HALF").SingleOrDefault().Id,
-                Price = 4
+                Price = 4,
+                CurrencyCode = "GBP"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "POT CHI REG").SingleOrDefault().Id,
-                Price = 3
+                Price = 3,
+                CurrencyCode = "GBP"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "POT CHI HALF").SingleOrDefault().Id,
-                Price = 2
+                Price = 2,
+                CurrencyCode = "RUB"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "Bolognese REG").SingleOrDefault().Id,
-                Price = 5
+                Price = 5,
+                CurrencyCode = "RUB"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "Bolognese HALF").SingleOrDefault().Id,
-                Price = 3
+                Price = 3,
+                CurrencyCode = "USD"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "Carbonara REG").SingleOrDefault().Id,
-                Price = 5
+                Price = 5,
+                CurrencyCode = "USD"
             });
 
             container.AddToProductPrices(new ProductPrice
             {
                 ProductId = container.Products.Where(r => r.Key == "Carbonara HALF").SingleOrDefault().Id,
-                Price = 3
+                Price = 3,
+                CurrencyCode = "USD"
             });
 
             container.SaveChanges();

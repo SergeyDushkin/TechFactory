@@ -1,5 +1,6 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -88,6 +89,21 @@ namespace TF.Web.OData.Controllers
         public async Task<IHttpActionResult> Post([FromBody] Order entity)
         {
             logger.Trace("Call OrderController Post");
+
+            var orders = await orderRepository.GetAllAsync();
+            var draft = orders.FirstOrDefault(r => r.StatusCode == "DRAFT");
+
+            if (draft != null)
+            {
+                return Redirect(new Uri(String.Format("http://partner-web-api-v1.azurewebsites.net/odata/Orders({0})", draft.Id)));
+                //var response = Request.CreateResponse(HttpStatusCode.Found);
+                //response.Headers.Location = new Uri(String.Format("http://partner-web-api-v1.azurewebsites.net/odata/Orders({0})", draft.Id));
+                //return response;
+
+                //return await Get(null, draft.Id);
+                //return Ok(draft);
+                //return RedirectToRoute("Get", new { key = draft.Id });
+            }
 
             entity.Amount = 0;
             entity.BaseAmount = 0;

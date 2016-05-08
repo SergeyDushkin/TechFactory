@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 07.05.2016 1:11:34
+// Generation date: 07.05.2016 9:12:54
 namespace TF.Data.Business
 {
     /// <summary>
@@ -2309,6 +2309,27 @@ namespace TF.Data.Business.WMS
         public ProductPriceSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<ProductPrice> query)
             : base(query) {}
 
+        /// <summary>
+        /// There are no comments for Currency in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.CurrencySingle Currency
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._Currency == null))
+                {
+                    this._Currency = new global::TF.Data.Business.CurrencySingle(this.Context, GetPath("Currency"));
+                }
+                return this._Currency;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.CurrencySingle _Currency;
     }
     /// <summary>
     /// There are no comments for ProductPrice in the schema.
@@ -2400,6 +2421,50 @@ namespace TF.Data.Business.WMS
         private double _Price;
         partial void OnPriceChanging(double value);
         partial void OnPriceChanged();
+        /// <summary>
+        /// There are no comments for Property CurrencyCode in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public string CurrencyCode
+        {
+            get
+            {
+                return this._CurrencyCode;
+            }
+            set
+            {
+                this.OnCurrencyCodeChanging(value);
+                this._CurrencyCode = value;
+                this.OnCurrencyCodeChanged();
+                this.OnPropertyChanged("CurrencyCode");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private string _CurrencyCode;
+        partial void OnCurrencyCodeChanging(string value);
+        partial void OnCurrencyCodeChanged();
+        /// <summary>
+        /// There are no comments for Property Currency in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.Currency Currency
+        {
+            get
+            {
+                return this._Currency;
+            }
+            set
+            {
+                this.OnCurrencyChanging(value);
+                this._Currency = value;
+                this.OnCurrencyChanged();
+                this.OnPropertyChanged("Currency");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.Currency _Currency;
+        partial void OnCurrencyChanging(global::TF.Data.Business.Currency value);
+        partial void OnCurrencyChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -5504,6 +5569,8 @@ namespace NoodleService
         <Property Name=""Id"" Type=""Edm.Guid"" Nullable=""false"" />
         <Property Name=""ProductId"" Type=""Edm.Guid"" Nullable=""false"" />
         <Property Name=""Price"" Type=""Edm.Double"" Nullable=""false"" />
+        <Property Name=""CurrencyCode"" Type=""Edm.String"" />
+        <NavigationProperty Name=""Currency"" Type=""TF.Data.Business.Currency"" />
       </EntityType>
       <EntityType Name=""ProductCategory"">
         <Key>
@@ -5639,7 +5706,9 @@ namespace NoodleService
           <NavigationPropertyBinding Path=""Categories"" Target=""Categories"" />
         </EntitySet>
         <EntitySet Name=""Categories"" EntityType=""TF.Data.Business.Category"" />
-        <EntitySet Name=""ProductPrices"" EntityType=""TF.Data.Business.WMS.ProductPrice"" />
+        <EntitySet Name=""ProductPrices"" EntityType=""TF.Data.Business.WMS.ProductPrice"">
+          <NavigationPropertyBinding Path=""Currency"" Target=""Currencies"" />
+        </EntitySet>
         <EntitySet Name=""ProductCategories"" EntityType=""TF.Data.Business.WMS.ProductCategory"" />
         <EntitySet Name=""Currencies"" EntityType=""TF.Data.Business.Currency"" />
         <EntitySet Name=""Entities"" EntityType=""TF.Data.Systems.Entity"" />

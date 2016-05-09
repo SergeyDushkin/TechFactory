@@ -74,13 +74,15 @@ namespace TF.Web.OData.Controllers
 
             var query = await orderRepository.GetByIdAsync(key);
 
-            var lineQuery = orderLineRepository.GetByOrderId(key).Select(r =>
-            {
-                r.Item = productRepository.GetById(r.ItemId);
-                return r;
-            });
+            var lineQuery = await orderLineRepository.GetByOrderIdAsync(key);
 
-            query.Lines = lineQuery.ToList();
+            query.Lines = lineQuery
+                .Select(r =>
+                    {
+                        r.Item = productRepository.GetById(r.ItemId);
+                        return r;
+                    })
+                .ToList();
 
             return Ok(query);
         }

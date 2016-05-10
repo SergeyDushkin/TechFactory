@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using TF.Data.Systems;
 
 namespace TF.Data.Business.WMS
 {
@@ -23,5 +24,6 @@ namespace TF.Data.Business.WMS
         public virtual ProductPrice Price { get; set; }
         
         public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<Link> Links { get; set; }
     }
 }

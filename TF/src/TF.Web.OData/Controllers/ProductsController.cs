@@ -1,12 +1,14 @@
 ﻿using Microsoft.OData.Core;
 using NLog;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
 using System.Web.OData.Routing;
 using TF.Data.Business;
 using TF.Data.Business.WMS;
+using TF.Data.Systems;
 
 namespace TF.Web.OData.Controllers
 {
@@ -17,18 +19,21 @@ namespace TF.Web.OData.Controllers
         private readonly IProductRepository productRepository;
         private readonly IProductPriceService productPriceService;
         private readonly IProductCategoryService productCategoryService;
+        private readonly ILinkRepository linkRepository;
         private readonly ILogger logger;
 
         public ProductsController(
             IProductRepository productRepository,
             IProductPriceService productPriceService,
-            IProductCategoryService productCategoryService
-            ,ILogger logger
+            IProductCategoryService productCategoryService,
+            ILinkRepository linkRepository
+            , ILogger logger
             )
         {
             this.productRepository = productRepository;
             this.productPriceService = productPriceService;
             this.productCategoryService = productCategoryService;
+            this.linkRepository = linkRepository;
 
             this.logger = logger;
             this.logger.Trace("Call ProductsController");
@@ -142,6 +147,19 @@ namespace TF.Web.OData.Controllers
             logger.Trace("Call ProductsController GetPrice");
 
             var query = productPriceService.GetByProductId(key);
+
+            if (query != null)
+                return Ok(query);
+
+            return NotFound();
+        }
+
+        [HttpGet]
+        public async Task<IHttpActionResult> GetLinks([FromODataUri] System.Guid key)
+        {
+            logger.Trace("Call ProductsController GetLinks");
+
+            var query = await linkRepository.GetByReferenceIdAsync(key);
 
             if (query != null)
                 return Ok(query);

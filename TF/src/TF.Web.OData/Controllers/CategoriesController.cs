@@ -7,6 +7,7 @@ using System.Web.OData;
 using System.Web.OData.Query;
 using TF.Data.Business;
 using TF.Data.Business.WMS;
+using TF.Data.Systems;
 
 namespace TF.Web.OData.Controllers
 {
@@ -16,15 +17,18 @@ namespace TF.Web.OData.Controllers
 
         private readonly ICategoryService service;
         private readonly IProductCategoryService productCategoryService;
+        private readonly ILinkRepository linkRepository;
         private readonly ILogger logger;
 
         public CategoriesController(
             ICategoryService service,
             IProductCategoryService productCategoryService,
+            ILinkRepository linkRepository,
             ILogger logger)
         {
             this.service = service;
             this.productCategoryService = productCategoryService;
+            this.linkRepository = linkRepository;
             this.logger = logger;
 
             this.logger.Trace("Call CategoriesController");
@@ -126,6 +130,19 @@ namespace TF.Web.OData.Controllers
 
             await service.DeleteAsync(key);
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IHttpActionResult> GetLinks([FromODataUri] System.Guid key)
+        {
+            logger.Trace("Call ProductsController GetLinks");
+
+            var query = await linkRepository.GetByReferenceIdAsync(key);
+
+            if (query != null)
+                return Ok(query);
+
+            return NotFound();
         }
 
         protected override void Dispose(bool disposing)

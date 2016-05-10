@@ -21,6 +21,8 @@ namespace TF.Web.OData.Controllers
         private readonly ICurrencyRepository currencyRepository;
         private readonly IOrderLineRepository orderLineRepository;
         private readonly IProductRepository productRepository;
+        private readonly IProductPriceService productPriceService;
+        private readonly IProductCategoryService productCategoryService;
         private readonly ILogger logger;
 
         public OrdersController(
@@ -30,6 +32,8 @@ namespace TF.Web.OData.Controllers
             ICurrencyRepository currencyRepository,
             IOrderLineRepository orderLineRepository,
             IProductRepository productRepository,
+            IProductPriceService productPriceService,
+            IProductCategoryService productCategoryService,
             ILogger logger)
         {
             this.orderRepository = orderRepository;
@@ -38,19 +42,22 @@ namespace TF.Web.OData.Controllers
             this.currencyRepository = currencyRepository;
             this.orderLineRepository = orderLineRepository;
             this.productRepository = productRepository;
+            this.productPriceService = productPriceService;
+            this.productCategoryService = productCategoryService;
             this.logger = logger;
 
             this.logger.Trace("Call OrderController");
         }
 
         [HttpGet]
-        [EnableQuery]
+        [EnableQuery(MaxExpansionDepth = 5)]
         public async Task<IHttpActionResult> Get(ODataQueryOptions<Order> queryOptions)
         {
             logger.Trace("Call OrderController Get All");
 
             try
             {
+                _validationSettings.MaxExpansionDepth = 5;
                 queryOptions.Validate(_validationSettings);
             }
             catch (ODataException ex)
@@ -60,10 +67,33 @@ namespace TF.Web.OData.Controllers
 
             var data = await orderRepository.GetAllAsync();
 
-            var query = (IQueryable<Order>)queryOptions
-                .ApplyTo(data.AsQueryable());
+            var expandedDataTask = data
+                .Select(async r =>
+                    {
+                        var lineQuery = await orderLineRepository.GetByOrderIdAsync(r.Id);
 
-            return Ok(query);
+                        r.Lines = lineQuery
+                            .Select(l =>
+                            {
+                                l.Item = productRepository.GetById(l.ItemId);
+                                if (l.Item != null)
+                                {
+                                    l.Item.Price = productPriceService.GetByProductId(l.ItemId);
+                                    l.Item.Categories = productCategoryService.GetCategoriesByProductId(l.ItemId).ToList();
+                                }
+                                return l;
+                            })
+                            .ToList();
+
+                        return r;
+                    })
+                .ToList();
+
+            var expandedData = await Task.WhenAll(expandedDataTask);
+
+            //var query = queryOptions.ApplyTo(data.AsQueryable());
+
+            return Ok(expandedData);
         }
 
         [HttpGet]
@@ -80,6 +110,11 @@ namespace TF.Web.OData.Controllers
                 .Select(r =>
                     {
                         r.Item = productRepository.GetById(r.ItemId);
+                        if (r.Item != null)
+                        {
+                            r.Item.Price = productPriceService.GetByProductId(r.ItemId);
+                            r.Item.Categories = productCategoryService.GetCategoriesByProductId(r.ItemId).ToList();
+                        }
                         return r;
                     })
                 .ToList();

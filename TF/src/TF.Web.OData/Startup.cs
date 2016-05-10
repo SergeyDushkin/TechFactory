@@ -64,6 +64,7 @@ namespace TF.Web.OData
             container.RegisterType<IContactRepository, ContactRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IContactDetailRepository, ContactDetailRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IPersonRepository, PersonRepository>(new InjectionConstructor(dbContext));
+            container.RegisterType<ILinkRepository, LinkRepository>(new InjectionConstructor(dbContext));
 
             container.RegisterType<ILogger, Logger>(new InjectionFactory(x => LogManager.GetCurrentClassLogger()));
 
@@ -92,6 +93,7 @@ namespace TF.Web.OData
             builder.EntitySet<OrderLineDetail>("OrderLineDetails");
             builder.EntitySet<User>("Users");
             builder.EntitySet<Contact>("Contacts");
+            builder.EntitySet<Link>("Links");
 
             builder.Namespace = "NoodleService";
             builder.EntityType<Order>()

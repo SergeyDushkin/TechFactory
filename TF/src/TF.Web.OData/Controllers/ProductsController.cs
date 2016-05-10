@@ -41,7 +41,7 @@ namespace TF.Web.OData.Controllers
 
         [HttpGet]
         [EnableQuery]
-        public IHttpActionResult Get(ODataQueryOptions<Product> queryOptions)
+        public async Task<IHttpActionResult> Get(ODataQueryOptions<Product> queryOptions)
         {
             logger.Trace("Call ProductsController GetProducts");
 
@@ -54,18 +54,23 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = productRepository.Get();
+            var allProducts = productRepository.Get();
 
-            data = data.Select(r =>
+            var task = allProducts.Select(async r =>
             {
+                var links = await linkRepository.GetByReferenceIdAsync(r.Id);
+
                 r.Price = productPriceService.GetByProductId(r.Id);
                 r.Categories = productCategoryService.GetCategoriesByProductId(r.Id).ToList();
+                r.Links = links.ToList();
 
                 return r;
             });
 
-            var query = queryOptions
-                .ApplyTo(data.AsQueryable());
+            var data = await Task.WhenAll(task);
+
+            //var query = queryOptions
+            //    .ApplyTo(data.AsQueryable());
 
             //data = query.ToList();
 
@@ -73,7 +78,7 @@ namespace TF.Web.OData.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get([FromODataUri] System.Guid key)
+        public async Task<IHttpActionResult> Get([FromODataUri] System.Guid key)
         {
             logger.Trace("Call ProductsController GetProductById {0}", key);
 
@@ -82,8 +87,11 @@ namespace TF.Web.OData.Controllers
             if (query == null)
                 return NotFound();
 
+            var links = await linkRepository.GetByReferenceIdAsync(key);
+
             query.Price = productPriceService.GetByProductId(key);
             query.Categories = productCategoryService.GetCategoriesByProductId(key).ToList();
+            query.Links = links.ToList();
 
             return Ok(query);
         }

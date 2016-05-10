@@ -51,10 +51,12 @@
     <Compile Include="CategoryTreeServiceDelete.cs" />
     <Compile Include="CategoryTreeServiceUpdate.cs" />
     <Compile Include="ContactDetailRepository.cs" />
+    <Compile Include="LinkRepository.cs" />
     <Compile Include="LocationRepository.cs" />
     <Compile Include="OrderLineDetailRepository.cs" />
     <Compile Include="OrderLineRepository.cs" />
     <Compile Include="Query\ContactDetailQuery.cs" />
+    <Compile Include="Query\LinkQuery.cs" />
     <Compile Include="Query\LocationQuery.cs" />
     <Compile Include="Query\OrderLineDetailQuery.cs" />
     <Compile Include="Query\OrderLineQuery.cs" />
@@ -210,6 +212,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SQL\Trunk\Tables\BUSINESS.EMPLOYEE.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Trunk\Tables\SYSTEM.LINK.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

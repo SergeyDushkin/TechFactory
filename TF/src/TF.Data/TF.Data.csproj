@@ -61,6 +61,8 @@
     <Compile Include="Business\WMS\OrderLineDetail.cs" />
     <Compile Include="Business\Workflow\WorkflowMap.cs" />
     <Compile Include="Business\Workflow\WorkflowStatus.cs" />
+    <Compile Include="Systems\Link.cs" />
+    <Compile Include="Systems\ILinkRepository.cs" />
     <Compile Include="Systems\IO\IFileInfo.cs" />
     <Compile Include="Systems\IO\IFolderInfo.cs" />
     <Compile Include="Systems\IO\IStorageService.cs" />

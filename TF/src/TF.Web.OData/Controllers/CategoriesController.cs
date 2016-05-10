@@ -48,12 +48,22 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
-            var data = await service.GetAllAsync();
+            var allCategories = await service.GetAllAsync();
 
-            var query = (IQueryable<Category>)queryOptions
-                .ApplyTo(data.AsQueryable());
+            var task = allCategories.Select(async r =>
+            {
+                var links = await linkRepository.GetByReferenceIdAsync(r.Id);
+                r.Links = links.ToList();
 
-            return Ok(query);
+                return r;
+            });
+
+            var data = await Task.WhenAll(task);
+
+            //var query = (IQueryable<Category>)queryOptions
+            //    .ApplyTo(data.AsQueryable());
+
+            return Ok(data);
         }
 
         public async Task<IHttpActionResult> GetCategory([FromODataUri] System.Guid key)
@@ -61,6 +71,12 @@ namespace TF.Web.OData.Controllers
             logger.Trace("Call CategoriesController GetCategory by key {0}", key);
 
             var query = await service.GetByIdAsync(key);
+
+            if (query == null)
+                return NotFound();
+
+            var links = await linkRepository.GetByReferenceIdAsync(key);
+            query.Links = links.ToList();
 
             return Ok(query);
         }

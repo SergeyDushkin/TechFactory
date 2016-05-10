@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using TF.Data.Systems;
 
 namespace TF.Data.Business
 {
@@ -21,5 +23,6 @@ namespace TF.Data.Business
         public string Name { get; set; }
 
         public Guid? ParentId { get; set; }
+        public virtual ICollection<Link> Links { get; set; }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 07.05.2016 9:12:54
+// Generation date: 10.05.2016 23:06:43
 namespace TF.Data.Business
 {
     /// <summary>
@@ -2071,6 +2071,27 @@ namespace TF.Data.Business.WMS
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.Category> _Categories;
+        /// <summary>
+        /// There are no comments for Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> Links
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._Links == null))
+                {
+                    this._Links = Context.CreateQuery<global::TF.Data.Systems.Link>(GetPath("Links"));
+                }
+                return this._Links;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> _Links;
     }
     /// <summary>
     /// There are no comments for Product in the schema.
@@ -2268,6 +2289,28 @@ namespace TF.Data.Business.WMS
         private global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Business.Category> _Categories = new global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Business.Category>(null, global::Microsoft.OData.Client.TrackingMode.None);
         partial void OnCategoriesChanging(global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Business.Category> value);
         partial void OnCategoriesChanged();
+        /// <summary>
+        /// There are no comments for Property Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> Links
+        {
+            get
+            {
+                return this._Links;
+            }
+            set
+            {
+                this.OnLinksChanging(value);
+                this._Links = value;
+                this.OnLinksChanged();
+                this.OnPropertyChanged("Links");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> _Links = new global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link>(null, global::Microsoft.OData.Client.TrackingMode.None);
+        partial void OnLinksChanging(global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> value);
+        partial void OnLinksChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -2506,6 +2549,27 @@ namespace TF.Data.Business.WMS
         public ProductCategorySingle(global::Microsoft.OData.Client.DataServiceQuerySingle<ProductCategory> query)
             : base(query) {}
 
+        /// <summary>
+        /// There are no comments for Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> Links
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._Links == null))
+                {
+                    this._Links = Context.CreateQuery<global::TF.Data.Systems.Link>(GetPath("Links"));
+                }
+                return this._Links;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> _Links;
     }
     /// <summary>
     /// There are no comments for ProductCategory in the schema.
@@ -2597,6 +2661,28 @@ namespace TF.Data.Business.WMS
         private global::System.Guid _ProductId;
         partial void OnProductIdChanging(global::System.Guid value);
         partial void OnProductIdChanged();
+        /// <summary>
+        /// There are no comments for Property Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> Links
+        {
+            get
+            {
+                return this._Links;
+            }
+            set
+            {
+                this.OnLinksChanging(value);
+                this._Links = value;
+                this.OnLinksChanged();
+                this.OnPropertyChanged("Links");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> _Links = new global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link>(null, global::Microsoft.OData.Client.TrackingMode.None);
+        partial void OnLinksChanging(global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> value);
+        partial void OnLinksChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -4462,6 +4548,136 @@ namespace TF.Data.Systems
         }
     }
     /// <summary>
+    /// There are no comments for LinkSingle in the schema.
+    /// </summary>
+    public partial class LinkSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Link>
+    {
+        /// <summary>
+        /// Initialize a new LinkSingle object.
+        /// </summary>
+        public LinkSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new LinkSingle object.
+        /// </summary>
+        public LinkSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new LinkSingle object.
+        /// </summary>
+        public LinkSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<Link> query)
+            : base(query) {}
+
+    }
+    /// <summary>
+    /// There are no comments for Link in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class Link : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new Link object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="referenceId">Initial value of ReferenceId.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public static Link CreateLink(global::System.Guid ID, global::System.Guid referenceId)
+        {
+            Link link = new Link();
+            link.Id = ID;
+            link.ReferenceId = referenceId;
+            return link;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property ReferenceId in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::System.Guid ReferenceId
+        {
+            get
+            {
+                return this._ReferenceId;
+            }
+            set
+            {
+                this.OnReferenceIdChanging(value);
+                this._ReferenceId = value;
+                this.OnReferenceIdChanged();
+                this.OnPropertyChanged("ReferenceId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::System.Guid _ReferenceId;
+        partial void OnReferenceIdChanging(global::System.Guid value);
+        partial void OnReferenceIdChanged();
+        /// <summary>
+        /// There are no comments for Property Uri in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public string Uri
+        {
+            get
+            {
+                return this._Uri;
+            }
+            set
+            {
+                this.OnUriChanging(value);
+                this._Uri = value;
+                this.OnUriChanged();
+                this.OnPropertyChanged("Uri");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private string _Uri;
+        partial void OnUriChanging(string value);
+        partial void OnUriChanged();
+        /// <summary>
+        /// This event is raised when the value of the property is changed
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// The value of the property is changed
+        /// </summary>
+        /// <param name="property">property name</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
     /// Class containing all extension methods
     /// </summary>
     public static class ExtensionMethods
@@ -4488,6 +4704,29 @@ namespace TF.Data.Systems
                 { "Id", id }
             };
             return new global::TF.Data.Systems.EntitySingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::TF.Data.Systems.Link as global::TF.Data.Systems.LinkSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::TF.Data.Systems.LinkSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        {
+            return new global::TF.Data.Systems.LinkSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::TF.Data.Systems.Link as global::TF.Data.Systems.LinkSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::TF.Data.Systems.LinkSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> source,
+            global::System.Guid id)
+        {
+            global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::TF.Data.Systems.LinkSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
     }
 }
@@ -5294,6 +5533,23 @@ namespace NoodleService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.Contact> _Contacts;
         /// <summary>
+        /// There are no comments for Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> Links
+        {
+            get
+            {
+                if ((this._Links == null))
+                {
+                    this._Links = base.CreateQuery<global::TF.Data.Systems.Link>("Links");
+                }
+                return this._Links;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> _Links;
+        /// <summary>
         /// There are no comments for Units in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
@@ -5437,6 +5693,14 @@ namespace NoodleService
         {
             base.AddObject("Contacts", contact);
         }
+        /// <summary>
+        /// There are no comments for Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public void AddToLinks(global::TF.Data.Systems.Link link)
+        {
+            base.AddObject("Links", link);
+        }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         private abstract class GeneratedEdmModel
         {
@@ -5561,6 +5825,7 @@ namespace NoodleService
         <NavigationProperty Name=""ChildProducts"" Type=""Collection(TF.Data.Business.WMS.Product)"" />
         <NavigationProperty Name=""Price"" Type=""TF.Data.Business.WMS.ProductPrice"" />
         <NavigationProperty Name=""Categories"" Type=""Collection(TF.Data.Business.Category)"" />
+        <NavigationProperty Name=""Links"" Type=""Collection(TF.Data.Systems.Link)"" />
       </EntityType>
       <EntityType Name=""ProductPrice"">
         <Key>
@@ -5579,6 +5844,7 @@ namespace NoodleService
         <Property Name=""Id"" Type=""Edm.Guid"" Nullable=""false"" />
         <Property Name=""CategoryId"" Type=""Edm.Guid"" Nullable=""false"" />
         <Property Name=""ProductId"" Type=""Edm.Guid"" Nullable=""false"" />
+        <NavigationProperty Name=""Links"" Type=""Collection(TF.Data.Systems.Link)"" />
       </EntityType>
       <EntityType Name=""Order"">
         <Key>
@@ -5667,6 +5933,14 @@ namespace NoodleService
         <Property Name=""Name"" Type=""Edm.String"" />
         <Property Name=""ParentId"" Type=""Edm.Guid"" />
       </EntityType>
+      <EntityType Name=""Link"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Guid"" Nullable=""false"" />
+        <Property Name=""ReferenceId"" Type=""Edm.Guid"" Nullable=""false"" />
+        <Property Name=""Uri"" Type=""Edm.String"" />
+      </EntityType>
     </Schema>
     <Schema Namespace=""TF.Data.Systems.Security"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityType Name=""Role"">
@@ -5704,12 +5978,15 @@ namespace NoodleService
           <NavigationPropertyBinding Path=""ChildProducts"" Target=""Products"" />
           <NavigationPropertyBinding Path=""Price"" Target=""ProductPrices"" />
           <NavigationPropertyBinding Path=""Categories"" Target=""Categories"" />
+          <NavigationPropertyBinding Path=""Links"" Target=""Links"" />
         </EntitySet>
         <EntitySet Name=""Categories"" EntityType=""TF.Data.Business.Category"" />
         <EntitySet Name=""ProductPrices"" EntityType=""TF.Data.Business.WMS.ProductPrice"">
           <NavigationPropertyBinding Path=""Currency"" Target=""Currencies"" />
         </EntitySet>
-        <EntitySet Name=""ProductCategories"" EntityType=""TF.Data.Business.WMS.ProductCategory"" />
+        <EntitySet Name=""ProductCategories"" EntityType=""TF.Data.Business.WMS.ProductCategory"">
+          <NavigationPropertyBinding Path=""Links"" Target=""Links"" />
+        </EntitySet>
         <EntitySet Name=""Currencies"" EntityType=""TF.Data.Business.Currency"" />
         <EntitySet Name=""Entities"" EntityType=""TF.Data.Systems.Entity"" />
         <EntitySet Name=""Locations"" EntityType=""TF.Data.Business.Location"">
@@ -5744,6 +6021,7 @@ namespace NoodleService
         </EntitySet>
         <EntitySet Name=""Users"" EntityType=""TF.Data.Systems.Security.User"" />
         <EntitySet Name=""Contacts"" EntityType=""TF.Data.Business.Contact"" />
+        <EntitySet Name=""Links"" EntityType=""TF.Data.Systems.Link"" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

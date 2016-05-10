@@ -4,6 +4,7 @@ using System.Linq;
 using TF.Data.Business.WMS;
 using TF.Data.Business;
 using NoodleService;
+using TF.Data.Systems;
 
 namespace TF.Web.API.Test
 {
@@ -30,6 +31,7 @@ namespace TF.Web.API.Test
             CreateProducts();
             CreateProductCategories();
             CreateRetailPrices();
+            CreateProductLinks();
             CreateOrders();
         }
 
@@ -101,6 +103,10 @@ namespace TF.Web.API.Test
             container.AddToCategories(new Category { Key = "PROTEIN", Name = "PROTEIN", ParentId = category_ingredient.Id });
             container.AddToCategories(new Category { Key = "VEGETABLES", Name = "VEGETABLES", ParentId = category_ingredient.Id });
             container.AddToCategories(new Category { Key = "GARNISH", Name = "GARNISH", ParentId = category_ingredient.Id });
+
+            container.AddToLinks(new Data.Systems.Link { ReferenceId = category_food.Id, Uri = "http://naturizzata.ca/blog/wp-content/uploads/2015/06/restaurant-table-food.jpg" });
+            container.AddToLinks(new Data.Systems.Link { ReferenceId = category_drink.Id, Uri = "http://cache2.asset-cache.net/gc/182150080-english-tea-service-shallow-focus-restaurant-gettyimages.jpg?v=1&c=IWSAsset&k=2&d=jPdk8UAjZ9WUqGv7sQ10OaPhuocYMg%2Fwp1tlEPdMMoo5G0JG5I3Q0nPI9SE9N%2FYv" });
+            container.AddToLinks(new Data.Systems.Link { ReferenceId = category_snack.Id, Uri = "http://thumbs.dreamstime.com/x/italian-cocktail-snack-table-restaurant-italy-appetizer-snacks-drink-white-dining-out-evening-alcoholic-drink-42224576.jpg" });
 
             container.SaveChanges();
         }
@@ -543,6 +549,66 @@ namespace TF.Web.API.Test
                 ProductId = container.Products.Where(r => r.Key == "Carbonara HALF").SingleOrDefault().Id,
                 Price = 3,
                 CurrencyCode = "USD"
+            });
+
+            container.SaveChanges();
+        }
+
+
+        void CreateProductLinks()
+        {
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "Coca-Cola CAN 0.33").SingleOrDefault().Id,
+                Uri = "http://www.etnacoffee.net/wp-content/uploads/2015/09/coca-cola-0.33l.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "WOK REG").SingleOrDefault().Id,
+                Uri = "https://s3-media3.fl.yelpcdn.com/bphoto/dHOzMpEeCsqPkuibvJwtkg/o.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "WOK HALF").SingleOrDefault().Id,
+                Uri = "https://s3-media3.fl.yelpcdn.com/bphoto/dHOzMpEeCsqPkuibvJwtkg/o.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "POT CHI REG").SingleOrDefault().Id,
+                Uri = "http://l7.alamy.com/zooms/22578acc0e5d47eea1da0b17d0cac01e/korean-kim-chi-hot-pot-with-noodles-meat-at-a-korean-restaurant-d7nhc3.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "POT CHI HALF").SingleOrDefault().Id,
+                Uri = "http://l7.alamy.com/zooms/22578acc0e5d47eea1da0b17d0cac01e/korean-kim-chi-hot-pot-with-noodles-meat-at-a-korean-restaurant-d7nhc3.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "Bolognese REG").SingleOrDefault().Id,
+                Uri = "http://www.goldengalaxy.in/wp-content/uploads/2015/07/Vegan_Spaghetti_Bolognese.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "Bolognese HALF").SingleOrDefault().Id,
+                Uri = "http://www.goldengalaxy.in/wp-content/uploads/2015/07/Vegan_Spaghetti_Bolognese.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "Carbonara REG").SingleOrDefault().Id,
+                Uri = "http://www.artimondo.co.uk/magazine/wp-content/uploads/2015/10/pasta-alla-carbonara.jpg"
+            });
+
+            container.AddToLinks(new Link
+            {
+                ReferenceId = container.Products.Where(r => r.Key == "Carbonara HALF").SingleOrDefault().Id,
+                Uri = "http://www.artimondo.co.uk/magazine/wp-content/uploads/2015/10/pasta-alla-carbonara.jpg"
             });
 
             container.SaveChanges();

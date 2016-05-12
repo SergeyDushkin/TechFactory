@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 10.05.2016 23:06:43
+// Generation date: 13.05.2016 1:56:39
 namespace TF.Data.Business
 {
     /// <summary>
@@ -184,6 +184,27 @@ namespace TF.Data.Business
         public CategorySingle(global::Microsoft.OData.Client.DataServiceQuerySingle<Category> query)
             : base(query) {}
 
+        /// <summary>
+        /// There are no comments for Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> Links
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._Links == null))
+                {
+                    this._Links = Context.CreateQuery<global::TF.Data.Systems.Link>(GetPath("Links"));
+                }
+                return this._Links;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> _Links;
     }
     /// <summary>
     /// There are no comments for Category in the schema.
@@ -293,6 +314,28 @@ namespace TF.Data.Business
         private global::System.Nullable<global::System.Guid> _ParentId;
         partial void OnParentIdChanging(global::System.Nullable<global::System.Guid> value);
         partial void OnParentIdChanged();
+        /// <summary>
+        /// There are no comments for Property Links in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> Links
+        {
+            get
+            {
+                return this._Links;
+            }
+            set
+            {
+                this.OnLinksChanging(value);
+                this._Links = value;
+                this.OnLinksChanged();
+                this.OnPropertyChanged("Links");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> _Links = new global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link>(null, global::Microsoft.OData.Client.TrackingMode.None);
+        partial void OnLinksChanging(global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> value);
+        partial void OnLinksChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -2549,27 +2592,6 @@ namespace TF.Data.Business.WMS
         public ProductCategorySingle(global::Microsoft.OData.Client.DataServiceQuerySingle<ProductCategory> query)
             : base(query) {}
 
-        /// <summary>
-        /// There are no comments for Links in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> Links
-        {
-            get
-            {
-                if (!this.IsComposable)
-                {
-                    throw new global::System.NotSupportedException("The previous function is not composable.");
-                }
-                if ((this._Links == null))
-                {
-                    this._Links = Context.CreateQuery<global::TF.Data.Systems.Link>(GetPath("Links"));
-                }
-                return this._Links;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> _Links;
     }
     /// <summary>
     /// There are no comments for ProductCategory in the schema.
@@ -2661,28 +2683,6 @@ namespace TF.Data.Business.WMS
         private global::System.Guid _ProductId;
         partial void OnProductIdChanging(global::System.Guid value);
         partial void OnProductIdChanged();
-        /// <summary>
-        /// There are no comments for Property Links in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> Links
-        {
-            get
-            {
-                return this._Links;
-            }
-            set
-            {
-                this.OnLinksChanging(value);
-                this._Links = value;
-                this.OnLinksChanged();
-                this.OnPropertyChanged("Links");
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        private global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> _Links = new global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link>(null, global::Microsoft.OData.Client.TrackingMode.None);
-        partial void OnLinksChanging(global::Microsoft.OData.Client.DataServiceCollection<global::TF.Data.Systems.Link> value);
-        partial void OnLinksChanged();
         /// <summary>
         /// This event is raised when the value of the property is changed
         /// </summary>
@@ -4251,6 +4251,315 @@ namespace TF.Data.Business.WMS
         }
     }
     /// <summary>
+    /// There are no comments for ProductSpecificationSingle in the schema.
+    /// </summary>
+    public partial class ProductSpecificationSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<ProductSpecification>
+    {
+        /// <summary>
+        /// Initialize a new ProductSpecificationSingle object.
+        /// </summary>
+        public ProductSpecificationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path)
+            : base(context, path) {}
+
+        /// <summary>
+        /// Initialize a new ProductSpecificationSingle object.
+        /// </summary>
+        public ProductSpecificationSingle(global::Microsoft.OData.Client.DataServiceContext context, string path, bool isComposable)
+            : base(context, path, isComposable) {}
+
+        /// <summary>
+        /// Initialize a new ProductSpecificationSingle object.
+        /// </summary>
+        public ProductSpecificationSingle(global::Microsoft.OData.Client.DataServiceQuerySingle<ProductSpecification> query)
+            : base(query) {}
+
+        /// <summary>
+        /// There are no comments for Parent in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.WMS.ProductSingle Parent
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._Parent == null))
+                {
+                    this._Parent = new global::TF.Data.Business.WMS.ProductSingle(this.Context, GetPath("Parent"));
+                }
+                return this._Parent;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.WMS.ProductSingle _Parent;
+        /// <summary>
+        /// There are no comments for Child in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.WMS.ProductSingle Child
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._Child == null))
+                {
+                    this._Child = new global::TF.Data.Business.WMS.ProductSingle(this.Context, GetPath("Child"));
+                }
+                return this._Child;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.WMS.ProductSingle _Child;
+        /// <summary>
+        /// There are no comments for ChildUom in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.UomSingle ChildUom
+        {
+            get
+            {
+                if (!this.IsComposable)
+                {
+                    throw new global::System.NotSupportedException("The previous function is not composable.");
+                }
+                if ((this._ChildUom == null))
+                {
+                    this._ChildUom = new global::TF.Data.Business.UomSingle(this.Context, GetPath("ChildUom"));
+                }
+                return this._ChildUom;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.UomSingle _ChildUom;
+    }
+    /// <summary>
+    /// There are no comments for ProductSpecification in the schema.
+    /// </summary>
+    /// <KeyProperties>
+    /// Id
+    /// </KeyProperties>
+    [global::Microsoft.OData.Client.Key("Id")]
+    public partial class ProductSpecification : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// Create a new ProductSpecification object.
+        /// </summary>
+        /// <param name="ID">Initial value of Id.</param>
+        /// <param name="parentId">Initial value of ParentId.</param>
+        /// <param name="childId">Initial value of ChildId.</param>
+        /// <param name="childUomId">Initial value of ChildUomId.</param>
+        /// <param name="baseQty">Initial value of BaseQty.</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public static ProductSpecification CreateProductSpecification(global::System.Guid ID, global::System.Guid parentId, global::System.Guid childId, global::System.Guid childUomId, float baseQty)
+        {
+            ProductSpecification productSpecification = new ProductSpecification();
+            productSpecification.Id = ID;
+            productSpecification.ParentId = parentId;
+            productSpecification.ChildId = childId;
+            productSpecification.ChildUomId = childUomId;
+            productSpecification.BaseQty = baseQty;
+            return productSpecification;
+        }
+        /// <summary>
+        /// There are no comments for Property Id in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                this.OnIdChanging(value);
+                this._Id = value;
+                this.OnIdChanged();
+                this.OnPropertyChanged("Id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::System.Guid _Id;
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+        /// <summary>
+        /// There are no comments for Property ParentId in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::System.Guid ParentId
+        {
+            get
+            {
+                return this._ParentId;
+            }
+            set
+            {
+                this.OnParentIdChanging(value);
+                this._ParentId = value;
+                this.OnParentIdChanged();
+                this.OnPropertyChanged("ParentId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::System.Guid _ParentId;
+        partial void OnParentIdChanging(global::System.Guid value);
+        partial void OnParentIdChanged();
+        /// <summary>
+        /// There are no comments for Property ChildId in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::System.Guid ChildId
+        {
+            get
+            {
+                return this._ChildId;
+            }
+            set
+            {
+                this.OnChildIdChanging(value);
+                this._ChildId = value;
+                this.OnChildIdChanged();
+                this.OnPropertyChanged("ChildId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::System.Guid _ChildId;
+        partial void OnChildIdChanging(global::System.Guid value);
+        partial void OnChildIdChanged();
+        /// <summary>
+        /// There are no comments for Property ChildUomId in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::System.Guid ChildUomId
+        {
+            get
+            {
+                return this._ChildUomId;
+            }
+            set
+            {
+                this.OnChildUomIdChanging(value);
+                this._ChildUomId = value;
+                this.OnChildUomIdChanged();
+                this.OnPropertyChanged("ChildUomId");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::System.Guid _ChildUomId;
+        partial void OnChildUomIdChanging(global::System.Guid value);
+        partial void OnChildUomIdChanged();
+        /// <summary>
+        /// There are no comments for Property BaseQty in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public float BaseQty
+        {
+            get
+            {
+                return this._BaseQty;
+            }
+            set
+            {
+                this.OnBaseQtyChanging(value);
+                this._BaseQty = value;
+                this.OnBaseQtyChanged();
+                this.OnPropertyChanged("BaseQty");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private float _BaseQty;
+        partial void OnBaseQtyChanging(float value);
+        partial void OnBaseQtyChanged();
+        /// <summary>
+        /// There are no comments for Property Parent in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.WMS.Product Parent
+        {
+            get
+            {
+                return this._Parent;
+            }
+            set
+            {
+                this.OnParentChanging(value);
+                this._Parent = value;
+                this.OnParentChanged();
+                this.OnPropertyChanged("Parent");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.WMS.Product _Parent;
+        partial void OnParentChanging(global::TF.Data.Business.WMS.Product value);
+        partial void OnParentChanged();
+        /// <summary>
+        /// There are no comments for Property Child in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.WMS.Product Child
+        {
+            get
+            {
+                return this._Child;
+            }
+            set
+            {
+                this.OnChildChanging(value);
+                this._Child = value;
+                this.OnChildChanged();
+                this.OnPropertyChanged("Child");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.WMS.Product _Child;
+        partial void OnChildChanging(global::TF.Data.Business.WMS.Product value);
+        partial void OnChildChanged();
+        /// <summary>
+        /// There are no comments for Property ChildUom in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::TF.Data.Business.Uom ChildUom
+        {
+            get
+            {
+                return this._ChildUom;
+            }
+            set
+            {
+                this.OnChildUomChanging(value);
+                this._ChildUom = value;
+                this.OnChildUomChanged();
+                this.OnPropertyChanged("ChildUom");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::TF.Data.Business.Uom _ChildUom;
+        partial void OnChildUomChanging(global::TF.Data.Business.Uom value);
+        partial void OnChildUomChanged();
+        /// <summary>
+        /// This event is raised when the value of the property is changed
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// The value of the property is changed
+        /// </summary>
+        /// <param name="property">property name</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
     /// Class containing all extension methods
     /// </summary>
     public static class ExtensionMethods
@@ -4392,6 +4701,29 @@ namespace TF.Data.Business.WMS
                 { "Id", id }
             };
             return new global::TF.Data.Business.WMS.OrderLineDetailSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::TF.Data.Business.WMS.ProductSpecification as global::TF.Data.Business.WMS.ProductSpecificationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="source">source entity set</param>
+        /// <param name="keys">dictionary with the names and values of keys</param>
+        public static global::TF.Data.Business.WMS.ProductSpecificationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.ProductSpecification> source, global::System.Collections.Generic.Dictionary<string, object> keys)
+        {
+            return new global::TF.Data.Business.WMS.ProductSpecificationSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
+        }
+        /// <summary>
+        /// Get an entity of type global::TF.Data.Business.WMS.ProductSpecification as global::TF.Data.Business.WMS.ProductSpecificationSingle specified by key from an entity set
+        /// </summary>
+        /// <param name="source">source entity set</param>
+        /// <param name="id">The value of id</param>
+        public static global::TF.Data.Business.WMS.ProductSpecificationSingle ByKey(this global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.ProductSpecification> source,
+            global::System.Guid id)
+        {
+            global::System.Collections.Generic.Dictionary<string, object> keys = new global::System.Collections.Generic.Dictionary<string, object>
+            {
+                { "Id", id }
+            };
+            return new global::TF.Data.Business.WMS.ProductSpecificationSingle(source.Context, source.GetKeyPath(global::Microsoft.OData.Client.Serializer.GetKeyString(source.Context, keys)));
         }
     }
 }
@@ -5550,6 +5882,23 @@ namespace NoodleService
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Systems.Link> _Links;
         /// <summary>
+        /// There are no comments for ProductSpecifications in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.ProductSpecification> ProductSpecifications
+        {
+            get
+            {
+                if ((this._ProductSpecifications == null))
+                {
+                    this._ProductSpecifications = base.CreateQuery<global::TF.Data.Business.WMS.ProductSpecification>("ProductSpecifications");
+                }
+                return this._ProductSpecifications;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        private global::Microsoft.OData.Client.DataServiceQuery<global::TF.Data.Business.WMS.ProductSpecification> _ProductSpecifications;
+        /// <summary>
         /// There are no comments for Units in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
@@ -5701,6 +6050,14 @@ namespace NoodleService
         {
             base.AddObject("Links", link);
         }
+        /// <summary>
+        /// There are no comments for ProductSpecifications in the schema.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
+        public void AddToProductSpecifications(global::TF.Data.Business.WMS.ProductSpecification productSpecification)
+        {
+            base.AddObject("ProductSpecifications", productSpecification);
+        }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         private abstract class GeneratedEdmModel
         {
@@ -5727,6 +6084,7 @@ namespace NoodleService
         <Property Name=""Key"" Type=""Edm.String"" />
         <Property Name=""Name"" Type=""Edm.String"" />
         <Property Name=""ParentId"" Type=""Edm.Guid"" />
+        <NavigationProperty Name=""Links"" Type=""Collection(TF.Data.Systems.Link)"" />
       </EntityType>
       <EntityType Name=""Currency"">
         <Key>
@@ -5844,7 +6202,6 @@ namespace NoodleService
         <Property Name=""Id"" Type=""Edm.Guid"" Nullable=""false"" />
         <Property Name=""CategoryId"" Type=""Edm.Guid"" Nullable=""false"" />
         <Property Name=""ProductId"" Type=""Edm.Guid"" Nullable=""false"" />
-        <NavigationProperty Name=""Links"" Type=""Collection(TF.Data.Systems.Link)"" />
       </EntityType>
       <EntityType Name=""Order"">
         <Key>
@@ -5922,6 +6279,19 @@ namespace NoodleService
           <ReferentialConstraint Property=""UomId"" ReferencedProperty=""Id"" />
         </NavigationProperty>
       </EntityType>
+      <EntityType Name=""ProductSpecification"">
+        <Key>
+          <PropertyRef Name=""Id"" />
+        </Key>
+        <Property Name=""Id"" Type=""Edm.Guid"" Nullable=""false"" />
+        <Property Name=""ParentId"" Type=""Edm.Guid"" Nullable=""false"" />
+        <Property Name=""ChildId"" Type=""Edm.Guid"" Nullable=""false"" />
+        <Property Name=""ChildUomId"" Type=""Edm.Guid"" Nullable=""false"" />
+        <Property Name=""BaseQty"" Type=""Edm.Single"" Nullable=""false"" />
+        <NavigationProperty Name=""Parent"" Type=""TF.Data.Business.WMS.Product"" />
+        <NavigationProperty Name=""Child"" Type=""TF.Data.Business.WMS.Product"" />
+        <NavigationProperty Name=""ChildUom"" Type=""TF.Data.Business.Uom"" />
+      </EntityType>
     </Schema>
     <Schema Namespace=""TF.Data.Systems"" xmlns=""http://docs.oasis-open.org/odata/ns/edm"">
       <EntityType Name=""Entity"">
@@ -5980,13 +6350,13 @@ namespace NoodleService
           <NavigationPropertyBinding Path=""Categories"" Target=""Categories"" />
           <NavigationPropertyBinding Path=""Links"" Target=""Links"" />
         </EntitySet>
-        <EntitySet Name=""Categories"" EntityType=""TF.Data.Business.Category"" />
+        <EntitySet Name=""Categories"" EntityType=""TF.Data.Business.Category"">
+          <NavigationPropertyBinding Path=""Links"" Target=""Links"" />
+        </EntitySet>
         <EntitySet Name=""ProductPrices"" EntityType=""TF.Data.Business.WMS.ProductPrice"">
           <NavigationPropertyBinding Path=""Currency"" Target=""Currencies"" />
         </EntitySet>
-        <EntitySet Name=""ProductCategories"" EntityType=""TF.Data.Business.WMS.ProductCategory"">
-          <NavigationPropertyBinding Path=""Links"" Target=""Links"" />
-        </EntitySet>
+        <EntitySet Name=""ProductCategories"" EntityType=""TF.Data.Business.WMS.ProductCategory"" />
         <EntitySet Name=""Currencies"" EntityType=""TF.Data.Business.Currency"" />
         <EntitySet Name=""Entities"" EntityType=""TF.Data.Systems.Entity"" />
         <EntitySet Name=""Locations"" EntityType=""TF.Data.Business.Location"">
@@ -6022,6 +6392,11 @@ namespace NoodleService
         <EntitySet Name=""Users"" EntityType=""TF.Data.Systems.Security.User"" />
         <EntitySet Name=""Contacts"" EntityType=""TF.Data.Business.Contact"" />
         <EntitySet Name=""Links"" EntityType=""TF.Data.Systems.Link"" />
+        <EntitySet Name=""ProductSpecifications"" EntityType=""TF.Data.Business.WMS.ProductSpecification"">
+          <NavigationPropertyBinding Path=""Parent"" Target=""Products"" />
+          <NavigationPropertyBinding Path=""Child"" Target=""Products"" />
+          <NavigationPropertyBinding Path=""ChildUom"" Target=""Uoms"" />
+        </EntitySet>
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

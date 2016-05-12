@@ -80,6 +80,10 @@ namespace TF.DAL
             return new ProductSpecification
             {
                 BaseQty = record.BASE_QTY,
+                ChildId = record.CHILD_GUID,
+                ChildUomId = record.CHILD_UOM_GUID,
+                ParentId = record.PARENT_GUID,
+
                 Child = new Product
                 {
                     Id = record.CHILD_GUID
@@ -102,12 +106,12 @@ namespace TF.DAL
             {
                 BASE_QTY = record.BaseQty,
                 BATCH_GUID = null,
-                CHILD_GUID = record.Child.Id,
-                CHILD_UOM_GUID = record.ChildUom.Id,
+                CHILD_GUID = record.ChildId,
+                CHILD_UOM_GUID = record.ChildUomId,
                 DELETED = false,
                 GUID_RECORD = record.Id,
                 HIDDEN = false,
-                PARENT_GUID = record.Parent.Id
+                PARENT_GUID = record.ParentId
             };
         }
     }

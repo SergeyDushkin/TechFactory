@@ -20,20 +20,26 @@ namespace TF.Web.OData.Controllers
         private readonly IProductPriceService productPriceService;
         private readonly IProductCategoryService productCategoryService;
         private readonly ILinkRepository linkRepository;
+        private readonly IProductSpecificationRepository productSpecificationRepository;
+        private readonly IUomRepository uomRepository;
         private readonly ILogger logger;
 
         public ProductsController(
             IProductRepository productRepository,
             IProductPriceService productPriceService,
             IProductCategoryService productCategoryService,
-            ILinkRepository linkRepository
-            , ILogger logger
+            ILinkRepository linkRepository,
+            IProductSpecificationRepository productSpecificationRepository,
+            IUomRepository uomRepository,
+            ILogger logger
             )
         {
             this.productRepository = productRepository;
             this.productPriceService = productPriceService;
             this.productCategoryService = productCategoryService;
             this.linkRepository = linkRepository;
+            this.productSpecificationRepository = productSpecificationRepository;
+            this.uomRepository = uomRepository;
 
             this.logger = logger;
             this.logger.Trace("Call ProductsController");
@@ -60,9 +66,21 @@ namespace TF.Web.OData.Controllers
             {
                 var links = await linkRepository.GetByReferenceIdAsync(r.Id);
 
+                var specifications = await productSpecificationRepository.GetByParentIdAsync(r.Id);
+
+                var specifications_task = specifications.Select(async s =>
+                {
+                    s.Child = productRepository.GetById(s.ChildId);
+                    s.ChildUom = await uomRepository.GetByIdAsync(s.ChildUomId);
+                    return s;
+                });
+
+                var specifications_list = await Task.WhenAll(specifications_task);
+
                 r.Price = productPriceService.GetByProductId(r.Id);
                 r.Categories = productCategoryService.GetCategoriesByProductId(r.Id).ToList();
                 r.Links = links.ToList();
+                r.Ingredients = specifications_list;
 
                 return r;
             });
@@ -89,9 +107,21 @@ namespace TF.Web.OData.Controllers
 
             var links = await linkRepository.GetByReferenceIdAsync(key);
 
+            var specifications = await productSpecificationRepository.GetByParentIdAsync(key);
+
+            var specifications_task = specifications.Select(async s =>
+            {
+                s.Child = productRepository.GetById(s.ChildId);
+                s.ChildUom = await uomRepository.GetByIdAsync(s.ChildUomId);
+                return s;
+            });
+
+            var specifications_list = await Task.WhenAll(specifications_task);
+
             query.Price = productPriceService.GetByProductId(key);
             query.Categories = productCategoryService.GetCategoriesByProductId(key).ToList();
             query.Links = links.ToList();
+            query.Ingredients = specifications_list;
 
             return Ok(query);
         }

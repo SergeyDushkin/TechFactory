@@ -15,8 +15,8 @@ namespace TF.Web.API.Test
 
         public IntegrationDemoTest()
         {
-            container = new Container(new Uri("http://localhost:5566/odata/"));
-            //container = new Container(new Uri("http://partner-web-api-v1.azurewebsites.net/odata/"));
+            //container = new Container(new Uri("http://localhost:5566/odata/"));
+            container = new Container(new Uri("http://partner-web-api-v1.azurewebsites.net/odata/"));
         }
 
         [TestMethod]    

@@ -13,7 +13,7 @@ namespace TF.DAL.Query
 
         public static CommandDefinition ByParentId(Guid id)
         {
-            return new CommandDefinition("SELECT * [BUSINESS.WMS.KIT_SPEC] where PARENT_GUID = @id", new { id });
+            return new CommandDefinition("SELECT * FROM [BUSINESS.WMS.KIT_SPEC] where PARENT_GUID = @id", new { id });
         }
 
         public static CommandDefinition ByChildId(Guid id)

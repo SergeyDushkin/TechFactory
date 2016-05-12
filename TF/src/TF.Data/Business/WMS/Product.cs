@@ -19,6 +19,7 @@ namespace TF.Data.Business.WMS
         public virtual Product Parent { get; set; }
 
         public ICollection<Product> ChildProducts { get; set; }
+        public ICollection<ProductSpecification> Ingredients { get; set; }
 
         [ForeignKey("ProductId")]
         public virtual ProductPrice Price { get; set; }

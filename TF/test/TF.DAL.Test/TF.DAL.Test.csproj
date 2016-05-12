@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ContactDetailServiceTest.cs" />
+    <Compile Include="ProductSpecificationRepositoryTest.cs" />
     <Compile Include="LinkRepositoryTest.cs" />
     <Compile Include="LocationRepositoryTest.cs" />
     <Compile Include="OrderLineDetailRepositoryTest.cs" />

@@ -51,11 +51,14 @@
     <Compile Include="CategoryTreeServiceDelete.cs" />
     <Compile Include="CategoryTreeServiceUpdate.cs" />
     <Compile Include="ContactDetailRepository.cs" />
+    <Compile Include="Models\BUSINESS_WMS_KIT_SPEC.cs" />
+    <Compile Include="ProductSpecificationRepository.cs" />
     <Compile Include="LinkRepository.cs" />
     <Compile Include="LocationRepository.cs" />
     <Compile Include="OrderLineDetailRepository.cs" />
     <Compile Include="OrderLineRepository.cs" />
     <Compile Include="Query\ContactDetailQuery.cs" />
+    <Compile Include="Query\ProductSpecificationQuery.cs" />
     <Compile Include="Query\LinkQuery.cs" />
     <Compile Include="Query\LocationQuery.cs" />
     <Compile Include="Query\OrderLineDetailQuery.cs" />
@@ -217,6 +220,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SQL\Trunk\Tables\SYSTEM.LINK.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Trunk\Tables\BUSINESS.WMS.KIT_SPEC.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

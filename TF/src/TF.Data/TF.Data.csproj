@@ -57,8 +57,10 @@
     <Compile Include="Business\Person.cs" />
     <Compile Include="Business\WMS\IOrderLineDetailRepository.cs" />
     <Compile Include="Business\WMS\IOrderLineRepository.cs" />
+    <Compile Include="Business\WMS\IProductSpecificationRepository.cs" />
     <Compile Include="Business\WMS\IOrderRepository.cs" />
     <Compile Include="Business\WMS\OrderLineDetail.cs" />
+    <Compile Include="Business\WMS\ProductSpecification.cs" />
     <Compile Include="Business\Workflow\WorkflowMap.cs" />
     <Compile Include="Business\Workflow\WorkflowStatus.cs" />
     <Compile Include="Systems\Link.cs" />

@@ -173,6 +173,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\UnitsController.cs" />
+    <Compile Include="Controllers\ProductSpecificationsController.cs" />
     <Compile Include="Controllers\UomsController.cs" />
     <Compile Include="Controllers\UserIdentityController.cs" />
     <Compile Include="Controllers\UserRolesController.cs" />

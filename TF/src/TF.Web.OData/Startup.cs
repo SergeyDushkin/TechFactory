@@ -2,10 +2,6 @@
 using Microsoft.Practices.Unity;
 using NLog;
 using Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.OData.Builder;
@@ -65,6 +61,7 @@ namespace TF.Web.OData
             container.RegisterType<IContactDetailRepository, ContactDetailRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<IPersonRepository, PersonRepository>(new InjectionConstructor(dbContext));
             container.RegisterType<ILinkRepository, LinkRepository>(new InjectionConstructor(dbContext));
+            container.RegisterType<IProductSpecificationRepository, ProductSpecificationRepository>(new InjectionConstructor(dbContext));
 
             container.RegisterType<ILogger, Logger>(new InjectionFactory(x => LogManager.GetCurrentClassLogger()));
 
@@ -94,6 +91,7 @@ namespace TF.Web.OData
             builder.EntitySet<User>("Users");
             builder.EntitySet<Contact>("Contacts");
             builder.EntitySet<Link>("Links");
+            builder.EntitySet<ProductSpecification>("ProductSpecifications");
 
             builder.Namespace = "NoodleService";
             builder.EntityType<Order>()

@@ -32,7 +32,8 @@ namespace TF.Web.API.Test
             CreateProductCategories();
             CreateRetailPrices();
             CreateProductLinks();
-            CreateProductSpecifications();
+            CreateProductSpecificationsA();
+            CreateProductSpecificationsB();
             CreateOrders();
         }
 
@@ -615,7 +616,38 @@ namespace TF.Web.API.Test
             container.SaveChanges();
         }
 
-        void CreateProductSpecifications()
+        void CreateProductSpecificationsA()
+        {
+            var parentProduct = container.Products.Where(r => r.Key == "WOK REG").SingleOrDefault();
+
+            container.AddToProductSpecifications(new ProductSpecification
+            {
+                ParentId = parentProduct.Id,
+                ChildId = container.Products.Where(r => r.Key == "Egg Noodle").SingleOrDefault().Id,
+                ChildUomId = container.Uoms.Where(r => r.Key == "G").SingleOrDefault().Id,
+                BaseQty = 180
+            });
+
+            container.AddToProductSpecifications(new ProductSpecification
+            {
+                ParentId = parentProduct.Id,
+                ChildId = container.Products.Where(r => r.Key == "Chicken").SingleOrDefault().Id,
+                ChildUomId = container.Uoms.Where(r => r.Key == "G").SingleOrDefault().Id,
+                BaseQty = 40
+            });
+
+            container.AddToProductSpecifications(new ProductSpecification
+            {
+                ParentId = parentProduct.Id,
+                ChildId = container.Products.Where(r => r.Key == "Mixed Peppers").SingleOrDefault().Id,
+                ChildUomId = container.Uoms.Where(r => r.Key == "G").SingleOrDefault().Id,
+                BaseQty = 20
+            });
+
+            container.SaveChanges();
+        }
+
+        void CreateProductSpecificationsB()
         {
             var parentProduct = container.Products.Where(r => r.Key == "POT CHI HALF").SingleOrDefault();
 
@@ -641,6 +673,22 @@ namespace TF.Web.API.Test
                 ChildId = container.Products.Where(r => r.Key == "Chicken").SingleOrDefault().Id,
                 ChildUomId = container.Uoms.Where(r => r.Key == "G").SingleOrDefault().Id,
                 BaseQty = 40
+            });
+
+            container.AddToProductSpecifications(new ProductSpecification
+            {
+                ParentId = parentProduct.Id,
+                ChildId = container.Products.Where(r => r.Key == "Bamboo Shots").SingleOrDefault().Id,
+                ChildUomId = container.Uoms.Where(r => r.Key == "G").SingleOrDefault().Id,
+                BaseQty = 10
+            });
+
+            container.AddToProductSpecifications(new ProductSpecification
+            {
+                ParentId = parentProduct.Id,
+                ChildId = container.Products.Where(r => r.Key == "Mushrooms").SingleOrDefault().Id,
+                ChildUomId = container.Uoms.Where(r => r.Key == "G").SingleOrDefault().Id,
+                BaseQty = 10
             });
 
             container.AddToProductSpecifications(new ProductSpecification

@@ -117,9 +117,11 @@ namespace TF.Web.OData.Controllers
         {
             logger.Trace("Call OrderLineController Delete");
 
+            var line = await orderLineRepository.GetByIdAsync(key);
+
             await orderLineRepository.DeleteAsync(key);
 
-            await Task.Factory.StartNew(() => RecalcOrderByLineIdAsync(key));
+            await Task.Factory.StartNew(() => RecalcOrderAsync(line.OrderId));
 
             return Ok();
         }

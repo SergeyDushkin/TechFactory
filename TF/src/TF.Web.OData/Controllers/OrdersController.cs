@@ -65,6 +65,28 @@ namespace TF.Web.OData.Controllers
                 return BadRequest(ex.Message);
             }
 
+            if (queryOptions.SelectExpand != null)
+            {
+                foreach (Microsoft.OData.Core.UriParser.Semantic.SelectItem item in queryOptions.SelectExpand.SelectExpandClause.SelectedItems)
+                {
+                    if (item.GetType() == typeof(Microsoft.OData.Core.UriParser.Semantic.ExpandedNavigationSelectItem))
+                    {
+                        Microsoft.OData.Core.UriParser.Semantic.ExpandedNavigationSelectItem navigationProperty = (Microsoft.OData.Core.UriParser.Semantic.ExpandedNavigationSelectItem)item;
+
+                        // Get the name of the property expanded (this way you can control which navigation property you are about to expand)
+                        var propertyName = (navigationProperty.PathToNavigationProperty.FirstSegment as Microsoft.OData.Core.UriParser.Semantic.NavigationPropertySegment).NavigationProperty.Name.ToLowerInvariant();
+                        
+                        // Get skip and top nested filters:
+                        // var skip = navigationProperty.SkipOption;
+                        // var top = navigationProperty.TopOption;
+
+                        /* Here you should retrieve from your DB the entities that you
+                           will return as a result of the requested expand clause with nested filters
+                           ... */
+                    }
+                }
+            }
+
             var data = await orderRepository.GetAllAsync();
 
             var expandedDataTask = data

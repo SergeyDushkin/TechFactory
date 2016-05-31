@@ -1,0 +1,2 @@
+﻿<code>User-agent: *</code>
+<code>Disallow: /</code>
